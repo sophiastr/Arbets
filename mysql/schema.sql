@@ -1,179 +1,187 @@
 use ismgroup49;
-/*	DROP TABLE Suggested_Sure_Bet_Book_Maker;
-DROP TABLE Suggested_Sure_Bet;
-DROP TABLE Sure_Bet_Bets;
-DROP TABLE Sure_Bet;
-DROP TABLE Bet;
-DROP TABLE Book_Maker;
-DROP TABLE Team_Game;
-DROP TABLE Game;
-DROP TABLE Team;
-DROP TABLE Sport;
-DROP TABLE Post;
-DROP TABLE Answer;
-DROP TABLE Followed_Star_User;  
-DROP TABLE Star_User;
-DROP TABLE Guest_User;
-DROP TABLE User;
+/*	DROP TABLE suggested_sure_bet_bookmaker;
+DROP TABLE suggested_sure_bet;
+DROP TABLE sure_bet_bets;
+DROP TABLE sure_bet;
+DROP TABLE bet;
+DROP TABLE bookmaker;
+DROP TABLE team_game;
+DROP TABLE game;
+DROP TABLE team;
+DROP TABLE sport;
+DROP TABLE post;
+DROP TABLE answer;
+DROP TABLE followed_star_user;  
+DROP TABLE star_user;
+DROP TABLE guest_user;
+DROP TABLE user;
 */
 
 
-/*DROP TABLE User;*/
-CREATE TABLE User 
-				(User_Id int not null primary key,
-                  Firstname varchar(20),
-                  Lastname  varchar(20),
-                  Username varchar(20),
-                  Password varchar(20),
-                  Birthday date,
-                  Bank_Account varchar(20),
-                  Email varchar(20),
-                  Points int check (Points>=0)
+/*DROP TABLE user;*/
+CREATE TABLE user 
+				(user_id int not null primary key,
+                  firstname varchar(20),
+                  lastname  varchar(20),
+                  username varchar(20),
+                  password varchar(20),
+                  birthday date,
+                  bank_account varchar(20),
+                  email varchar(20),
+                  points int check (points>=0)
                   );
                
                
-/*DROP TABLE Guest_User;*/
-Create Table Guest_User 
-						(User_Id int not null,
-                        Register_Date date,
-                        Status boolean,
-                        CONSTRAINT PKGuestUser PRIMARY KEY (User_Id),
-                        CONSTRAINT FKGuestUserS1 FOREIGN KEY (User_Id) REFERENCES User(User_Id)
+/*DROP TABLE guest_user;*/
+Create Table guest_user 
+						(user_id int not null,
+                        register_date date,
+                        status boolean,
+                        CONSTRAINT PKGuestUser PRIMARY KEY (user_id),
+                        CONSTRAINT FKGuestUserS1 FOREIGN KEY (user_id) REFERENCES user(user_id)
 					on delete cascade
                         );
 
-/*DROP TABLE Star_User;*/
-Create Table Star_User 
-						( User_Id int not null,
-                        Price DECIMAL(13,2) check (Price>=0),
-                        CONSTRAINT PKStarUser PRIMARY KEY (User_Id),
-                        CONSTRAINT FKStarUser FOREIGN KEY (User_Id) REFERENCES User(User_Id)
+/*DROP TABLE star_user;*/
+Create Table star_User 
+						( user_id int not null,
+                        price DECIMAL(13,2) check (Price>=0),
+                        CONSTRAINT PKStarUser PRIMARY KEY (user_id),
+                        CONSTRAINT FKStarUser FOREIGN KEY (user_id) REFERENCES User(User_Id)
 					on delete cascade
                         );
 
-/*DROP TABLE Followed_Star_User;*/                        
-Create Table Followed_Star_User (User_Id int not null,
-								Star_User_Id int not null,
-                                CONSTRAINT PKFollowed_Star_User PRIMARY KEY (User_Id,Star_User_Id),
-                        CONSTRAINT FKFollowed_Star_User1 FOREIGN KEY (User_Id) REFERENCES User(User_Id)
+/*DROP TABLE followed_star_user;*/                        
+Create Table followed_star_user (user_id int not null,
+								star_user_id int not null,
+                                CONSTRAINT PKFollowed_Star_User PRIMARY KEY (user_id,star_user_id),
+                        CONSTRAINT FKFollowed_Star_User1 FOREIGN KEY (user_Id) REFERENCES user(user_Id)
 					on delete cascade,
-							CONSTRAINT FKFollowed_Star_User2 FOREIGN KEY (Star_User_Id) REFERENCES Star_User(User_Id)
+							CONSTRAINT FKFollowed_Star_User2 FOREIGN KEY (star_user_id) REFERENCES star_user(user_id)
 					on delete cascade	
                 );
               
-/*DROP TABLE Answer;*/               
-Create Table Answer( Answer_Id int not null primary key,
-					Date date,
-                    User_Id int,
-                    Upvote int check (Upvote>=0),
-                    Downvote int check (Downvote>=0),
-                    Is_Solution boolean,
-                    CONSTRAINT FKAnswer1 FOREIGN KEY (User_Id) REFERENCES User(User_Id)
+/*DROP TABLE answer;*/               
+Create Table answer( answer_id int not null primary key,
+					date date,
+                    user_id int,
+                    upvote int check (upvote>=0),
+                    downvote int check (downvote>=0),
+                    is_solution boolean,
+                    CONSTRAINT FKAnswer1 FOREIGN KEY (user_Id) REFERENCES user(user_id)
 					on delete cascade
 					);
                     
-/*DROP TABLE Post;*/                     
-Create Table Post (Post_Id int not null primary key,
-					Text text,
-                    User_Id int,
-                    Date date,
-                    Answer_Id int,
-                    Upvote int check (Upvote>=0),
-                    Downvote int check (Downvote>=0),
+/*DROP TABLE post;*/                     
+Create Table post (post_id int not null primary key,
+					text text,
+                    user_id int,
+                    date date,
+                    answer_id int,
+                    upvote int check (upvote>=0),
+                    downvote int check (downvote>=0),
                     
-                    CONSTRAINT FKPost1 FOREIGN KEY (Answer_Id) REFERENCES Answer(Answer_Id) on delete cascade,
-					CONSTRAINT FKPost2 FOREIGN KEY (User_Id) REFERENCES User(User_Id)
+                    CONSTRAINT FKPost1 FOREIGN KEY (answer_id) REFERENCES answer(answer_id) on delete cascade,
+					CONSTRAINT FKPost2 FOREIGN KEY (user_id) REFERENCES User(user_id)
 					on delete cascade);
                     
- /*DROP TABLE Sport;*/                    
-Create Table Sport ( Sport_Id int not null primary key,
-					Name varchar(30),
-                    Type_Of_Result int
+/*DROP TABLE sport;*/                    
+
+Create Table sport ( sport_id int not null primary key,
+					name varchar(30),
+                    type_of_result int
 					);
 
-/*DROP TABLE Team;*/ 
-Create Table Team (Team_Id int not null primary key,
-					Name varchar(30),
-                    Sport_Id int,
-                    Playing_Field varchar(30),
-                    Sports_Club varchar(30),
-                    CONSTRAINT FKTeam1 FOREIGN KEY (Sport_Id) REFERENCES Sport(Sport_Id) on delete cascade
+/*DROP TABLE team;*/ 
+
+Create Table team (team_id int not null primary key,
+					name varchar(30),
+                    sport_id int,
+                    playing_field varchar(30),
+                    sports_club varchar(30),
+                    CONSTRAINT FKTeam1 FOREIGN KEY (sport_id) REFERENCES sport(sport_id) on delete cascade
                     );
 
-/*DROP TABLE Game;*/ 
-Create Table Game
-			(Game_Id int not null primary key,
-            Date_Time datetime,
-            Playing_Field varchar(80),
-            Home_Team varchar(80),
-            Visiting_Team varchar(80));
- 
-/*DROP TABLE Team_Game;*/  
-Create Table Team_Game
-			(Team_Id INT NOT NULL,
-			 Game_Id INT NOT NULL,
-			 CONSTRAINT PK_Team_Game PRIMARY KEY (Team_Id,Game_Id),
-             CONSTRAINT FK_Team_Game_1 foreign key (Team_Id) References Team(Team_Id)
-             on delete cascade,
-             CONSTRAINT FK_Team_Game_2 foreign key (Game_Id) References Game(Game_Id)
-             on delete cascade);
- 
- /*DROP TABLE Book_Maker;*/              
-Create Table Book_Maker
-			(Book_Maker_Id int not null primary key,
-             SSN int,
-             Name_Of_Book_Maker varchar(80),
-             Enterprise_Name varchar(80),
-             Country varchar(80),
-             Commission DECIMAL(13,2));
- 
- /*DROP TABLE Bet;*/            
-Create Table Bet
-			(Bet_Id int not null primary key,
-             Rate DECIMAL(13,2),
-             Game_Id int,
-             Book_Maker_Id int,
-             CONSTRAINT FK_Bet_1 foreign key (Game_Id) References Game(Game_Id)
-             on delete cascade,
-			 CONSTRAINT FK_Bet_2 foreign key (Book_Maker_Id) References Book_Maker(Book_Maker_Id)
-             on delete cascade);
+/*DROP TABLE game;*/ 
 
-/*DROP TABLE Sure_Bet;*/ 		
-Create Table Sure_Bet
-			(Sure_Bet_Id int not null primary key);
-            
-/*DROP TABLE Sure_Bet_Bets;*/ 		
-Create Table Sure_Bet_Bets
-			(Sure_Bet_Id int not null,
-			 Bet_Id int not null,
-             Amount_In_Bet DECIMAL(13,2),
-             CONSTRAINT PK_Sure_Bet_Bets PRIMARY KEY (Sure_Bet_Id,Bet_Id),
-             CONSTRAINT FK_Sure_Bet_Bets_1 foreign key (Sure_Bet_Id) References Sure_Bet(Sure_Bet_Id)
+Create Table game
+			(game_id int not null primary key,
+            date_time datetime,
+            playing_field varchar(80),
+            home_team varchar(80),
+            visiting_team varchar(80));
+
+
+/*DROP TABLE team_game;*/  
+Create Table team_game
+			(team_id INT NOT NULL,
+			 game_id INT NOT NULL,
+			 CONSTRAINT PK_Team_Game PRIMARY KEY (team_id,game_id),
+             CONSTRAINT FK_Team_Game_1 foreign key (team_id) References team(team_id)
              on delete cascade,
-             CONSTRAINT FK_Sure_Bet_Bets_2 foreign key (Bet_Id) References Bet(Bet_Id)
+             CONSTRAINT FK_Team_Game_2 foreign key (game_id) References game(game_id)
              on delete cascade);
 
 
+ /*DROP TABLE bookmaker;*/              
+Create Table bookmaker
+			(bookmaker_id int not null primary key,
+             ssn int,
+             name_of_bookmaker varchar(80),
+             enterprise_name varchar(80),
+             country varchar(80),
+             commission DECIMAL(13,2));
 
-/*DROP TABLE Suggested_Sure_Bet;*/             
-Create Table Suggested_Sure_Bet
-			(Suggested_Sure_Bet_Id int not null primary key,
-             Content text,
-             Date_Time datetime,
-             Sure_Bet_Id int,
-             Star_User_Id int,
-             CONSTRAINT FK_Suggested_Sure_Bet_1 foreign key (Sure_Bet_Id) References Sure_Bet(Sure_Bet_Id)
+ /*DROP TABLE bet;*/            
+Create Table bet
+			(bet_id int not null primary key,
+             rate DECIMAL(13,2),
+             game_id int,
+             bookmaker_id int,
+             CONSTRAINT FK_Bet_1 foreign key (game_id) References game(game_id)
              on delete cascade,
-             CONSTRAINT FK_Suggested_Sure_Bet_2 foreign key (Star_User_Id) References Star_User(User_Id)
+			 CONSTRAINT FK_Bet_2 foreign key (bookmaker_id) References bookmaker(bookmaker_id)
              on delete cascade);
 
-/*DROP TABLE Suggested_Sure_Bet_Book_Maker;*/ 		
-Create Table Suggested_Sure_Bet_Book_Maker
-			(Suggested_Sure_Bet_Id int not null,
-             Book_Maker_Id int not null,
-             Amount DECIMAL(13,2),
-			 CONSTRAINT PK_Suggested_Sure_Bet_Book_Maker PRIMARY KEY (Suggested_Sure_Bet_Id,Book_Maker_Id),
-             CONSTRAINT FK_Suggested_Sure_Bet_Book_Maker_1 foreign key (Suggested_Sure_Bet_Id) References Suggested_Sure_Bet(Suggested_Sure_Bet_Id)
+
+/*DROP TABLE sure_bet;*/ 		
+Create Table sure_bet
+			(sure_bet_id int not null primary key);
+
+
+/*DROP TABLE sure_bet_bets;*/ 		
+Create Table sure_bet_bets
+			(sure_bet_id int not null,
+			 bet_id int not null,
+             amount_in_bet DECIMAL(13,2),
+             CONSTRAINT PK_Sure_Bet_Bets PRIMARY KEY (sure_bet_id,bet_id),
+             CONSTRAINT FK_Sure_Bet_Bets_1 foreign key (sure_bet_id) References sure_bet(sure_bet_id)
              on delete cascade,
-             CONSTRAINT FK_Suggested_Sure_Bet_Book_Maker_2 foreign key (Book_Maker_Id) References Book_Maker(Book_Maker_Id)
+             CONSTRAINT FK_Sure_Bet_Bets_2 foreign key (bet_id) References bet(bet_id)
+             on delete cascade);
+
+
+/*DROP TABLE suggested_sure_bet;*/             
+
+Create Table suggested_sure_bet
+			(suggested_sure_bet_id int not null primary key,
+             content text,
+             date_time datetime,
+             sure_bet_id int,
+             star_user_id int,
+             CONSTRAINT FK_Suggested_Sure_Bet_1 foreign key (sure_bet_id) References sure_bet(sure_bet_id)
+             on delete cascade,
+             CONSTRAINT FK_Suggested_Sure_Bet_2 foreign key (star_user_id) References star_user(user_id)
+             on delete cascade);
+
+/*DROP TABLE suggested_sure_bet_book_maker;*/ 		
+
+Create Table suggested_sure_bet_book_maker
+			(suggested_sure_bet_id int not null,
+             bookmaker_id int not null,
+             amount DECIMAL(13,2),
+			 CONSTRAINT PK_Suggested_Sure_Bet_Book_Maker PRIMARY KEY (suggested_sure_bet_id,bookmaker_id),
+             CONSTRAINT FK_Suggested_Sure_Bet_Book_Maker_1 foreign key (suggested_sure_bet_id) References suggested_sure_bet(suggested_sure_bet_id)
+             on delete cascade,
+             CONSTRAINT FK_Suggested_Sure_Bet_Book_Maker_2 foreign key (bookmaker_id) References bookmaker(bookmaker_id)
              on delete cascade);
