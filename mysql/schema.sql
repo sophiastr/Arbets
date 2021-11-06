@@ -98,7 +98,6 @@ Create Table team (team_id int not null primary key,
 					name varchar(30),
                     sport_id int,
                     playing_field varchar(30),
-                    sports_club varchar(30),
                     CONSTRAINT FKTeam1 FOREIGN KEY (sport_id) REFERENCES sport(sport_id) on delete cascade
                     );
 
@@ -174,9 +173,9 @@ Create Table suggested_sure_bet
              CONSTRAINT FK_Suggested_Sure_Bet_2 foreign key (star_user_id) References star_user(user_id)
              on delete cascade);
 
-/*DROP TABLE suggested_sure_bet_book_maker;*/ 		
+/*DROP TABLE suggested_sure_bet_bookmaker;*/ 		
 
-Create Table suggested_sure_bet_book_maker
+Create Table suggested_sure_bet_bookmaker
 			(suggested_sure_bet_id int not null,
              bookmaker_id int not null,
              amount DECIMAL(13,2),

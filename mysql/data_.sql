@@ -5,7 +5,7 @@ insert into sport values(3, "volleyball", 2);
 
 select * from team_game;
 
-alter table team drop column sports_club ;
+
 delete from team where team_id = 8;
 
 insert into team values (1, "Olympiakos", 1, "Sef");
