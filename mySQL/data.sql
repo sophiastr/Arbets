@@ -1,5 +1,5 @@
-insert into sport values (1, "basketball", 2);
-insert into sport values(2, "volleyball", 2);
+insert into sport(name , type_of_result) values ("basketball", 2);
+insert into sport(name , type_of_result) values("volleyball", 2);
 
 
 insert into team(name, sport_id, playing_field) values("Olympiakos", 1, "Gipedo Sef");
@@ -32,8 +32,8 @@ insert into game(date_time, playing_field) values("2022-02-12 22:00:00", "Makis 
 insert into game(date_time, playing_field) values("2022-02-14 22:00:00", "Makis Liougas");
 
 
-insert into bookmaker values(1, 11223344, "stoiximan", "stoiximan_bets AE", "Greece", 0 );
-insert into bookmaker values(2, 55667788, "novibet", "novibet_bets AE", "Greece", 0 );
+insert into bookmaker(ssn, name_of_bookmaker, enterprise_name,country , commission) values( 11223344, "stoiximan", "stoiximan_bets AE", "Greece", 0 );
+insert into bookmaker(ssn, name_of_bookmaker, enterprise_name,country , commission) values( 55667788, "novibet", "novibet_bets AE", "Greece", 0 );
 
 insert into team_game values(2,1);
 insert into team_game values(4,1);
@@ -95,7 +95,7 @@ insert into bet(rate1, rate2, game_id,bookmaker_id) values(1.8, 3.15, 8, 2);
 insert into bet(rate1, rate2, game_id,bookmaker_id) values(3.50, 1.20, 9, 1);
 insert into bet(rate1, rate2, game_id,bookmaker_id) values(3.90, 1.46, 9, 2);
 insert into bet(rate1, rate2, game_id,bookmaker_id) values(1.70, 2.59, 10, 1);
-insert into bet(rate1, rate2, game_id,bookmaker_id) values(1,58, 2.60, 10, 2);
+insert into bet(rate1, rate2, game_id,bookmaker_id) values(1.58, 2.60, 10, 2);
 insert into bet(rate1, rate2, game_id,bookmaker_id) values(1.25, 3.10, 10, 1);
 insert into bet(rate1, rate2, game_id,bookmaker_id) values(2.8, 5.55, 10, 2);
 insert into bet(rate1, rate2, game_id,bookmaker_id) values(2.14, 3.09, 11, 1);
@@ -127,17 +127,13 @@ insert into user(firstname, lastname, username, password, birthday, bank_account
 insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Melenia", "Bempedeli", "melenia_bebedeli", "melenia123", "2001-11-29", "GR347927937025637892", "meleniabe@gamil.com", 150);
 insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Anna", "Mastori", "mastori_anna", "mastoriii", "2001-02-04", "GR908567832563789999", "mastori@gamil.com", 200);
 
-insert into star_user(price) values(20);
-insert into star_user(price) values(23.95);
-
-
 insert into guest_user(register_date, status) values("2021-11-09", 1);
 
-insert into post(text, user_id, date, upvote, downvote) values("Γνωρίζει κάποιος ποιό είναι το αποδεκτό όριο ποναταρίσματος στη stoiximan;", 1,  "2022-02-04 20:59:54", 1, 0);
-insert into post(text, user_id, date, upvote, downvote) values("Στο μάτς της Πέμπτης Ολυμπιακός-Πάοκ έχει βρεθεί σίγουρο στοίχημα με πολύ μεγάλο κέρδος.Μπείτε τώρα και δείτε το!", 2,  "2022-02-15 16:05:44", 18, 0);
+insert into post(text, user_id, date_time, upvote, downvote) values("Γνωρίζει κάποιος ποιό είναι το αποδεκτό όριο ποναταρίσματος στη stoiximan;", 1,  "2022-02-04 20:59:54", 1, 0);
+insert into post(text, user_id, date_time, upvote, downvote) values("Στο μάτς της Πέμπτης Ολυμπιακός-Πάοκ έχει βρεθεί σίγουρο στοίχημα με πολύ μεγάλο κέρδος.Μπείτε τώρα και δείτε το!", 2,  "2022-02-15 16:05:44", 18, 0);
 
-insert into answer(text,date, user_id, upvote, downvote, is_solution, post_id) values("Eίναι 3890€","2022-02-04 22:45:34", 2, 2, 0, true, 1);
-insert into answer(text, date, user_id, upvote, downvote, is_solution, post_id) values("Όχι, το ψάχνω και εγώ","2022-02-04 22:55:54", 3, 0, 0, false,1);
-insert into answer(text,date, user_id, upvote, downvote, is_solution, post_id) values("Μεγάλη ευκαρία","2022-02-04 22:55:54", 3, 7, 0, false,2);
+insert into answer(text,date_time, user_id, upvote, downvote, is_solution, post_id) values("Eίναι 3890€","2022-02-04 22:45:34", 2, 2, 0, true, 1);
+insert into answer(text, date_time, user_id, upvote, downvote, is_solution, post_id) values("Όχι, το ψάχνω και εγώ","2022-02-04 22:55:54", 3, 0, 0, false,1);
+insert into answer(text,date_time, user_id, upvote, downvote, is_solution, post_id) values("Μεγάλη ευκαρία","2022-02-04 22:55:54", 3, 7, 0, false,2);
 
 
