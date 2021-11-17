@@ -120,9 +120,6 @@ insert into bet(rate1, rate2, game_id,bookmaker_id) values(1.25, 3.10, 20, 1);
 insert into bet(rate1, rate2, game_id,bookmaker_id) values(2.8, 5.55, 20, 2);
 
 
-
-
-
 insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Sophia", "Sotiropoulou", "sophia_str", "sophia123", "2001-07-19", "GR125347902563789222", "sophiastr@gamil.com", 100);
 insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Melenia", "Bempedeli", "melenia_bebedeli", "melenia123", "2001-11-29", "GR347927937025637892", "meleniabe@gamil.com", 150);
 insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Anna", "Mastori", "mastori_anna", "mastoriii", "2001-02-04", "GR908567832563789999", "mastori@gamil.com", 200);
