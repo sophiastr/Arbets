@@ -40,7 +40,7 @@
                     <li><a class="nav-link scrollto" href="find_oportunity.html">Find Opportunity</a></li>
                     <li><a class="nav-link scrollto " href="post_comment.html">Post & Comment</a></li>
                     <li><a class="nav-link scrollto" href="profile.html">Profile</a></li>
-                    <li><a class="nav-link scrollto active" href="login.html">Login</a></li>
+                    <li><a class="nav-link scrollto active" href="register.html">Register</a></li>
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -49,40 +49,72 @@
     </header>
     <!-- End Header -->
 
-
     <div class="container">
         <div class="row">
             <div class="col-md-4 offset-md-4">
                 <div class="login-form bg-light mt-4 p-4">
-                    <form action="" method="" class="row g-3">
-                        <h4>Welcome Back</h4>
-                        <div class="col-12">
-                            <label>Username</label>
-                            <input type="text" name="username" class="form-control" placeholder="Username">
+
+                    <form>
+                        <h4><b>Registration Form</b></h4>
+
+                        <div class="mb-3">
+                            <label for="fistname" class="form-label">Firstname</label>
+                            <input type="text" class="form-control" id="firstname" aria-describedby="firstname">
                         </div>
-                        <div class="col-12">
-                            <label>Password</label>
-                            <input type="password" name="password" class="form-control" placeholder="Password">
+
+                        <div class="mb-3">
+                            <label for="lastname" class="form-label">Lastname</label>
+                            <input type="text" class="form-control" id="lastname" aria-describedby="lastname">
                         </div>
-                        <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="rememberMe">
-                                <label class="form-check-label" for="rememberMe">Remember me</label>
-                            </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control" id="username" aria-describedby="username">
                         </div>
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-dark float-end">Login</button>
+
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password">
                         </div>
+
+                        <div class="mb-3">
+                            <label for="confpassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" id="confpassword">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bday" class="form-label">Birthday</label>
+                            <input type="date" class="form-control" id="bday" aria-describedby="bday">
+                        </div>
+                        <div class="mb-3">
+                            <label for="bank" class="form-label">Bank Account</label>
+                            <input type="text" class="form-control" id="bank" aria-describedby="bank">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                        </div>
+
+                        <button type="submit" class="btn btn-secondary">Submit</button>
                     </form>
+
+
                     <hr class="mt-4">
                     <div class="col-12">
-                        <p class="text-center mb-0">For register press <a href="register.html">here</a></p>
+                        <p class="text-center mb-0">For login press <a href="login.html">here</a></p>
                     </div>
                 </div>
             </div>
         </div>
+
+        <br><br><br><br><br>
+
     </div>
     <br><br>
+
+
+
+
+
 
     <!-- ======= Footer ======= -->
     <footer id="footer">
