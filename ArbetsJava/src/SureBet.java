@@ -48,17 +48,5 @@ public class SureBet {
 	public void setAmountBet2(double amountBet2) {
 		this.amountBet2 = amountBet2;
 	}
-	
-	public boolean calculateSureBet(Bet bet1,Bet bet2){
-		double rateOne = bet1.getRate();
-		double rateTwo = bet2.getRate();
-		double percentageOne = (1/rateOne)*100;
-		double percentageTwo = (1/rateTwo)*100;
-		double sumOfPercentages = percentageOne + percentageTwo;
-		if (sumOfPercentages < 100) {
-			return true;
-		}else {
-			return false;
-		}
-	}
+
 }

@@ -8,7 +8,6 @@ DROP TABLE team;
 DROP TABLE sport;
 DROP TABLE answer;
 DROP TABLE post;
-
 DROP TABLE guest_user;
 DROP TABLE user;
 */
@@ -97,10 +96,13 @@ Create Table game
 Create Table team_game
 			(team_id INT NOT NULL,
 			 game_id INT NOT NULL,
+             home_team_id INT NOT NULL,
 			 CONSTRAINT PK_Team_Game PRIMARY KEY (team_id,game_id),
              CONSTRAINT FK_Team_Game_1 foreign key (team_id) References team(team_id)
              on delete cascade,
              CONSTRAINT FK_Team_Game_2 foreign key (game_id) References game(game_id)
+             on delete cascade,
+             CONSTRAINT FK_Team_Game_3 foreign key (home_team_id) References team(team_id)
              on delete cascade);
 
 
@@ -116,8 +118,8 @@ Create Table bookmaker
  /*DROP TABLE bet;*/            
 Create Table bet
 			(bet_id int not null primary key auto_increment,
-             rate1 DECIMAL(13,2),
-             rate2 DECIMAL(13,2),
+             home_team_rate DECIMAL(13,2),
+             visiting_team_rate DECIMAL(13,2),
              game_id int,
              bookmaker_id int,
              CONSTRAINT FK_Bet_1 foreign key (game_id) References game(game_id)
