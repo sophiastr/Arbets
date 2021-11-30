@@ -5,16 +5,16 @@ import java.util.ArrayList;
 
 public class Bet {
 	private int id;
-	private double rate1;
-	private double rate2;
+	private double homeTeamRate;
+	private double visitingTeamRate;
 	private int gameId;
 	private int bookmakerId;
 	
-	public Bet(int id, double rate1,double rate2,  int gameId,int bookmakerId) {
+	public Bet(int id, double homeTeamRate,double visitingTeamRate,  int gameId,int bookmakerId) {
 		
 		this.id = id;
-		this.rate1 = rate1;
-		this.rate2 = rate2;
+		this.homeTeamRate = homeTeamRate;
+		this.visitingTeamRate = visitingTeamRate;
 		
 		this.gameId = gameId;
 		this.bookmakerId = bookmakerId;
@@ -31,23 +31,23 @@ public class Bet {
 	}
 
 
-	public double getRate1() {
-		return rate1;
+	public double gethomeTeamRate() {
+		return homeTeamRate;
 	}
 
 
-	public void setRate1(double rate1) {
-		this.rate1 = rate1;
+	public void sethomeTeamRate(double homeTeamRate) {
+		this.homeTeamRate = homeTeamRate;
 	}
 
 
-	public double getRate2() {
-		return rate2;
+	public double getvisitingTeamRate() {
+		return visitingTeamRate;
 	}
 
 
-	public void setRate2(double rate2) {
-		this.rate2 = rate2;
+	public void setvisitingTeamRate(double visitingTeamRate) {
+		this.visitingTeamRate = visitingTeamRate;
 	}
 
 
@@ -73,7 +73,7 @@ public class Bet {
 
 	@Override
 	public String toString() {
-		return "Bet [id=" + id + ", rate1=" + rate1 + ", rate2=" + rate2 + ", gameId=" + gameId + ", bookmakerId="
+		return "Bet [id=" + id + ", homeTeamRate=" + homeTeamRate + ", visitingTeamRate=" + visitingTeamRate + ", gameId=" + gameId + ", bookmakerId="
 				+ bookmakerId + "]";
 	}
 
@@ -81,7 +81,8 @@ public class Bet {
 	public static ArrayList<Bet> getBets() throws Exception{
 		ArrayList<Bet> bets = new ArrayList<Bet>();
 		String sql = "SELECT * FROM Bet;";
-        DB db = new DB();
+		//to object mpainei sto session mia fora
+		DB db = new DB();
 
         try {
             Connection con = db.getConnection();
@@ -92,7 +93,7 @@ public class Bet {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
-                bets.add(new Bet(rs.getInt("id"), rs.getDouble("rate1"), rs.getDouble("rate2") , rs.getInt("game_id"),  rs.getInt("bookmaker_id") ));
+                bets.add(new Bet(rs.getInt("id"), rs.getDouble("home_team_rate"), rs.getDouble("visiting_team_rate") , rs.getInt("game_id"),  rs.getInt("bookmaker_id") ));
             }   
 
             rs.close();
