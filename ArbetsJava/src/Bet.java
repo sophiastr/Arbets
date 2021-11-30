@@ -31,22 +31,22 @@ public class Bet {
 	}
 
 
-	public double gethomeTeamRate() {
+	public double getHomeTeamRate() {
 		return homeTeamRate;
 	}
 
 
-	public void sethomeTeamRate(double homeTeamRate) {
+	public void setHomeTeamRate(double homeTeamRate) {
 		this.homeTeamRate = homeTeamRate;
 	}
 
 
-	public double getvisitingTeamRate() {
+	public double getVisitingTeamRate() {
 		return visitingTeamRate;
 	}
 
 
-	public void setvisitingTeamRate(double visitingTeamRate) {
+	public void setVisitingTeamRate(double visitingTeamRate) {
 		this.visitingTeamRate = visitingTeamRate;
 	}
 
