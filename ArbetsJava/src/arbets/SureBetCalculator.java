@@ -1,3 +1,4 @@
+package arbets;
 import java.util.ArrayList;
 
 public class SureBetCalculator {

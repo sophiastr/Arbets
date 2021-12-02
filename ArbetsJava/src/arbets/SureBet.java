@@ -1,4 +1,4 @@
-
+package arbets;
 
 public class SureBet {
 	private static int counter=0;
