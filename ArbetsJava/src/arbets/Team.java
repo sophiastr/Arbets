@@ -37,11 +37,11 @@ public class Team {
 	public void setSport_id(int sport_id) {
 		this.sport_id = sport_id;
 	}
-	public List<Team> getTeams() throws Exception {
+	public List<String> getTeams() throws Exception {
         
-        List<Team> teams = new ArrayList<>();
+        List<String> teams = new ArrayList<>();
 
-        String sql = "SELECT * FROM team;";
+        String sql = "SELECT distinct name FROM team;";
         DB db = new DB();
 
         try {
@@ -53,7 +53,7 @@ public class Team {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
-                teams.add(new Team(rs.getInt("team_id"), rs.getString("name"), rs.getInt("sport_id")));
+                teams.add(rs.getString("name"));
             }   
 
             rs.close();

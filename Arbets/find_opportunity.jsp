@@ -44,7 +44,7 @@
 
                                                         <li>
 
-                                                            <a class="dropdown-item" href="SearchOpportunityServlet.java?filter = <%= sp.getName() %>">
+                                                            <a class="dropdown-item" href="SearchOpportunityServlet.java?filterSport = <%= sp.getName()?flagSport= 1 %>">
                                                                 <%= sp.getName() %>
                                                             </a>
 
@@ -63,18 +63,18 @@
 
                                                     Team team = new Team();
     
-                                                    List<Team> teams = new ArrayList<>();
+                                                    List<String> teams = new ArrayList<String>();
     
                                                     teams = team.getTeams();
     
-                                                    for (Team t: teams) {
+                                                    for (String t: teams) {
     
                                                         %>
 
                                                         <li>
 
                                                             <a class="dropdown-item" href="#">
-                                                                <%= t.getName() %>
+                                                                <%= t %>
                                                             </a>
 
                                                         </li>

@@ -2,30 +2,42 @@ package arbets;
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import java.util.*;
 
 public class SearchOpportunityServlet extends HttpServlet {
-	/**
-	   * Handles HTTP GET requests.
-	   *
-	   * @param request
-	   *            the request object
-	   * @param response
-	   *            the response object
-	   *
-	   * @throws IOException
-	   *             if an input or output error is detected when the servlet
-	   *             handles the GET request
-	   * @throws ServletException
-	   *             if the request for the GET could not be handled
-	   */
+	
+
 	  public void doGet(HttpServletRequest request, HttpServletResponse response)
 	      throws IOException, ServletException {
-
 	    response.setContentType("text/html; charset=UTF-8");
 	    PrintWriter out = new PrintWriter(response.getWriter(), true);
 
+
+		ArrayList<SureBet> newBets= new ArrayList<SureBet>();
+
+		ArrayList<SureBet> bets= new ArrayList<SureBet>();
+		bets = SureBetCalculator.createSureBets();
+		String searchFilter = request.getParameter("filter");
+		String flagFilterSport = request.getParameter("flagSport");
+		String flagFilterTeam = request.getParameter("flagTeam");
+
+
+		if (flagFilterSport == "1" ){
+			for (SureBet sb : bets){
+				if (sb.findSport() == searchFilter){
+					newBets.add(sb);
+				}
+			}
+		} else if (flagFilterTeam == "1"){
+			for (SureBet sb : bets){
+				if (sb.findTeams().get(0) == searchFilter || sb.findTeams().get(1) == searchFilter){
+					newBets.add(sb);
+				}
+			}
+		}
+
 	    try {
-	      String searchFilter = request.getParameter("filter");
+	      
 	    } catch (Exception e) {
 	    	request.setAttribute("message", e.getMessage());
 	    	
