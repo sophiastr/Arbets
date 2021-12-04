@@ -37,12 +37,19 @@ public class SureBet {
 		this.id = id;
 	}
 	
-	public ArrayList<Team> findTeams(){
-		ArrayList<Team> teams = new ArrayList<Team>();
+	public ArrayList<String> findTeams(){
+		ArrayList<String> teams = new ArrayList<String>();
+		Team team1 = new Team();
+		Team team2 = new Team();
+		String name_team1 = team1.getName();
+		String name_team2 = team2.getName();
+		teams.add(name_team1);
+		teams.add(name_team2);
 		return teams;
 	}
-	public Sport findSport() {
-		Sport sport1= new Sport();
-		return sport1;
+	public String findSport() {
+		Sport sport= new Sport();
+		String nameSport = sport.getName();
+		return nameSport;
 	}
 }
