@@ -44,7 +44,7 @@
 
                                                         <li>
 
-                                                            <a class="dropdown-item" href="#">
+                                                            <a class="dropdown-item" href="SearchOpportunityServlet.java?filter = <%= sp.getName() %>">
                                                                 <%= sp.getName() %>
                                                             </a>
 
