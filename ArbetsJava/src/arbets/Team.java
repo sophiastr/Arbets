@@ -53,7 +53,7 @@ public class Team {
             ResultSet rs = stmt.executeQuery();
 
             while (rs.next()){
-                teams.add(new Team(rs.getInt("id"), rs.getString("name"), rs.getInt(sport_id)));
+                teams.add(new Team(rs.getInt("team_id"), rs.getString("name"), rs.getInt("sport_id")));
             }   
 
             rs.close();
