@@ -1,5 +1,7 @@
 package arbets;
 
+import java.util.ArrayList;
+
 public class SureBet {
 	private static int counter=0;
 	private int id;
@@ -35,5 +37,12 @@ public class SureBet {
 		this.id = id;
 	}
 	
-
+	public ArrayList<Team> findTeams(){
+		ArrayList<Team> teams = new ArrayList<Team>();
+		return teams;
+	}
+	public Sport findSport() {
+		Sport sport1= new Sport();
+		return sport1;
+	}
 }
