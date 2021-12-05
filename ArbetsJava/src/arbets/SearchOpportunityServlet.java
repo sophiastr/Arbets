@@ -36,6 +36,8 @@ public class SearchOpportunityServlet extends HttpServlet {
 			}
 		}
 
+		request.setAttribute("showSureBets",newBets);
+		request.getRequestDispatcher("find_opportunity.jsp").forward(request, response); 
 	    try {
 	      
 	    } catch (Exception e) {

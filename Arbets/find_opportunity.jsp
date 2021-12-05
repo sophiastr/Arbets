@@ -44,7 +44,7 @@
 
                                                         <li>
 
-                                                            <a class="dropdown-item" href="SearchOpportunityServlet.java?filterSport = <%= sp.getName()?flagSport= 1 %>">
+                                                            <a class="dropdown-item" href="SearchOpportunityServlet.java?filterSport=<%= sp.getName()%>?flagSport=1">
                                                                 <%= sp.getName() %>
                                                             </a>
 
@@ -90,67 +90,85 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-4 col-md-6 ">
-                                        <div class="icon-box">
-                                            <!--  <div class="icon"><i class="bx bxl-dribbble"></i></div> -->
-                                            <h4>0,99 % Basket</h4>
-                                            <h6>Novibet: 15 jul 16:30 <b>Olympiakos</b> score: Win
-                                                <p><b class="text-success"> rate: 2.04</b></p>
-                                                Stoiximan: 15 jul 17:30 <b>Paok</b> score: Win
-                                                <p><b class="text-success"> rate: 2.00</b></p>
-                                            </h6>
+
+                                    <%
+                                    ArrayList<SureBet> newBets= new ArrayList<SureBet>();
+                                   newBets = (ArrayList<SureBet>)request.getAttribute("showSureBets"); 
+                                   for (SureBet sb : newBets){
+%>
+                                        <div class="col-lg-4 col-md-6 ">
+                                            <div class="icon-box">
+
+                                                <h4>0,99
+                                                    <%=sb%>
+                                                </h4>
+                                                <h6>Novibet: 15 jul 16:30 <b>Olympiakos</b> score: Win
+                                                    <p><b class="text-success"> rate: 2.04</b></p>
+                                                    Stoiximan: 15 jul 17:30 <b>Paok</b> score: Win
+                                                    <p><b class="text-success"> rate: 2.00</b></p>
+                                                </h6>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 ">
-                                        <div class="icon-box">
-                                            <h4>0,97 % Volley</h4>
-                                            <h6>Stoiximan: 13 jul 15:00 <b>Olympiakos</b> score: Lose
-                                                <p><b class="text-success"> rate: 6.10</b></p>
-                                                Novibet: 13 jul 15:00 <b>Panathinaikos</b> score: Lose
-                                                <p><b class="text-success"> rate: 1.21</b></p>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 ">
-                                        <div class="icon-box">
-                                            <h4>0,94 % Basket</h4>
-                                            <h6> Novibet: 14 jul 20:00 <b>Olympiakos</b> score: Lose
-                                                <p><b class="text-success"> rate: 1.65</b></p>
-                                                Stoiximan: 14 jul 19:00 <b>Paok</b> score: Lose
-                                                <p><b class="text-success"> rate: 2.60</b></p>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                                        <div class="icon-box">
-                                            <h4>0,93 % Volley</h4>
-                                            <h6> Stoiximan: 13 jul 18:00 <b>Olympiakos</b> score: Win
-                                                <p><b class="text-success"> rate: 2.74</b></p>
-                                                Novibet: 13 jul 18:00 <b>Paok</b> score: Win
-                                                <p><b class="text-success"> rate: 1.61</b></p>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                                        <div class="icon-box">
-                                            <h4>0,92 % Basket</h4>
-                                            <h6>Novibet: 13 jul 14:00 <b>Olympiakos</b> score: Lose
-                                                <p><b class="text-success"> rate: 3.55</b></p>
-                                                Stoiximan: 13 jul 14:00 <b>Panathinaikos</b> score: Lose
-                                                <p><b class="text-success"> rate: 1.41</b></p>
-                                            </h6>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                                        <div class="icon-box">
-                                            <h4>0,88 % Volley</h4>
-                                            <h6>Novibet: 13 jul 10:00 <b>Panathinaikos</b> score: Win
-                                                <p><b class="text-success"> rate: 1,63</b></p>
-                                                Stoiximan: 13 jul 10:00 <b>Paok</b> score: Win
-                                                <p><b class="text-success"> rate: 2,65</b></p>
-                                            </h6>
-                                        </div>
-                                    </div>
+
+                                        <%
+                                   }
+                                   %>
+
+
+
+
+
+
+                                            <div class="col-lg-4 col-md-6 ">
+                                                <div class="icon-box">
+                                                    <h4>0,97 % Volley</h4>
+                                                    <h6>Stoiximan: 13 jul 15:00 <b>Olympiakos</b> score: Lose
+                                                        <p><b class="text-success"> rate: 6.10</b></p>
+                                                        Novibet: 13 jul 15:00 <b>Panathinaikos</b> score: Lose
+                                                        <p><b class="text-success"> rate: 1.21</b></p>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 ">
+                                                <div class="icon-box">
+                                                    <h4>0,94 % Basket</h4>
+                                                    <h6> Novibet: 14 jul 20:00 <b>Olympiakos</b> score: Lose
+                                                        <p><b class="text-success"> rate: 1.65</b></p>
+                                                        Stoiximan: 14 jul 19:00 <b>Paok</b> score: Lose
+                                                        <p><b class="text-success"> rate: 2.60</b></p>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                                                <div class="icon-box">
+                                                    <h4>0,93 % Volley</h4>
+                                                    <h6> Stoiximan: 13 jul 18:00 <b>Olympiakos</b> score: Win
+                                                        <p><b class="text-success"> rate: 2.74</b></p>
+                                                        Novibet: 13 jul 18:00 <b>Paok</b> score: Win
+                                                        <p><b class="text-success"> rate: 1.61</b></p>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                                                <div class="icon-box">
+                                                    <h4>0,92 % Basket</h4>
+                                                    <h6>Novibet: 13 jul 14:00 <b>Olympiakos</b> score: Lose
+                                                        <p><b class="text-success"> rate: 3.55</b></p>
+                                                        Stoiximan: 13 jul 14:00 <b>Panathinaikos</b> score: Lose
+                                                        <p><b class="text-success"> rate: 1.41</b></p>
+                                                    </h6>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                                                <div class="icon-box">
+                                                    <h4>0,88 % Volley</h4>
+                                                    <h6>Novibet: 13 jul 10:00 <b>Panathinaikos</b> score: Win
+                                                        <p><b class="text-success"> rate: 1,63</b></p>
+                                                        Stoiximan: 13 jul 10:00 <b>Paok</b> score: Win
+                                                        <p><b class="text-success"> rate: 2,65</b></p>
+                                                    </h6>
+                                                </div>
+                                            </div>
                                 </div>
                                 <center> <button type="button" class="btn btn-secondary">Load more...</button></center>
                             </div>
