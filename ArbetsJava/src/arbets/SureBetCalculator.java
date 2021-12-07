@@ -34,7 +34,8 @@ public class SureBetCalculator {
 				
 			}
 		}
-		
-		return sureBets;
+		ArrayList<SureBet> sureBets1 = new ArrayList<SureBet>();
+		sureBets1.add(new SureBet(new Bet(),new Bet()));
+		return sureBets1;
 	}
 }
