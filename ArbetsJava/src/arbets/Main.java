@@ -5,6 +5,9 @@ import java.util.List;
 public class Main {
 
 	public static void main(String[] args) {
+		
+		
+		/**
 		Sport s = new Sport();
 		List<Sport> sports = new ArrayList<>();
 		try {
@@ -15,7 +18,9 @@ public class Main {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}**/
+		
+		SureBetCalculator.createSureBets();
 	}
 
 }
