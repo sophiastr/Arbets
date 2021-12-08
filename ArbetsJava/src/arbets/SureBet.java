@@ -8,12 +8,16 @@ public class SureBet {
 	private int id;
 	private Bet bet1;
 	private Bet bet2;
+	private double homeTeamBet1Rate;
+	private double visitingTeamBet2Rate;
 
 	public SureBet(Bet bet1, Bet bet2) {
 		this.id = counter;
 		counter++;
 		this.bet1 = bet1;
 		this.bet2 = bet2;
+		this.homeTeamBet1Rate = bet1.getHomeTeamRate();
+		this.visitingTeamBet2Rate = bet2.getHomeTeamRate();
 
 	}
 
@@ -58,9 +62,22 @@ public class SureBet {
 		return nameSport;
 	}
 
-	@Override
-	public String toString() {
-		return "SureBet [id=" + id + ", bet1=" + bet1 + ", bet2=" + bet2 + "]";
+	
+
+	public double getHomeTeamBet1Rate() {
+		return homeTeamBet1Rate;
+	}
+
+	public void setHomeTeamBet1Rate(double homeTeamBet1Rate) {
+		this.homeTeamBet1Rate = homeTeamBet1Rate;
+	}
+
+	public double getVisitingTeamBet2Rate() {
+		return visitingTeamBet2Rate;
+	}
+
+	public void setVisitingTeamBet2Rate(double visitingTeamBet2Rate) {
+		this.visitingTeamBet2Rate = visitingTeamBet2Rate;
 	}
 
 	@Override
@@ -79,5 +96,11 @@ public class SureBet {
 		SureBet other = (SureBet) obj;
 		// den tsekarei an einai idio me antistrofa bets
 		return (bet1.equals( other.bet1) && bet2.equals(other.bet2) ) || (bet1.equals( other.bet2) && bet2.equals(other.bet1));
+	}
+
+	@Override
+	public String toString() {
+		return "SureBet [id=" + id + ", bet1=" + bet1 + ", bet2=" + bet2 + ", homeTeamBet1Rate=" + homeTeamBet1Rate
+				+ ", visitingTeamBet2Rate=" + visitingTeamBet2Rate + "]";
 	}
 }
