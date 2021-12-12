@@ -4,6 +4,7 @@ import javax.servlet.http.*;
 import java.util.*;
 import arbets.*;
 
+@webServlet(name ="SearchOpportunityServlet", urlPatterns = "/find_opportunity")
 public class SearchOpportunityServlet extends HttpServlet {
 	
 
@@ -39,6 +40,8 @@ public class SearchOpportunityServlet extends HttpServlet {
 				newBets.add(sb);
 				}
 			}
+
+		out.println(request.getContextPath() + "/Arbets/find_opportunity.jsp");
 		//} else if (flagFilterTeam == 1){
 		//	for (SureBet sb : bets){
 		//		if (sb.findTeams().get(0) == searchFilter || sb.findTeams().get(1) == searchFilter){
@@ -49,15 +52,14 @@ public class SearchOpportunityServlet extends HttpServlet {
 		
 	    try {
 			request.setAttribute("showSureBets", newBets);
-			String destination = "find_opportunity.jsp";
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher(destination);
+			
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher(request.getContextPath() + "/Arbets/find_opportunity.jsp");
 			requestDispatcher.forward(request, response);
 	    } catch (Exception e) {
 	    	request.setAttribute("message", e.getMessage());
+			out.println(e.getMessage());
 	    }
-	    if (request.getAttribute("message") != null) {
-			out.println("message");
-	    }
+	   
 	  } // End of doGet
 	  public void doPost(HttpServletRequest request, HttpServletResponse response)
 			    throws IOException, ServletException {
