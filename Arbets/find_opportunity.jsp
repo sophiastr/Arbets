@@ -44,7 +44,7 @@
 
                                                         <li>
 
-                                                            <a class="dropdown-item" href="SearchOpportunityServlet.java?filterSport=<%= sp.getName()%>?flagSport=1">
+                                                            <a class="dropdown-item" href="<%=request.getContextPath()%>/servlet/SearchOpportunityServlet?filterSport=<%= sp.getName()%>&flagSport=1">
                                                                 <%= sp.getName() %>
                                                             </a>
 
@@ -93,32 +93,9 @@
 
                                     <%
                                     ArrayList<SureBet> newBets= new ArrayList<SureBet>();
-                                   newBets = (ArrayList<SureBet>)request.getAttribute("showSureBets"); 
-                                   for (SureBet sb : newBets){
-%>
-                                        <div class="col-lg-4 col-md-6 ">
-                                            <div class="icon-box">
-
-                                                <h4>0,99
-                                                    <%=sb%>
-                                                </h4>
-                                                <h6>Novibet: 15 jul 16:30 <b>Olympiakos</b> score: Win
-                                                    <p><b class="text-success"> rate: 2.04</b></p>
-                                                    Stoiximan: 15 jul 17:30 <b>Paok</b> score: Win
-                                                    <p><b class="text-success"> rate: 2.00</b></p>
-                                                </h6>
-                                            </div>
-                                        </div>
-
-                                        <%
-                                   }
-                                   %>
-
-
-
-
-
-
+                                    newBets = (ArrayList<SureBet>)request.getAttribute("showSureBets");
+                                        %>
+                                    
                                             <div class="col-lg-4 col-md-6 ">
                                                 <div class="icon-box">
                                                     <h4>0,97 % Volley</h4>
