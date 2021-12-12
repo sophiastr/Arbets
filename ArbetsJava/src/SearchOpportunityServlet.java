@@ -31,21 +31,21 @@ public class SearchOpportunityServlet extends HttpServlet {
 		
 		if (flagFilterSport == 1){
 			for (SureBet sb : bets){
-				out.println("<p>skata</p>");
-				out.println(sb.findSport());
-				if (sb.findSport().equals(searchFilter)){
-					out.println("<p>skata2</p>");
-					out.println(sb.getBet1());
-					newBets.add(sb);
+				//out.println("<p>skata</p>");
+				//out.println(sb.findSport());
+				//if (sb.findSport().equals(searchFilter)){
+				out.println("<p>skata2</p>");
+				out.println(sb.getBet1());
+				newBets.add(sb);
 				}
 			}
-		} else if (flagFilterTeam == 1){
-			for (SureBet sb : bets){
-				if (sb.findTeams().get(0) == searchFilter || sb.findTeams().get(1) == searchFilter){
-					newBets.add(sb);
-				}
-			}
-		}
+		//} else if (flagFilterTeam == 1){
+		//	for (SureBet sb : bets){
+		//		if (sb.findTeams().get(0) == searchFilter || sb.findTeams().get(1) == searchFilter){
+		//			newBets.add(sb);
+		//		}
+		//	}
+		//}
 		
 	    try {
 			request.setAttribute("showSureBets", newBets);
