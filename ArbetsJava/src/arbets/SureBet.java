@@ -1,6 +1,10 @@
 package arbets;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class SureBet {
@@ -45,21 +49,83 @@ public class SureBet {
 		this.id = id;
 	}
 
-	public ArrayList<String> findTeams() {
+	public ArrayList<String> findTeams() throws Exception {
 		ArrayList<String> teams = new ArrayList<String>();
-		Team team1 = new Team();
-		Team team2 = new Team();
-		String name_team1 = team1.getName();
-		String name_team2 = team2.getName();
-		teams.add(name_team1);
-		teams.add(name_team2);
-		return teams;
+	  
+        String sql = "SELECT team.name\r\n"
+        		+ "FROM  (SELECT team_game.team_id  FROM team_game WHERE team_game.game_id=?) as team_ids \r\n"
+        		+ "INNER JOIN team ON team.team_id=team_ids.team_id;";
+        DB db = new DB();
+        try {
+            Connection con = db.getConnection();
+            PreparedStatement stmt = con.prepareStatement(sql);
+            stmt.setInt(1,this.bet1.getGameId());
+            ResultSet rs = stmt.executeQuery();
+
+            while (rs.next()){
+                teams.add( rs.getString("team.name"));
+            }   
+
+            rs.close();
+            stmt.close();
+            db.close();
+            return teams;
+           
+        } catch(Exception e) {
+            throw new Exception(e.getMessage());
+        } finally{
+
+            try {
+                db.close();
+            } catch (Exception e) {
+                
+            }
+            
+        }
+		
 	}
 
-	public String findSport() {
-		Sport sport = new Sport();
-		String nameSport = sport.getName();
-		return nameSport;
+	public String findSport() throws Exception  {
+		
+		 String sql = "select s.name\r\n"
+		 		+ "FROM sport as s\r\n"
+		 		+ "where s.sport_id = (SELECT distinct team.sport_id\r\n"
+		 		+ "FROM  (SELECT team_game.team_id  FROM team_game WHERE team_game.game_id=?) as team_ids\r\n"
+		 		+ "INNER JOIN team ON team.team_id=team_ids.team_id);";
+		 
+	        DB db = new DB();
+	        
+	        try {
+	            Connection con = db.getConnection();
+	            PreparedStatement stmt = con.prepareStatement(sql);
+	            stmt.setInt(1,this.bet1.getGameId());
+	            ResultSet rs = stmt.executeQuery();
+
+	            if (!rs.next()){
+	                
+	                rs.close();
+		            stmt.close();
+	                throw new Exception("No team found!");
+	                
+	            }   
+	            String sportName= rs.getString("s.name");
+	            rs.close();
+	            stmt.close();
+	            db.close();
+	            return sportName;
+	           
+	        } catch(Exception e) {
+	            throw new Exception(e.getMessage());
+	        } finally{
+
+	            try {
+	                db.close();
+	            } catch (Exception e) {
+	                
+	            }
+	            
+	        }
+			
 	}
 
 	
