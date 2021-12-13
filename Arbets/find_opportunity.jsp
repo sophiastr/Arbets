@@ -89,13 +89,12 @@
                                         </ul>
                                     </div>
                                 </div>
+                                <div class="row">
 
 
 
                                 <%
 
-                               
-                                   //out.println(newBets.size());
                                 
                                 if (request.getAttribute("showSureBets") == null){
 
@@ -103,16 +102,18 @@
                                    ArrayList<SureBet> bets= new ArrayList<SureBet>();
                                     bets = SureBetCalculator.createSureBets();   
                                     for (SureBet sb : bets){
-                                        out.println(sb.getBet1());
+                                        out.println(sb);
                                     }
                                 } else {
                                     ArrayList<SureBet> newBets= (ArrayList<SureBet>) request.getAttribute("showSureBets");
+                                        for (SureBet sb : newBets){
+                                            out.println(sb);
+                                        } 
                                 }
                                     %>
 
 
-                                    <div class="row">
-
+                                  
 
                                         <div class="col-lg-4 col-md-6 ">
                                             <div class="icon-box">

@@ -15,13 +15,13 @@
                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("learn.jsp ")) ? "active " : " "  %>">
                         <a href="learn.jsp">Learn</a>
                     </li>
-                    <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("find_oportunity.jsp ")) ? "active " : " "  %>">
-                        <a href="find_oportunity.jsp">Find Opportunity</a>
+                    <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("find_opportunity.jsp ")) ? "active " : " "  %>">
+                        <a href="find_opportunity.jsp">Find Opportunity</a>
                     </li>
                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("edit_profile.jsp ")) ? "active " : " "  %>">
                         <a href="post_comment.jsp">Post & Comment</a>
                     </li>
-                    <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("find_oportunity.jsp ")) ? "active " : " "  %>">
+                    <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("find_opportunity.jsp ")) ? "active " : " "  %>">
                         <a href="edit_profile.jsp">Edit Profile</a>
                     </li>
                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("Login.jsp ")) ? "active " : " "  %>">

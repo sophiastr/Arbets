@@ -112,7 +112,8 @@ public class SureBet {
 	            rs.close();
 	            stmt.close();
 	            db.close();
-	            return sportName;
+				return sportName;
+	            
 	           
 	        } catch(Exception e) {
 	            throw new Exception(e.getMessage());

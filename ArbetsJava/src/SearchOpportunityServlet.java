@@ -34,12 +34,14 @@ public class SearchOpportunityServlet extends HttpServlet {
 		if (flagFilterSport == 1){
 			for (SureBet sb : bets){
 				//out.println("<p>skata</p>");
-				out.println(sb.findSport());
-				//if (sb.findSport().equals(searchFilter)){
+				
+				if (sb.findSport().equals(searchFilter)){
 				//out.println("<p>skata2</p>");
-				//out.println(sb.getBet1());
+				
 				newBets.add(sb);
 				}
+			}
+				
 			}
 
 		//out.println(request.getContextPath() + "/Arbets/find_opportunity.jsp");
@@ -54,7 +56,7 @@ public class SearchOpportunityServlet extends HttpServlet {
 	   
 			request.setAttribute("showSureBets", newBets);
 			
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/find_opportunity.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/find_opportunity.jsp");
 			requestDispatcher.forward(request, response);
 	    } catch (Exception e) {
 	    	request.setAttribute("message", e.getMessage());
