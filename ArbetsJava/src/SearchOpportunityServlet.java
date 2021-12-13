@@ -4,7 +4,6 @@ import javax.servlet.http.*;
 import java.util.*;
 import arbets.*;
 
-@webServlet(name ="SearchOpportunityServlet", urlPatterns = "/find_opportunity")
 public class SearchOpportunityServlet extends HttpServlet {
 	
 
@@ -17,7 +16,9 @@ public class SearchOpportunityServlet extends HttpServlet {
 		ArrayList<SureBet> newBets= new ArrayList<SureBet>();
 
 		ArrayList<SureBet> bets= new ArrayList<SureBet>();
+		try {
 		bets = SureBetCalculator.createSureBets();
+		//out.println(bets);
 		String searchFilter = request.getParameter("filterSport");
 		String fs = request.getParameter("flagSport");
 		int flagFilterSport = 0;
@@ -33,15 +34,15 @@ public class SearchOpportunityServlet extends HttpServlet {
 		if (flagFilterSport == 1){
 			for (SureBet sb : bets){
 				//out.println("<p>skata</p>");
-				//out.println(sb.findSport());
+				out.println(sb.findSport());
 				//if (sb.findSport().equals(searchFilter)){
-				out.println("<p>skata2</p>");
-				out.println(sb.getBet1());
+				//out.println("<p>skata2</p>");
+				//out.println(sb.getBet1());
 				newBets.add(sb);
 				}
 			}
 
-		out.println(request.getContextPath() + "/Arbets/find_opportunity.jsp");
+		//out.println(request.getContextPath() + "/Arbets/find_opportunity.jsp");
 		//} else if (flagFilterTeam == 1){
 		//	for (SureBet sb : bets){
 		//		if (sb.findTeams().get(0) == searchFilter || sb.findTeams().get(1) == searchFilter){
@@ -50,10 +51,10 @@ public class SearchOpportunityServlet extends HttpServlet {
 		//	}
 		//}
 		
-	    try {
+	   
 			request.setAttribute("showSureBets", newBets);
 			
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher(request.getContextPath() + "/Arbets/find_opportunity.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/find_opportunity.jsp");
 			requestDispatcher.forward(request, response);
 	    } catch (Exception e) {
 	    	request.setAttribute("message", e.getMessage());

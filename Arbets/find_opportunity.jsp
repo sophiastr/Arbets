@@ -73,7 +73,7 @@
 
                                                         <li>
 
-                                                            <a class="dropdown-item" href="#">
+                                                            <a class="dropdown-item" href="<%=request.getContextPath()%>/servlet/SearchOpportunityServlet?filterTeam=<%= t%>&flagTeam=1">
                                                                 <%= t %>
                                                             </a>
 
@@ -89,65 +89,83 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="row">
 
-                                    <%
-                                    ArrayList<SureBet> newBets= new ArrayList<SureBet>();
-                                    newBets = (ArrayList<SureBet>)request.getAttribute("showSureBets");
-                                        %>
-                                    
-                                            <div class="col-lg-4 col-md-6 ">
-                                                <div class="icon-box">
-                                                    <h4>0,97 % Volley</h4>
-                                                    <h6>Stoiximan: 13 jul 15:00 <b>Olympiakos</b> score: Lose
-                                                        <p><b class="text-success"> rate: 6.10</b></p>
-                                                        Novibet: 13 jul 15:00 <b>Panathinaikos</b> score: Lose
-                                                        <p><b class="text-success"> rate: 1.21</b></p>
-                                                    </h6>
-                                                </div>
+
+
+                                <%
+
+                               
+                                   //out.println(newBets.size());
+                                
+                                if (request.getAttribute("showSureBets") == null){
+
+                                
+                                   ArrayList<SureBet> bets= new ArrayList<SureBet>();
+                                    bets = SureBetCalculator.createSureBets();   
+                                    for (SureBet sb : bets){
+                                        out.println(sb.getBet1());
+                                    }
+                                } else {
+                                    ArrayList<SureBet> newBets= (ArrayList<SureBet>) request.getAttribute("showSureBets");
+                                }
+                                    %>
+
+
+                                    <div class="row">
+
+
+                                        <div class="col-lg-4 col-md-6 ">
+                                            <div class="icon-box">
+                                                <h4>0,97 % Volley</h4>
+                                                <h6>Stoiximan: 13 jul 15:00 <b>Olympiakos</b> score: Lose
+                                                    <p><b class="text-success"> rate: 6.10</b></p>
+                                                    Novibet: 13 jul 15:00 <b>Panathinaikos</b> score: Lose
+                                                    <p><b class="text-success"> rate: 1.21</b></p>
+                                                </h6>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 ">
-                                                <div class="icon-box">
-                                                    <h4>0,94 % Basket</h4>
-                                                    <h6> Novibet: 14 jul 20:00 <b>Olympiakos</b> score: Lose
-                                                        <p><b class="text-success"> rate: 1.65</b></p>
-                                                        Stoiximan: 14 jul 19:00 <b>Paok</b> score: Lose
-                                                        <p><b class="text-success"> rate: 2.60</b></p>
-                                                    </h6>
-                                                </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 ">
+                                            <div class="icon-box">
+                                                <h4>0,94 % Basket</h4>
+                                                <h6> Novibet: 14 jul 20:00 <b>Olympiakos</b> score: Lose
+                                                    <p><b class="text-success"> rate: 1.65</b></p>
+                                                    Stoiximan: 14 jul 19:00 <b>Paok</b> score: Lose
+                                                    <p><b class="text-success"> rate: 2.60</b></p>
+                                                </h6>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                                                <div class="icon-box">
-                                                    <h4>0,93 % Volley</h4>
-                                                    <h6> Stoiximan: 13 jul 18:00 <b>Olympiakos</b> score: Win
-                                                        <p><b class="text-success"> rate: 2.74</b></p>
-                                                        Novibet: 13 jul 18:00 <b>Paok</b> score: Win
-                                                        <p><b class="text-success"> rate: 1.61</b></p>
-                                                    </h6>
-                                                </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                                            <div class="icon-box">
+                                                <h4>0,93 % Volley</h4>
+                                                <h6> Stoiximan: 13 jul 18:00 <b>Olympiakos</b> score: Win
+                                                    <p><b class="text-success"> rate: 2.74</b></p>
+                                                    Novibet: 13 jul 18:00 <b>Paok</b> score: Win
+                                                    <p><b class="text-success"> rate: 1.61</b></p>
+                                                </h6>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                                                <div class="icon-box">
-                                                    <h4>0,92 % Basket</h4>
-                                                    <h6>Novibet: 13 jul 14:00 <b>Olympiakos</b> score: Lose
-                                                        <p><b class="text-success"> rate: 3.55</b></p>
-                                                        Stoiximan: 13 jul 14:00 <b>Panathinaikos</b> score: Lose
-                                                        <p><b class="text-success"> rate: 1.41</b></p>
-                                                    </h6>
-                                                </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                                            <div class="icon-box">
+                                                <h4>0,92 % Basket</h4>
+                                                <h6>Novibet: 13 jul 14:00 <b>Olympiakos</b> score: Lose
+                                                    <p><b class="text-success"> rate: 3.55</b></p>
+                                                    Stoiximan: 13 jul 14:00 <b>Panathinaikos</b> score: Lose
+                                                    <p><b class="text-success"> rate: 1.41</b></p>
+                                                </h6>
                                             </div>
-                                            <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
-                                                <div class="icon-box">
-                                                    <h4>0,88 % Volley</h4>
-                                                    <h6>Novibet: 13 jul 10:00 <b>Panathinaikos</b> score: Win
-                                                        <p><b class="text-success"> rate: 1,63</b></p>
-                                                        Stoiximan: 13 jul 10:00 <b>Paok</b> score: Win
-                                                        <p><b class="text-success"> rate: 2,65</b></p>
-                                                    </h6>
-                                                </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4">
+                                            <div class="icon-box">
+                                                <h4>0,88 % Volley</h4>
+                                                <h6>Novibet: 13 jul 10:00 <b>Panathinaikos</b> score: Win
+                                                    <p><b class="text-success"> rate: 1,63</b></p>
+                                                    Stoiximan: 13 jul 10:00 <b>Paok</b> score: Win
+                                                    <p><b class="text-success"> rate: 2,65</b></p>
+                                                </h6>
                                             </div>
-                                </div>
-                                <center> <button type="button" class="btn btn-secondary">Load more...</button></center>
+                                        </div>
+                                    </div>
+                                    <center> <button type="button" class="btn btn-secondary">Load more...</button></center>
                             </div>
                         </div>
                     </div>
