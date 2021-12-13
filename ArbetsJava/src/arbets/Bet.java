@@ -28,7 +28,6 @@ public class Bet {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -67,7 +66,10 @@ public class Bet {
 	public int getBookmakerId() {
 		return bookmakerId;
 	}
-
+	//ΠΑΡΑΚΑΛΩ ΥΛΟΠΟΙΗΣΤΕ ΤΟ!!! <3
+	public String getBookmakerName() {
+		return "name";
+	}
 
 	public void setBookmakerId(int bookmakerId) {
 		this.bookmakerId = bookmakerId;

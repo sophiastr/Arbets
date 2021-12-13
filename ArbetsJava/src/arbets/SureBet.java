@@ -3,6 +3,7 @@ package arbets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -48,6 +49,13 @@ public class SureBet {
 	public void setId(int id) {
 		this.id = id;
 	}
+	 public LocalDateTime getDateTime() {
+		 LocalDateTime ldt = new LocalDateTime();
+		 return ldt;
+	 }
+	 public double getSurbetPercetage() {
+		 return 8.9;
+	 }
 
 	public ArrayList<String> findTeams() throws Exception {
 		ArrayList<String> teams = new ArrayList<String>();

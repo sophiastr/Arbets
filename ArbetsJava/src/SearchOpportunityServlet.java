@@ -56,7 +56,7 @@ public class SearchOpportunityServlet extends HttpServlet {
 	   
 			request.setAttribute("showSureBets", newBets);
 			
-			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/find_opportunity.jsp");
+			RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/find_opportunity.jsp");
 			requestDispatcher.forward(request, response);
 	    } catch (Exception e) {
 	    	request.setAttribute("message", e.getMessage());
