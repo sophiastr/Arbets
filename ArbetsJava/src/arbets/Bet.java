@@ -66,9 +66,43 @@ public class Bet {
 	public int getBookmakerId() {
 		return bookmakerId;
 	}
-	//ΠΑΡΑΚΑΛΩ ΥΛΟΠΟΙΗΣΤΕ ΤΟ!!! <3
-	public String getBookmakerName() {
-		return "name";
+	
+	public String getBookmakerName() throws Exception {
+		String sql = "SELECT name_of_bookmaker FROM bookmaker WHERE bookmaker_id=?;";
+		 
+	        DB db = new DB();
+	        
+	        try {
+	            Connection con = db.getConnection();
+	            PreparedStatement stmt = con.prepareStatement(sql);
+	            stmt.setInt(1,this.bookmakerId);
+	            ResultSet rs = stmt.executeQuery();
+
+	            if (!rs.next()){
+	                
+	                rs.close();
+		            stmt.close();
+	                throw new Exception("No name found!");
+	            }   
+	            String bookmakerName= rs.getString("name_of_bookmaker");
+	            rs.close();
+	            stmt.close();
+	            db.close();
+				return bookmakerName;
+	            
+	           
+	        } catch(Exception e) {
+	            throw new Exception(e.getMessage());
+	        } finally{
+
+	            try {
+	                db.close();
+	            } catch (Exception e) {
+	                
+	            }
+	            
+	        }
+			
 	}
 
 	public void setBookmakerId(int bookmakerId) {

@@ -10,22 +10,22 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("index.jsp ")) ? "active " : " "  %>">
-                        <a href="index.jsp">Home</a>
+                        <a href="../Arbets/index.jsp">Home</a>
                     </li>
                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("learn.jsp ")) ? "active " : " "  %>">
-                        <a href="learn.jsp">Learn</a>
+                        <a href="../Arbets/learn.jsp">Learn</a>
                     </li>
                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("find_opportunity.jsp ")) ? "active " : " "  %>">
-                        <a href="find_opportunity.jsp">Find Opportunity</a>
+                        <a href="../Arbets/find_opportunity.jsp">Find Opportunity</a>
                     </li>
                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("edit_profile.jsp ")) ? "active " : " "  %>">
-                        <a href="post_comment.jsp">Post & Comment</a>
+                        <a href="../Arbets/post_comment.jsp">Post & Comment</a>
                     </li>
                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("find_opportunity.jsp ")) ? "active " : " "  %>">
-                        <a href="edit_profile.jsp">Edit Profile</a>
+                        <a href="../Arbets/edit_profile.jsp">Edit Profile</a>
                     </li>
                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("Login.jsp ")) ? "active " : " "  %>">
-                        <a href="login.jsp">Login</a>
+                        <a href="../Arbets/login.jsp">Login</a>
                     </li>
 
 

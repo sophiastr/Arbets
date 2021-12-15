@@ -3,8 +3,10 @@ package arbets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,7 +17,9 @@ public class SureBet {
 	private Bet bet2;
 	private double homeTeamBet1Rate;
 	private double visitingTeamBet2Rate;
-
+	
+	
+//na alajoume sto class afou pedio precentage
 	public SureBet(Bet bet1, Bet bet2) {
 		this.id = counter;
 		counter++;
@@ -49,9 +53,40 @@ public class SureBet {
 	public void setId(int id) {
 		this.id = id;
 	}
-	 public LocalDateTime getDateTime() {
-		 LocalDateTime ldt = new LocalDateTime();
-		 return ldt;
+	 public Date getDateTime() throws Exception {
+		 
+		 Timestamp dateTime;
+		  
+	        String sql = "SELECT date_time  FROM game WHERE game.game_id=?;";
+	        DB db = new DB();
+	        try {
+	            Connection con = db.getConnection();
+	            PreparedStatement stmt = con.prepareStatement(sql);
+	            stmt.setInt(1,this.bet1.getGameId());
+	            ResultSet rs = stmt.executeQuery();
+
+	            if(!rs.next() ){
+	            	rs.close();
+		            stmt.close();
+	                throw new Exception("No Date found!");
+	            }   
+	            dateTime= rs.getTimestamp("date_time");
+	            rs.close();
+	            stmt.close();
+	            db.close();
+	            return dateTime;
+	           
+	        } catch(Exception e) {
+	            throw new Exception(e.getMessage());
+	        } finally{
+
+	            try {
+	                db.close();
+	            } catch (Exception e) {
+	                
+	            }
+	            
+	        }
 	 }
 	 public double getSurbetPercetage() {
 		 return 8.9;
@@ -137,8 +172,87 @@ public class SureBet {
 			
 	}
 
-	
+	public String getHomeTeamBet1Name() throws Exception {
+		String sql = "select team.name\r\n"
+				+ "from (select distinct home_team_id  from team_game as tg where tg.game_id=?) as t\r\n"
+				+ "inner join team on team.team_id=t.home_team_id";
+		 
+	        DB db = new DB();
+	        
+	        try {
+	            Connection con = db.getConnection();
+	            PreparedStatement stmt = con.prepareStatement(sql);
+	            stmt.setInt(1,this.bet1.getGameId());
+	            ResultSet rs = stmt.executeQuery();
 
+	            if (!rs.next()){
+	                
+	                rs.close();
+		            stmt.close();
+	                throw new Exception("No team name found!");
+	                
+	            }   
+	            String teamName= rs.getString("team.name");
+	            rs.close();
+	            stmt.close();
+	            db.close();
+				return teamName;
+	            
+	           
+	        } catch(Exception e) {
+	            throw new Exception(e.getMessage());
+	        } finally{
+
+	            try {
+	                db.close();
+	            } catch (Exception e) {
+	                
+	            }
+	            
+	        }
+			
+	}
+
+	public String getVisitingTeamBet2Name() throws Exception {
+		String sql = "select team.name\r\n"
+				+ "from (select  team_id  from team_game as tg where tg.game_id=? and tg.team_id<> tg.home_team_id) as t\r\n"
+				+ "inner join team on team.team_id=t.team_id";
+		 
+	        DB db = new DB();
+	        
+	        try {
+	            Connection con = db.getConnection();
+	            PreparedStatement stmt = con.prepareStatement(sql);
+	            stmt.setInt(1,this.bet2.getGameId());
+	            ResultSet rs = stmt.executeQuery();
+
+	            if (!rs.next()){
+	                
+	                rs.close();
+		            stmt.close();
+	                throw new Exception("No team name found!");
+	                
+	            }   
+	            String teamName= rs.getString("team.name");
+	            rs.close();
+	            stmt.close();
+	            db.close();
+				return teamName;
+	            
+	           
+	        } catch(Exception e) {
+	            throw new Exception(e.getMessage());
+	        } finally{
+
+	            try {
+	                db.close();
+	            } catch (Exception e) {
+	                
+	            }
+	            
+	        }
+			
+	}
 	public double getHomeTeamBet1Rate() {
 		return homeTeamBet1Rate;
 	}

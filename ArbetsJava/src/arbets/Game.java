@@ -1,10 +1,10 @@
 package arbets;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Game {
 	private int id;
-	private LocalDateTime datetime;
+	private Date datetime;
 	private String playingField;
 	public int getId() {
 		return id;
@@ -12,10 +12,10 @@ public class Game {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public LocalDateTime getDatetime() {
+	public Date getDatetime() {
 		return datetime;
 	}
-	public void setDatetime(LocalDateTime datetime) {
+	public void setDatetime(Date datetime) {
 		this.datetime = datetime;
 	}
 	public String getPlayingField() {
