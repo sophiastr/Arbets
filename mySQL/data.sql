@@ -66,7 +66,7 @@ insert into team_game values(5,14,1);
 insert into team_game values(4,15,4);
 insert into team_game values(6,15,4);
 insert into team_game values(6,16,6);
-insert into team_game values(2,16,2);
+insert into team_game values(2,16,6);
 insert into team_game values(5,17,1);
 insert into team_game values(1,17,1);
 insert into team_game values(2,18,2);
@@ -84,7 +84,7 @@ insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(2.8, 3.00, 3, 2);
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(1.15, 8.90, 4, 1);
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(2.8, 8.80, 4, 2);
-/*insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(1.22, 4.78, 5, 1);
+insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(1.22, 4.78, 5, 1);
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(1.5, 7.47, 5, 2);
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(3.20, 1.5, 6, 1);
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(2.5, 1.56, 6, 2);
@@ -117,7 +117,7 @@ insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(2.11, 4.35, 19, 1);
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(2.98, 2.25, 19, 2);
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(1.25, 3.10, 20, 1);
-insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(2.8, 5.55, 20, 2);*/
+insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(2.8, 5.55, 20, 2);
 
 
 insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Sophia", "Sotiropoulou", "sophia_str", "sophia123", "2001-07-19", "GR125347902563789222", "sophiastr@gamil.com", 100);
