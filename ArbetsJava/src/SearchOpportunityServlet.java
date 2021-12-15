@@ -12,23 +12,24 @@ public class SearchOpportunityServlet extends HttpServlet {
 	    response.setContentType("text/html; charset=UTF-8");
 	    PrintWriter out = new PrintWriter(response.getWriter(), true);
 
-
 		ArrayList<SureBet> newBets= new ArrayList<SureBet>();
 
 		ArrayList<SureBet> bets= new ArrayList<SureBet>();
 		try {
 		bets = SureBetCalculator.createSureBets();
 		//out.println(bets);
-		String searchFilter = request.getParameter("filterSport");
 		String fs = request.getParameter("flagSport");
 		int flagFilterSport = 0;
 		int flagFilterTeam = 0;
+		String searchFilter = null;
 		if (fs != null) {
 			flagFilterSport = Integer.parseInt(fs);
+			searchFilter = request.getParameter("filterSport");
 		}
 		String ft = request.getParameter("flagTeam");
 		if (ft != null) {
 			flagFilterTeam = Integer.parseInt(ft);
+			searchFilter = request.getParameter("filterTeam");
 		}
 		
 		if (flagFilterSport == 1){
@@ -36,14 +37,16 @@ public class SearchOpportunityServlet extends HttpServlet {
 				//out.println("<p>skata</p>");
 				if (sb.findSport().equals(searchFilter)){
 				//out.println("<p>skata2</p>");
-				newBets.add(sb);
+					newBets.add(sb);
 				}
 			}
 				
 			}
 		if (flagFilterTeam == 1){
 			for (SureBet sb : bets){
-				if (sb.findTeams().equals(searchFilter)){
+				//out.println(searchFilter);
+				if (sb.findTeams().get(0).equals(searchFilter) || sb.findTeams().get(1).equals(searchFilter)){
+					//out.println("<p>skata2</p>");
 					newBets.add(sb);
 				}
 			}
