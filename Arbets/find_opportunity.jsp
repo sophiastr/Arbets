@@ -100,6 +100,7 @@
                                    ArrayList<SureBet> bets= new ArrayList<SureBet>();
                                     bets = SureBetCalculator.createSureBets();   
                                     for (SureBet sb : bets){
+                                        //θέλω να ξέρω ποιο Bet αναφέρεται στην νίκ
                                         %>
                                         <div class="col-lg-4 col-md-6 ">
                                             <div class="icon-box">
@@ -107,7 +108,7 @@
                                                 <h6> <%= sb.getBet1().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getHomeTeamBet1Name() %></b> score: Win
                                                     <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
                                                     <%= sb.getBet2().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getVisitingTeamBet2Name() %></b> score: Lose
-                                                    <p><b class="text-success"> rate: <%= sb.getBet1().getVisitingTeamRate() %></b></p>
+                                                    <p><b class="text-success"> rate: <%= sb.getBet2().getVisitingTeamRate() %></b></p>
                                                 </h6>
                                             </div>
                                         </div>
@@ -124,7 +125,7 @@
                                                 <h6> <%= sb.getBet1().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getHomeTeamBet1Name() %></b> score: Win
                                                     <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
                                                     <%= sb.getBet2().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getVisitingTeamBet2Name() %></b> score: Lose
-                                                    <p><b class="text-success"> rate: <%= sb.getBet1().getVisitingTeamRate() %></b></p>
+                                                    <p><b class="text-success"> rate: <%= sb.getBet2().getVisitingTeamRate() %></b></p>
                                                 </h6>
                                             </div>
                                         </div>
