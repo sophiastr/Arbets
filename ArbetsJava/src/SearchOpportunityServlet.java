@@ -34,24 +34,20 @@ public class SearchOpportunityServlet extends HttpServlet {
 		if (flagFilterSport == 1){
 			for (SureBet sb : bets){
 				//out.println("<p>skata</p>");
-				
 				if (sb.findSport().equals(searchFilter)){
 				//out.println("<p>skata2</p>");
-				
 				newBets.add(sb);
 				}
 			}
 				
 			}
-
-		//out.println(request.getContextPath() + "/Arbets/find_opportunity.jsp");
-		//} else if (flagFilterTeam == 1){
-		//	for (SureBet sb : bets){
-		//		if (sb.findTeams().get(0) == searchFilter || sb.findTeams().get(1) == searchFilter){
-		//			newBets.add(sb);
-		//		}
-		//	}
-		//}
+		if (flagFilterTeam == 1){
+			for (SureBet sb : bets){
+				if (sb.findTeams().equals(searchFilter)){
+					newBets.add(sb);
+				}
+			}
+		}
 		
 	   
 			request.setAttribute("showSureBets", newBets);
