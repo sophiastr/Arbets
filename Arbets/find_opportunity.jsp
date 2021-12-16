@@ -116,28 +116,7 @@
                                 <%
 
                                 
-                                if (request.getAttribute("showSureBets") == null){
-
-                                
-                                   ArrayList<SureBet> bets= new ArrayList<SureBet>();
-                                    bets = SureBetCalculator.createSureBets();   
-                                    for (SureBet sb : bets){
-                                        //θέλω να ξέρω ποιο Bet αναφέρεται στην νίκ
-                                        %>
-                                        <div class="col-lg-4 col-md-6 ">
-                                            <div class="icon-box">
-                                                <h4>0,94 % <%= sb.findSport() %></h4>
-                                                <h6> <%= sb.getBet1().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getHomeTeamBet1Name() %></b> score: Win
-                                                    <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
-                                                    <%= sb.getBet2().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getVisitingTeamBet2Name() %></b> score: Lose
-                                                    <p><b class="text-success"> rate: <%= sb.getBet2().getVisitingTeamRate() %></b></p>
-                                                </h6>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <%
-                                    }
-                                } else {
+                                if (request.getAttribute("showSureBets") != null){
                                     ArrayList<SureBet> newBets= (ArrayList<SureBet>) request.getAttribute("showSureBets");
                                         for (SureBet sb : newBets){
                                            %>
@@ -153,9 +132,29 @@
                                         </div>
                                         <br>
                                         <%
-                                        } 
                                     }
-                                        %>
+                                } else {
+                                    %>
+                                    <jsp:forward page= "/servlet/SearchOpportunityServlet"/>
+                                    <%
+                                    ArrayList<SureBet> newBets= (ArrayList<SureBet>) request.getAttribute("showSureBets");
+                                        for (SureBet sb : newBets){
+                                           %>
+                                           <div class="col-lg-4 col-md-6 ">
+                                            <div class="icon-box">
+                                                <h4>0,94 % <%= sb.findSport() %></h4>
+                                                <h6> <%= sb.getBet1().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getHomeTeamBet1Name() %></b> score: Win
+                                                    <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
+                                                    <%= sb.getBet2().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getVisitingTeamBet2Name() %></b> score: Lose
+                                                    <p><b class="text-success"> rate: <%= sb.getBet2().getVisitingTeamRate() %></b></p>
+                                                </h6>
+                                            </div>
+                                        </div>
+                                        <br>
+                                        <%
+                                        }
+                                    }
+                                    %>
                                         <div id="load"> <b> Load More </b></div>
                             </div>
                         </div>

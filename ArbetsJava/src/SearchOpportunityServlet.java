@@ -34,9 +34,7 @@ public class SearchOpportunityServlet extends HttpServlet {
 		
 		if (flagFilterSport == 1){
 			for (SureBet sb : bets){
-				//out.println("<p>skata</p>");
 				if (sb.findSport().equals(searchFilter)){
-				//out.println("<p>skata2</p>");
 					newBets.add(sb);
 				}
 			}
@@ -50,6 +48,11 @@ public class SearchOpportunityServlet extends HttpServlet {
 					newBets.add(sb);
 				}
 			}
+		}
+		if ((flagFilterTeam == 0) & (flagFilterSport == 0)) {
+			for (SureBet sb : bets){
+				newBets.add(sb);
+				}
 		}
 		
 	   
