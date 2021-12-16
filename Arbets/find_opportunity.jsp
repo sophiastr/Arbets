@@ -6,8 +6,15 @@
 
         <head>
             <%@ include file="header.jsp" %>
-            
-    
+            <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+  
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+    </script>
+  
+   
             <title>Find Opportunity</title>
 
         </head>
@@ -90,40 +97,46 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div  class=" row">
+                            </div>
+                        </div>
+                                <div id="myList" class="row">
 
                                 <%
 
                                 
-                                if (request.getAttribute("showSureBets") != null){
-                                    ArrayList<SureBet> newBets= (ArrayList<SureBet>) request.getAttribute("showSureBets");
-                                        for (SureBet sb : newBets){
-                                           %>
-                                           
-                                           <div class=" col-lg-4 col-md-6 " >
-                                            <div class="contentLoadMore">
-                                            <h4>0,94 % <%= sb.findSport() %></h4>
-                                            <h6> <%= sb.getBet1().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getHomeTeamBet1Name() %></b> score: Win
-                                                <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
-                                                <%= sb.getBet2().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getVisitingTeamBet2Name() %></b> score: Lose
-                                                <p><b class="text-success"> rate: <%= sb.getBet2().getVisitingTeamRate() %></b></p>
-                                            </h6>
-                                            <br>
+                                if (request.getAttribute("showSureBets") == null){
+
+                                
+                                   ArrayList<SureBet> bets= new ArrayList<SureBet>();
+                                    bets = SureBetCalculator.createSureBets();   
+                                    int i=0;
+                                    for (SureBet sb : bets){
+                                        //θέλω να ξέρω ποιο Bet αναφέρεται στην νίκ
+                                        %>
+                                        
+                                                 <div class="icon-box col-lg-4 col-md-6 " >
+                                            
+                                                <h4>0,94 % <%= sb.findSport() %></h4>
+                                                <h6> <%= sb.getBet1().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getHomeTeamBet1Name() %></b> score: Win
+                                                    <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
+                                                    <%= sb.getBet2().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getVisitingTeamBet2Name() %></b> score: Lose
+                                                    <p><b class="text-success"> rate: <%= sb.getBet2().getVisitingTeamRate() %></b></p>
+                                                </h6>
+                                            
                                         </div>
-                                        
-                                    </div>
-                                        
+                                        <br>
                                         <%
                                     }
                                 } else {
-                                    %>
-                                    <jsp:forward page= "/servlet/SearchOpportunityServlet"/>
-                                    <%
                                     ArrayList<SureBet> newBets= (ArrayList<SureBet>) request.getAttribute("showSureBets");
+                                        int i=0;
                                         for (SureBet sb : newBets){
                                            %>
-                                           <div class=" col-lg-4 col-md-6 " >
-                                            <div class="contentLoadMore">
+                                           <%if(i<6)  {  %>
+                                            <div class="col-lg-4 col-md-6 blogBox moreBox style="display: none;" ">
+                                               <%}else{%>
+                                                <div class="col-lg-4 col-md-6 blogBox moreBox style="display: none;" "><%} i++;%>
+                                            <div class="icon-box">
                                                 <h4>0,94 % <%= sb.findSport() %></h4>
                                                 <h6> <%= sb.getBet1().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getHomeTeamBet1Name() %></b> score: Win
                                                     <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
@@ -134,35 +147,31 @@
                                         </div>
                                         <br>
                                         <%
-                                        }
+                                        } 
                                     }
-                                    %>
-                                   <center><button class="btn btn-dark text-white" > <a href="#" id="loadMore">Load More</a></button></center>
-                            
-                                    </div>
-                                </div>
-                        </div>
-                    </div>
+                                        %>
+                                       <center><div id="loadMore"> <a href=""><b> Load More </b></a></div></center> 
+                            </div>
+                        
+                       </div>
                 </section>
                 <!-- End Find Opportunity Section -->
                 <br>
                 <br>
                 <br>
-                <script src ="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"> </script>  
-                <script src ="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"> </script>  
                 <script>
-                    $(document).ready (function () {  
-                        $(".contentLoadMore").hide();
-  $(".contentLoadMore").slice(0, 3).show();  
-  $("#loadMore").on("click", function(e){  
-    e.preventDefault();  
-    $(".contentLoadMore:hidden").slice(0, 3).show().slideDown();  
-    if ($(".contentLoadMore:hidden").length == 0) {  
-      $("#loadMore").text("No Content").addClass("noContent");  
-    }  
-  });  
-  })  
+                    $(document).ready(function () {
+    size_li = $("#myList .icon-box").size();
+    x=3;
+    $('#myList .icon-box:lt('+x+')').show();
+    $('#loadMore').click(function () {
+        x= (x+5 <= size_li) ? x+5 : size_li;
+        $('#myList .icon-box:lt('+x+')').show();
+    });
+    
+});
                 </script>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
                 <%@ include file="footer.jsp" %>
         </body>
 
