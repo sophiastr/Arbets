@@ -6,8 +6,30 @@
 
         <head>
             <%@ include file="header.jsp" %>
-
-                <title>Find Opportunity</title>
+            <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+  
+    <script src=
+"https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js">
+    </script>
+  
+    <style>
+        h1 {
+            color: #3C8E3D;
+        }
+  
+        .block {
+            display: none;
+            font-size: 20px;
+        }
+  
+        #load {
+            font-size: 20px;
+            color: green;
+        }
+    </style>
+            <title>Find Opportunity</title>
 
         </head>
 
@@ -134,7 +156,7 @@
                                         } 
                                     }
                                         %>
-                                    <center> <button type="button" class="btn btn-secondary">Load more...</button></center>
+                                        <div id="load"> <b> Load More </b></div>
                             </div>
                         </div>
                     </div>
@@ -143,6 +165,22 @@
                 <br>
                 <br>
                 <br>
+                <script>
+                    $(document).ready(function () {
+                        $(".block").slice(0, 3).show();
+                        if ($(".block:hidden").length != 0) {
+                            $("#load").show();
+                        }
+                        $("#load").on("click", function (e) {
+                            e.preventDefault();
+                            $(".block:hidden").slice(0, 1).slideDown();
+                            if ($(".block:hidden").length == 0) {
+                                $("#load").text("No More to view")
+                                    .fadOut("slow");
+                            }
+                        });
+                    })
+                </script>
                 <%@ include file="footer.jsp" %>
         </body>
 
