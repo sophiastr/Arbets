@@ -17,17 +17,23 @@ public class SureBet {
 	private Bet bet2;
 	private double homeTeamBet1Rate;
 	private double visitingTeamBet2Rate;
+	private double percentage;
 	
 	
 //na alajoume sto class afou pedio precentage
-	public SureBet(Bet bet1, Bet bet2) {
+	public SureBet(Bet bet1, Bet bet2,double percentage) {
 		this.id = counter;
 		counter++;
 		this.bet1 = bet1;
 		this.bet2 = bet2;
 		this.homeTeamBet1Rate = bet1.getHomeTeamRate();
 		this.visitingTeamBet2Rate = bet2.getHomeTeamRate();
+		this.percentage=percentage;
 
+	}
+
+	public double getPercentage() {
+		return percentage;
 	}
 
 	public Bet getBet1() {
