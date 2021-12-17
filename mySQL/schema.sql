@@ -70,8 +70,7 @@ Create Table answer( answer_id int not null primary key auto_increment,
 /*DROP TABLE sport;*/                    
 
 Create Table sport ( sport_id int not null primary key auto_increment,
-					name varchar(30),
-                    type_of_result int
+					name varchar(30)
 					);
 
 /*DROP TABLE team;*/ 

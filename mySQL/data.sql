@@ -1,5 +1,5 @@
-insert into sport(name , type_of_result) values ("basketball", 2);
-insert into sport(name , type_of_result) values("volleyball", 2);
+insert into sport(name) values ("basketball");
+insert into sport(name ) values("volleyball");
 
 
 insert into team(name, sport_id, playing_field) values("Olympiakos", 1, "Gipedo Sef");
