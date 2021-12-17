@@ -94,9 +94,7 @@ public class SureBet {
 	            
 	        }
 	 }
-	 public double getSurbetPercetage() {
-		 return 8.9;
-	 }
+	 
 
 	public ArrayList<String> findTeams() throws Exception {
 		ArrayList<String> teams = new ArrayList<String>();
