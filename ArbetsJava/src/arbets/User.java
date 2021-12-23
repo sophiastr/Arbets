@@ -13,7 +13,7 @@ public class User {
 	private String password;
 	private int points;
 	private String bankAccount;
-	private static final AtomicInteger count = new AtomicInteger(0); 
+	private static final AtomicInteger count = new AtomicInteger(3); 
 
 	public User(String firstname, String surename, String username, String password, Date birthdate, String bankAccount, String email,
 		 int points) {

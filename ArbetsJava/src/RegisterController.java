@@ -61,9 +61,9 @@ public class RegisterController extends HttpServlet {
             s+="&emsp;&emsp;"+ counter + ". Password and confirm do not match.<br>";
         }
 
-        if (bank.length() != 10) {        		
+        if (bank.length() != 20) {        		
             counter++;
-            s +="&emsp;&emsp;"+ counter+". Bank account must be 10 characters long.<br>";
+            s +="&emsp;&emsp;"+ counter+". Bank account must be 20 characters long.<br>";
         }
 
         String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
@@ -83,19 +83,24 @@ public class RegisterController extends HttpServlet {
             try{    
                 Date bday = sdf.parse(birthday); 
                 User user = new User(firstname, lastname, username, password ,bday, bank, email, 0); 
-                userService.register(user);  
+                userService.register(user);
+                request.setAttribute("success_registration", "Registration completed successfully!");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/find_opportunity.jsp");
+                requestDispatcher.forward(request, response);
             }catch(Exception e){
                 s +="&emsp;&emsp;"+e.getMessage();
                 counter++;
+                out.println(e.getMessage());
             }
         } else{
-            
+
             try {
                 request.setAttribute("wrong_form", s);
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/register.jsp");
                 requestDispatcher.forward(request, response);
             } catch (Exception e) {
                 request.setAttribute("error_message", e.getMessage());
+                out.println(e.getMessage());
             }
         }
 

@@ -12,17 +12,24 @@ public class LoginController extends HttpServlet {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
-
+       
+        
         UserService userService = new UserService();
 
 
-        try{
+        
+        try {
             User user = userService.authenticate(username, password);
+            request.setAttribute("user", user);
+            HttpSession session=request.getSession(); 
+            session.setAttribute("authentication", user);
             RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/find_opportunity.jsp");
-			requestDispatcher.forward(request, response);
-        } catch(Exception e) {
+            requestDispatcher.include(request, response);
+        } catch (Exception e) {
             request.setAttribute("error_message", e.getMessage());
+
         }
+    
 
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response)

@@ -1,6 +1,5 @@
 package arbets;
 import java.sql.*;
-import java.util.*;
 
 public class UserService {
 
@@ -47,7 +46,7 @@ public class UserService {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "INSERT INTO user (user_id, firstname, lastname, username, password ,birthdate, bank_account, email, points) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?);" ;
+		String sql = "INSERT INTO user (user_id, firstname, lastname, username, password ,birthday, bank_account, email, points) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?);" ;
 		String checkIfUserExists = "SELECT * FROM user WHERE username =? or email =?;";
 
 		try {
@@ -72,15 +71,14 @@ public class UserService {
 
 			//set parameters
             stmt.setInt(1, user.getId());
-			stmt.setString(1, user.getFirstname());
-			stmt.setString(2, user.getSurename());
+			stmt.setString(2, user.getFirstname());
+			stmt.setString(3, user.getSurename());
             stmt.setString(4, user.getUsername());
             stmt.setString(5, user.getPassword());
-			stmt.setString(3, user.getEmail());
-			stmt.setDate(4, new java.sql.Date(user.getBirthdate().getTime()));
-            stmt.setString(5, user.getBankAccount());
-			stmt.setString(3, user.getEmail());
-            stmt.setInt(3, user.getPoints());
+			stmt.setDate(6, new java.sql.Date(user.getBirthdate().getTime()));
+            stmt.setString(7, user.getBankAccount());
+			stmt.setString(8, user.getEmail());
+            stmt.setInt(9, user.getPoints());
 			
 			
 			stmt.executeUpdate();
