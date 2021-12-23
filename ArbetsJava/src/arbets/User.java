@@ -1,6 +1,6 @@
 package arbets;
 import java.util.Date;
-
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class User {
     
@@ -11,20 +11,19 @@ public class User {
 	private String email;
 	private String username;
 	private String password;
-	private String country;
 	private int points;
 	private String bankAccount;
-	
-	public User(int id, String firstname, String surename, Date birthdate, String email, String username,
-			String password, String country, int points, String bankAccount) {
-		this.id = id;
+	private static final AtomicInteger count = new AtomicInteger(0); 
+
+	public User(String firstname, String surename, String username, String password, Date birthdate, String bankAccount, String email,
+		 int points) {
+		this.id = count.incrementAndGet();
 		this.firstname = firstname;
 		this.surename = surename;
 		this.birthdate = birthdate;
 		this.email = email;
 		this.username = username;
 		this.password = password;
-		this.country = country;
 		this.points = points;
 		this.bankAccount = bankAccount;
 	}
@@ -85,14 +84,6 @@ public class User {
 		this.password = password;
 	}
 
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
 	public int getPoints() {
 		return points;
 	}
@@ -110,11 +101,4 @@ public class User {
 	}
 
 
-    public User authenticate(String username, String password) throws Exception {
-
-    }
-
-    public void register(User user) throws Exception {
-        
-    }
 }
