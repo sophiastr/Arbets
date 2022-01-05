@@ -77,8 +77,39 @@ public void setPostId(int postId) {
 public boolean isSolution() {
 	return isSolution;
 }
-public void setSolution(boolean isSolution) {
-	this.isSolution = isSolution;
+public static void setSolution(int answerId) throws Exception {
+	String sql = "UPDATE answer SET is_solution = True WHERE answer_id=?;";
+    DB db = new DB();
+
+    try {
+        Connection con = db.getConnection();
+        PreparedStatement stmt = con.prepareStatement(sql);
+     
+        stmt.setInt(1,answerId);
+        
+
+        stmt.executeUpdate();
+
+        
+        stmt.close(); //closing PreparedStatement
+        db.close(); //closing Connection
+
+        
+
+    } catch (Exception e) {
+
+        throw new Exception(e.getMessage());
+
+    } finally {
+
+        try {
+            db.close();
+        } catch (Exception e) {
+            
+        }
+
+    }
+
 }
 
 

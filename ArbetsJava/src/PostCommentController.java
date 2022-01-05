@@ -19,6 +19,8 @@ import arbets.Post;
 	    PrintWriter out = new PrintWriter(response.getWriter(), true);
 	    
 	    String upload = request.getParameter("upload");
+	    String sol = request.getParameter("solution");
+	    String answer = request.getParameter("answer");
 	    String upvote = request.getParameter("upvote");
 	    String downvote = request.getParameter("downvote");
 	    String postId =request.getParameter("postId");
@@ -35,6 +37,24 @@ import arbets.Post;
 	        int userId = Integer.valueOf("1").intValue();
 	        Post.createPost(text, userId);
 	      }
+	      if (sol != null)
+	      {
+	      
+	        
+	        int id = Integer.valueOf(answerId).intValue();
+	        Answer.setSolution(id);
+	      }
+	      if (answer != null)
+	      {
+	        String text = request.getParameter("text");
+	        
+	        text = new String(text.getBytes("ISO-8859-1"), "UTF-8");
+	        
+	        int userId = Integer.valueOf("1").intValue();
+	        int id = Integer.valueOf(postId).intValue();
+	       Answer.createAnswer(text, userId, id);
+	      }
+	      
 	      if (upvote!=null) {
 	    	
 		        if (postId!=null) {
