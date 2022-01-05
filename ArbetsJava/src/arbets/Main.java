@@ -1,13 +1,31 @@
 package arbets;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
 	public static void main(String[] args) {
+		try {
+			Post.createPost("post",1);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		List<Answer> an;
+		try {
+			an = Answer.getAnswers();
+
+			for (Answer item:an) {
+				System.out.println(item);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		
-		
+		/**
 		Sport sp = new Sport();
 		List<Sport> sports = new ArrayList<>();
 		try {
@@ -16,18 +34,18 @@ public class Main {
 			System.out.println(sr.findTeams().get(1));
 			System.out.println(sr.findSport());
 			System.out.println(sr.getDateTime());
-			/**sports = s.getSports();
+			sports = s.getSports();
 			for (Sport ss: sports) {
 				System.out.println(ss.getName());
 				
 				
 				
-			}**/
+			/
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		}**/
 		
 	}
 
