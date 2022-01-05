@@ -65,8 +65,74 @@ public class Post {
 	public void setDownvote(int downvote) {
 		this.downvote = downvote;
 	}
-	
-	
+	public static void upvote(int postId) throws Exception {
+		String sql = "UPDATE post SET upvote = upvote+1 WHERE post_id=?;";
+	    DB db = new DB();
+
+	    try {
+	        Connection con = db.getConnection();
+	        PreparedStatement stmt = con.prepareStatement(sql);
+	     
+	        stmt.setInt(1,postId);
+	        
+
+	        stmt.executeUpdate();
+
+	        
+	        stmt.close(); //closing PreparedStatement
+	        db.close(); //closing Connection
+
+	        
+
+	    } catch (Exception e) {
+
+	        throw new Exception(e.getMessage());
+
+	    } finally {
+
+	        try {
+	            db.close();
+	        } catch (Exception e) {
+	            
+	        }
+
+	    }
+
+	}
+	public static void downvote(int postId) throws Exception {
+		String sql = "UPDATE post SET downvote = downvote+1 WHERE post_id=?;";
+	    DB db = new DB();
+
+	    try {
+	        Connection con = db.getConnection();
+	        PreparedStatement stmt = con.prepareStatement(sql);
+	     
+	        stmt.setInt(1,postId);
+	        
+
+	        stmt.executeUpdate();
+
+	        
+	        stmt.close(); //closing PreparedStatement
+	        db.close(); //closing Connection
+
+	        
+
+	    } catch (Exception e) {
+
+	        throw new Exception(e.getMessage());
+
+	    } finally {
+
+	        try {
+	            db.close();
+	        } catch (Exception e) {
+	            
+	        }
+
+	    }
+
+	}
 	public static void createPost(String text,int userId) throws Exception {
 		
 		String sql = "insert into post(text,date_time, user_id, upvote, downvote) values(?,?, ?, ?, ?);";

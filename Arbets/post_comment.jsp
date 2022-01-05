@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ include file="check_authentication.jsp" %>
+    <%@ page import="java.text.SimpleDateFormat"%>
         <!DOCTYPE html>
         <html lang="en">
 
@@ -11,7 +12,7 @@
         <body>
             <%@ include file="navbar.jsp" %>
                 <main id="main">
-
+                    
                     <!-- ======= Post and Comment Section ======= -->
                     <section id="post" class="post">
                         <div class="container">
@@ -22,65 +23,60 @@
                             <section>
                                 <div class="container py-5">
                                     <div class="col-lg-6 col-mg-6 col-xl-12">
-                                        <ul class="list-unstyled">
-                                            <li class="d-flex justify-content-between mb-4">
-                                                <img src="assets/img/team/team-3.jpg" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                                                <div class="card">
-                                                    <div class="card-header d-flex justify-content-between p-3">
-                                                        <p class="fw-bold mb-0">Nikolas Giannatos</p>
-                                                        <p class="text-muted small mb-0"><i class="far fa-clock"></i> 18 mins ago</p>
-                                                        <a href="#">Like</a>
-                                                        <a href="#">Dislike</a>
-                                                        <a href="#">Answer</a>
+                                        <ul class="list-unstyled">                                            
+                                            <%
+                                            List<Post> posts= Post.getPosts();
+                                            for(Post post:posts){%>
+                                                <li class="d-flex justify-content-between mb-4">
+                                                    <img src="../Arbets/assets/img/team/team-3.jpg" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                                                    <div class="card w-100">
+                                                        <div class="card-header d-flex justify-content-between p-3">
+                                                            <p class="fw-bold mb-0"><%=User.getNameByUserId(post.getUserId())%></p>
+                                                            <p class="text-muted small mb-0"><i class="far fa-clock"></i> <%= new SimpleDateFormat("MM/dd/yyyy HH:mm").format(post.getDateTime())%></p>
+                                                            <div><a href="<%=request.getContextPath()%>/servlet/PostCommentController?upvote=true&postId=<%=post.getPostId()%>" >Like       </a><%=post.getUpvote()%></div>
+                                                            <div><a href="<%=request.getContextPath()%>/servlet/PostCommentController?downvote=true&postId=<%=post.getPostId()%>" >Dislike        </a><%=post.getDownvote()%></div>
+                                                            <a href="#">Answer</a>
+                                                        </div>
+                                                        <div class="card-body">
+                                                            <p class="mb-0">
+                                                                <%=post.getText()%>
+                                                            </p>
+                                                        </div>
                                                     </div>
-                                                    <div class="card-body">
-                                                        <p class="mb-0">
-                                                            Μόλις με έκανε ban η stoiximan και δεν μπόρεσα να ποντάρω τα απαραίτητα χρήματα στο άλλο αποτέλεσμα! Μπορεί να μου προτείνει κάποιος έναν τρόπο για να μην χάσω τα χρήματα μου;
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            <li class="d-flex justify-content-between mb-4">
-                                                <div class="card w-100">
-                                                    <div class="card-header d-flex justify-content-between p-3">
-                                                        <p class="fw-bold mb-0">Anna Mastori</p>
-                                                        <p class="text-muted small mb-0"><i class="far fa-clock"></i> 15 mins ago</p>
-                                                        <a href="#">Like</a>
-                                                        <a href="#">Dislike</a>
-                                                        <a href="#">Answer</a>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <p class="mb-0">
-                                                            Καλησπέρα και εμένα μου έχει συμβεί αυτό αλλά ευτυχώς συνέβη το αποτέλεσμα που είχα ποντάρει χρήματα. Ήμουν πολύ τυχερή! Ελπίζω να συμβεί το ίδιο και σε εσένα. Σαν συμβουλή σου προτείνω να στρογυλλοποιείς τα πονταρίσματα.
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                                <img src="assets/img/team/team-2.jpg" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
-                                            </li>
-                                            <li class="d-flex justify-content-between mb-4">
-                                                <img src="assets/img/team/team-3.jpg" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
-                                                <div class="card">
-                                                    <div class="card-header d-flex justify-content-between p-3">
-                                                        <p class="fw-bold mb-0">Nikolas Giannatos</p>
-                                                        <p class="text-muted small mb-0"><i class="far fa-clock"></i> 10 mins ago</p>
-                                                        <a href="#">Like</a>
-                                                        <a href="#">Dislike</a>
-                                                        <a href="#">Answer</a>
-
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <p class="mb-0">
-                                                            Μακάρι να συμβεί και σε εμένα αυτό. Υπάρχει κάποιος άλλος που να γνωρίζει ένα τρόπο ώστε να μη χάσω. Γνωρίζει κάποιος αν μπορώ να φτιάξω νέο λογαριασμό;
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </li>
+                                                </li><%
+                                                List<Answer> ans =Answer.getAnswersOfPost(post) ;
+                                                    for (Answer an:ans){%>
+                                                        <li class="d-flex justify-content-between mb-4">
+                                                            <div class="card w-100">
+                                                                <div class="card-header d-flex justify-content-between p-3">
+                                                                    <p class="fw-bold mb-0"><%=User.getNameByUserId(an.getUserId())%></p>
+                                                                    <p class="text-muted small mb-0"><i class="far fa-clock"></i> <%=new SimpleDateFormat("MM/dd/yyyy HH:mm").format(an.getDateTime())%></p>
+                                                                    <div><a href="<%=request.getContextPath()%>/servlet/PostCommentController?upvote=true&answerId=<%=an.getAnswerId()%>">Like       </a><%=an.getUpvote()%></div>
+                                                                    <div><a href="<%=request.getContextPath()%>/servlet/PostCommentController?downvote=true&answerId=<%=an.getAnswerId()%>">Dislike        </a><%=an.getDownvote()%></div>
+                                                                    
+                                                                </div>
+                                                                <div class="card-body">
+                                                                    <p class="mb-0">
+                                                                        <%=an.getText()%>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                            <img src="../Arbets/assets/img/team/team-2.jpg" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                                                        </li>
+                                                  <%  }
+                                            }
+                                                %>
+                                            #na mhn fenete oi parametroi
+                                            <%=regUser%>
+                                            <form  action="<%=request.getContextPath()%>/servlet/PostCommentController?upload=true&userId=<%=regUser.getId()%>" method="POST" class="form-horizontal">
                                             <li class="bg-white mb-3">
+                                                
                                                 <div class="form-outline">
-                                                    <textarea class="form-control" id="textAreaExample2" rows="4" placeholder="Upload a message"></textarea>
+                                                    <textarea class="form-control" name="text" id="textAreaExample2" rows="4" placeholder="Upload a message"></textarea>
                                                 </div>
                                             </li>
-                                            <button type="button" class="btn btn-outline-dark float-end">Upload</button>
+                                            <button type="submit" class="btn btn-outline-dark float-end">Upload</button>
+                                        </form>
                                         </ul>
 
                                     </div>

@@ -1,4 +1,7 @@
 package arbets;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -98,6 +101,49 @@ public class User {
 
 	public void setBankAccount(String bankAccount) {
 		this.bankAccount = bankAccount;
+	}
+	//na bei sthn userservice
+	public static String getNameByUserId(int id) throws Exception {
+		
+		DB db = new DB();
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT username FROM user WHERE user_id=?;";
+
+		try {
+			con = db.getConnection();
+			stmt = con.prepareStatement(sql);
+			
+			// set parameters 
+			stmt.setInt(1, id);
+			
+
+			rs = stmt.executeQuery();
+
+			if (!rs.next()){
+				rs.close();
+				stmt.close();
+				db.close();
+			}
+
+			
+			return rs.getString("username");
+			
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		} finally{
+			try {
+				db.close();
+			} catch (Exception e) {
+				
+			}
+        }
+	}
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstname=" + firstname + ", surename=" + surename + ", email=" + email
+				+ ", username=" + username + ", password=" + password + "]";
 	}
 
 

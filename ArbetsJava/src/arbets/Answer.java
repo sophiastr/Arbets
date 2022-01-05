@@ -130,7 +130,7 @@ public static List<Answer> getAnswers() throws Exception {
 
     String sql = "SELECT * FROM answer;";
     DB db = new DB();
-
+    
     try {
         Connection con = db.getConnection();
         PreparedStatement stmt = con.prepareStatement(sql);
@@ -161,7 +161,108 @@ public static List<Answer> getAnswers() throws Exception {
     }
 
 }
+public static void upvote(int answerId) throws Exception {
+	String sql = "UPDATE answer SET upvote = upvote+1 WHERE answer_id=?;";
+    DB db = new DB();
 
+    try {
+        Connection con = db.getConnection();
+        PreparedStatement stmt = con.prepareStatement(sql);
+     
+        stmt.setInt(1,answerId);
+        
+
+        stmt.executeUpdate();
+
+        
+        stmt.close(); //closing PreparedStatement
+        db.close(); //closing Connection
+
+        
+
+    } catch (Exception e) {
+
+        throw new Exception(e.getMessage());
+
+    } finally {
+
+        try {
+            db.close();
+        } catch (Exception e) {
+            
+        }
+
+    }
+
+}
+public static void downvote(int answerId) throws Exception {
+	String sql = "UPDATE answer SET downvote = downvote+1 WHERE answer_id=?;";
+    DB db = new DB();
+
+    try {
+        Connection con = db.getConnection();
+        PreparedStatement stmt = con.prepareStatement(sql);
+     
+        stmt.setInt(1,answerId);
+        
+
+        stmt.executeUpdate();
+
+        
+        stmt.close(); //closing PreparedStatement
+        db.close(); //closing Connection
+
+        
+
+    } catch (Exception e) {
+
+        throw new Exception(e.getMessage());
+
+    } finally {
+
+        try {
+            db.close();
+        } catch (Exception e) {
+            
+        }
+
+    }
+
+}
+public static List<Answer> getAnswersOfPost(Post post) throws Exception{
+	List<Answer> answers = new ArrayList<Answer>();
+	String sql = "SELECT * FROM answer where post_id= ?;";
+    DB db = new DB();
+    try {
+        Connection con = db.getConnection();
+        PreparedStatement stmt = con.prepareStatement(sql);
+        
+        
+        stmt.setInt(1, post.getPostId());
+        ResultSet rs = stmt.executeQuery();
+
+        while (rs.next()){
+        	answers.add(new Answer(rs.getInt("answer_id"),rs.getString("text"),rs.getTimestamp("date_time"),rs.getInt("user_id"),rs.getInt("upvote"),rs.getInt("downvote"),rs.getBoolean("is_solution"),rs.getInt("post_id")));
+        }   
+
+        rs.close();
+        stmt.close();
+        db.close();
+
+        return answers;
+    } catch(Exception e) {
+        throw new Exception(e.getMessage());
+    } finally{
+
+        try {
+            db.close();
+        } catch (Exception e) {
+            
+        }
+        
+    }
+	
+}
 
 @Override
 public String toString() {

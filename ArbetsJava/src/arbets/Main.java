@@ -2,24 +2,30 @@ package arbets;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
 
 	public static void main(String[] args) {
 		try {
-			Post.createPost("post",1);
+			
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		List<Answer> an;
+		
 		try {
-			an = Answer.getAnswers();
-
-			for (Answer item:an) {
-				System.out.println(item);
+			List<Post> pt=Post.getPosts();
+			
+			List<Answer> ans=Answer.getAnswersOfPost(pt.get(0));
+			for(Answer an:ans) {
+				System.out.println(an);
 			}
+			
+			
+			
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
