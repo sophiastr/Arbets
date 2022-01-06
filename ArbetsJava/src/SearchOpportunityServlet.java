@@ -44,7 +44,6 @@ public class SearchOpportunityServlet extends HttpServlet {
 			for (SureBet sb : bets){
 				//out.println(searchFilter);
 				if (sb.findTeams().get(0).equals(searchFilter) || sb.findTeams().get(1).equals(searchFilter)){
-					//out.println("<p>skata2</p>");
 					newBets.add(sb);
 				}
 			}

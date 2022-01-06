@@ -51,79 +51,44 @@
                     </div>
                 </div>
             </section>
-            <!-- End calculation Section -->
-
-            <!-- ======= calculator ======= -->
             <section id="calculator" class="calculator">
                 <div class="container">
                     <div class="row">
                         <center>
                             <div class="col-lg-10" data-aos="fade-up">
-                                <table class="table caption-top">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">Odds</th>
-                                            <th scope="col">Bet</th>
-                                            <th scope="col">Profit</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">W1</th>
-                                            <td>
-                                                <div class="col-auto">
-                                                    <label for="inputOdd1" class="visually-hidden">Odd1</label>
-                                                    <input type="text" class="form-control" id="inputOdd1" placeholder="Odd1">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-auto">
-                                                    <label for="inputBet1" class="visually-hidden">Bet1</label>
-                                                    <input type="text" class="form-control" id="inputBet1" placeholder="Bet1">
-                                                </div>
-                                            </td>
-                                            <td>___</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">W2</th>
-                                            <td>
-                                                <div class="col-auto">
-                                                    <label for="inputOdd2" class="visually-hidden">Odd2</label>
-                                                    <input type="text" class="form-control" id="inputOdd2" placeholder="Odd2">
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="col-auto">
-                                                    <label for="inputPassword2" class="visually-hidden">Bet2</label>
-                                                    <input type="text" class="form-control" id="inputBet2" placeholder="Bet2">
-                                                </div>
-                                            </td>
-                                            <td>___</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row"></th>
-                                            <td style="text-align: right;"><b>Amount:</b></td>
-                                            <td>
-                                                <div class="col-auto">
-                                                    <label for="inputAmount" class="visually-hidden">amount</label>
-                                                    <input type="text" class="form-control" id="inputAmount" placeholder="amount">
-                                                </div>
-                                            </td>
-                                            <td></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-
+                                    <form action="<%=request.getContextPath()%>/servlet/CalculatorServlet" method="POST" class="row g-3">
+                                        <h4>Calculator</h4>
+                                        <div class="col-12">
+                                            <label>First Odd</label>
+                                            <input type="number" step="any" name="odd1" class="form-control" placeholder="odd1">
+                                        </div>
+                                        <div class="col-12">
+                                            <label>Second Odd</label>
+                                            <input type="number" step="any" name="odd2" class="form-control" placeholder="odd2">
+                                        </div>
+                                        <div class="col-12">
+                                            <label>Amount</label>
+                                            <input type="number" step="any" name="amount" class="form-control" placeholder="amount">
+                                        </div>
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-dark float-end">Calculate</button>
+                                        </div>
+                                        <div class="col-12">
+                                        </div>
+                                    </form>
+                
+                                    <div class="alert alert-warning" role="alert">
+                                        <%=request.getAttribute("apotelesma") %> 
+                                      </div>
+                                      <br>
+                                      <br>
+                                </div>
                             </div>
-                        </center>
+                    </center>
                     </div>
-                </div>
-            </section>
-            <!-- End caclculator Section -->
-            <br>
-            <br>
-            <br>
+                </section>
+            <!-- End calculation Section -->
+
             <%@ include file="footer.jsp" %>
 
     </body>
