@@ -16,18 +16,23 @@ public class LoginController extends HttpServlet {
         
         UserService userService = new UserService();
 
-
+        User user = null;
         
         try {
-            User user = userService.authenticate(username, password);
-            request.setAttribute("user", user);
+            user = userService.authenticate(username, password);
+            //request.setAttribute("user", user);
             HttpSession session=request.getSession(); 
             session.setAttribute("authentication", user);
-            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/find_opportunity.jsp");
-            requestDispatcher.include(request, response);
         } catch (Exception e) {
             request.setAttribute("error_message", e.getMessage());
-
+           
+        }
+        if (user == null) {
+        	 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/login.jsp");
+        	 requestDispatcher.include(request, response);
+        } else {
+        	RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/find_opportunity.jsp");
+       	 	requestDispatcher.include(request, response);
         }
     
 

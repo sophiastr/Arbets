@@ -25,31 +25,36 @@
                                 </div>
                                 <%
 					}
+                    
+if (request.getAttribute("success_message") != null) {
 %>
-                                    <form action="<%=request.getContextPath()%>/servlet/LoginController" method="POST" class="row g-3">
-                                        <h4>Welcome Back</h4>
-                                        <div class="col-12">
-                                            <label>Username</label>
-                                            <input type="text" name="username" class="form-control" placeholder="Username">
-                                        </div>
-                                        <div class="col-12">
-                                            <label>Password</label>
-                                            <input type="password" name="password" class="form-control" placeholder="Password">
-                                        </div>
-                                        <div class="col-12">
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="checkbox" id="rememberMe">
-                                                <label class="form-check-label" for="rememberMe">Remember me</label>
-                                            </div>
-                                        </div>
-                                        <div class="col-12">
-                                            <button type="submit" class="btn btn-dark float-end">Login</button>
-                                        </div>
-                                    </form>
-                                    <hr class="mt-4">
-                                    <div class="col-12">
-                                        <p class="text-center mb-0">For registration press <a href="register.jsp">here</a></p>
+                                    <div class="alert alert-success">
+
+                                        <%=(String)request.getAttribute("success_message") %>
+
                                     </div>
+                                    <%
+}
+%>
+
+                                        <form action="<%=request.getContextPath()%>/servlet/LoginController" method="POST" class="row g-3">
+                                            <h4>Welcome Back</h4>
+                                            <div class="col-12">
+                                                <label>Username</label>
+                                                <input type="text" name="username" class="form-control" placeholder="Username">
+                                            </div>
+                                            <div class="col-12">
+                                                <label>Password</label>
+                                                <input type="password" name="password" class="form-control" placeholder="Password">
+                                            </div>
+                                            <div class="col-12">
+                                                <button type="submit" class="btn btn-dark float-end">Login</button>
+                                            </div>
+                                        </form>
+                                        <hr class="mt-4">
+                                        <div class="col-12">
+                                            <p class="text-center mb-0">For registration press <a href="../Arbets/register.jsp">here</a></p>
+                                        </div>
                         </div>
                     </div>
                 </div>

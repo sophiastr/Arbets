@@ -38,10 +38,10 @@
                                         <a href="../Arbets/post_comment.jsp">Post & Comment</a>
                                     </li>
                                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("find_opportunity.jsp ")) ? "active " : " "  %>">
-                                        <a href="../Arbets/edit_profile.jsp">Edit Profile</a>
+                                        <a href="../Arbets/profile.jsp">Profile</a>
                                     </li>
                                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("Login.jsp ")) ? "active " : " "  %>">
-                                        <a href="../Arbets/login.jsp">Login</a>
+                                        <a href="../Arbets/logout.jsp">Logout</a>
                                     </li>
 
                                     <%}%>

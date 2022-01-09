@@ -25,6 +25,7 @@ public class UserService {
 					rs.close();
 					stmt.close();
 					db.close();
+					throw new Exception("Sorry, user does not exist!");
 				}
 
 				User user = new User(rs.getString("firstname"),  rs.getString("lastname"), rs.getString("username"), rs.getString("password"), rs.getDate("birthday"), rs.getString("bank_account"), rs.getString("email"), rs.getInt("points")) ;
@@ -94,6 +95,44 @@ public class UserService {
 				
 			}
 		}
+		  
+    }
+    
+    
+    
+    public void editProf(int id, String newusername, String bankAccount, String email, Date bday, String password) throws Exception {
+        DB db = new DB();
+		Connection con = null;
+		PreparedStatement stmt = null;
+		String sql = "UPDATE user SET username = ?, bank_account = ?, email = ?, birthday = ?, password = ? WHERE user_id = ?;";
+		
+		try {
+			con = db.getConnection();
+			
+			stmt = con.prepareStatement(sql);
+			//set parameters
+			stmt.setString(1, newusername);
+			stmt.setString(2, bankAccount);
+			stmt.setString(3, email);
+			stmt.setDate(4, bday);
+			stmt.setString(5, password);
+			
+			stmt.setInt(6, id);
+
+			stmt.executeUpdate();
+
+			stmt.close();
+			db.close();
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		} finally {
+			try {
+				db.close();
+			} catch (Exception e) {
+				
+			}
+		}
+		
 		  
     }
 }

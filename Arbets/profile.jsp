@@ -1,63 +1,86 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ include file="check_authentication.jsp" %>
-        <!DOCTYPE html>
-        <html lang="en">
+        <%@ page import="arbets.*, java.util.*"%>
 
-        <head>
-            <%@ include file="header.jsp" %>
-                <title>My profile</title>
+            <%
+            User curUser = (User)session.getAttribute("authentication");
+            %>
+                <!DOCTYPE html>
+                <html lang="en">
 
-        </head>
+                <head>
+                    <%@ include file="header.jsp" %>
+                        <title>My profile</title>
 
-        <body>
-            <%@ include file="navbar.jsp" %>
+                </head>
 
-
-                <!-- ======= profile Section ======= -->
-                <section id="profile" class="profile">
-                    <div class="container">
-
-                        <div class="row">
-                            <center>
-                                <div class="col-lg-6 col-md-6 d-flex align-items-center" data-aos="zoom-in">
-                                    <div class="member">
-                                        <img src="assets/img/team/team-2.jpg" alt="">
+                <body>
+                    <%@ include file="navbar.jsp" %>
 
 
+                        <!-- ======= profile Section ======= -->
+                        <section id="profile" class="profile">
+                            <div class="container">
+                                <%
+                                if (request.getAttribute("success_edit") != null) {
+            %>
+                                    <div class="alert alert-danger">
 
-                                        <h4>Anna Mastori</h4>
-                                        <span>My account</span>
-                                        <b>Points: </b>200
-                                        <br>
+                                        <%=(String)request.getAttribute("success_edit") %>
 
-
-
-                                        <b>E-mail: </b>mastori@gmail.com
-                                        <br>
-                                        <b>Username: </b>mastori_anna
-                                        <br>
-                                        <b>Date of Birth: </b>2001-02-04
-                                        <br>
-
-                                        <b>Bank account: </b>GR908567832563789999
-                                        <br>
-                                        <br>
-
-                                        <button type="button" class="btn btn-dark"><a href="edit_profile.jsp">Edit</a></button>
                                     </div>
+                                    <%
+                                }
+                                %>
+                                        <div class="row">
+                                            <center>
+                                                <div class="col-lg-6 col-md-6 d-flex align-items-center" data-aos="zoom-in">
+                                                    <div class="member">
+                                                        <img src="assets/img/team/team-2.jpg" alt="">
 
-                                </div>
-                            </center>
 
-                        </div>
-                    </div>
-                </section>
-                <!-- End profile Section -->
-                <br>
-                <br>
-                <br>
-                <%@ include file="footer.jsp" %>
 
-        </body>
+                                                        <h4>
+                                                            <%=curUser.getFirstname()%>
+                                                                <%=curUser.getSurename()%>
+                                                        </h4>
+                                                        <span>My account</span>
+                                                        <b>Points: </b>
+                                                        <%=curUser.getPoints()%>
+                                                            <br>
 
-        </html>
+
+
+                                                            <b>E-mail: </b>
+                                                            <%=curUser.getEmail()%>
+                                                                <br>
+                                                                <b>Username: </b>
+                                                                <%=curUser.getUsername()%>
+                                                                    <br>
+                                                                    <b>Date of Birth: </b>
+                                                                    <%=curUser.getBirthdate()%>
+                                                                        <br>
+
+                                                                        <b>Bank account: </b>
+                                                                        <%=curUser.getBankAccount()%>
+                                                                            <br>
+                                                                            <br>
+
+                                                                            <button type="button" class="btn btn-dark"><a href="edit_profile.jsp">Edit</a></button>
+                                                    </div>
+
+                                                </div>
+                                            </center>
+
+                                        </div>
+                            </div>
+                        </section>
+                        <!-- End profile Section -->
+                        <br>
+                        <br>
+                        <br>
+                        <%@ include file="footer.jsp" %>
+
+                </body>
+
+                </html>
