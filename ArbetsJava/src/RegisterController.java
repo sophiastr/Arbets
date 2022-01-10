@@ -84,6 +84,8 @@ public class RegisterController extends HttpServlet {
                 Date bday = sdf.parse(birthday); 
                 User user = new User(firstname, lastname, username, password ,bday, bank, email, 0); 
                 userService.register(user);
+                HttpSession session=request.getSession(); 
+                session.setAttribute("authentication", user);
                 request.setAttribute("success_registration", "Registration completed successfully!");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/find_opportunity.jsp");
                 requestDispatcher.forward(request, response);

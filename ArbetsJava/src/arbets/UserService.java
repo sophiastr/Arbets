@@ -28,7 +28,7 @@ public class UserService {
 					throw new Exception("Sorry, user does not exist!");
 				}
 
-				User user = new User(rs.getString("firstname"),  rs.getString("lastname"), rs.getString("username"), rs.getString("password"), rs.getDate("birthday"), rs.getString("bank_account"), rs.getString("email"), rs.getInt("points")) ;
+				User user = new User(rs.getInt("user_id"), rs.getString("firstname"),  rs.getString("lastname"), rs.getString("username"), rs.getString("password"), rs.getDate("birthday"), rs.getString("bank_account"), rs.getString("email"), rs.getInt("points")) ;
 				return user;
 				
 			} catch (Exception e) {
@@ -47,7 +47,7 @@ public class UserService {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		String sql = "INSERT INTO user (user_id, firstname, lastname, username, password ,birthday, bank_account, email, points) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?);" ;
+		String sql = "INSERT INTO user (firstname, lastname, username, password ,birthday, bank_account, email, points) VALUES (?, ?, ?, ?, ?, ?, ?,?);" ;
 		String checkIfUserExists = "SELECT * FROM user WHERE username =? or email =?;";
 
 		try {
@@ -71,15 +71,15 @@ public class UserService {
 			stmt = con.prepareStatement(sql);
 
 			//set parameters
-            stmt.setInt(1, user.getId());
-			stmt.setString(2, user.getFirstname());
-			stmt.setString(3, user.getSurename());
-            stmt.setString(4, user.getUsername());
-            stmt.setString(5, user.getPassword());
-			stmt.setDate(6, new java.sql.Date(user.getBirthdate().getTime()));
-            stmt.setString(7, user.getBankAccount());
-			stmt.setString(8, user.getEmail());
-            stmt.setInt(9, user.getPoints());
+//            stmt.setInt(1, user.getId());
+			stmt.setString(1, user.getFirstname());
+			stmt.setString(2, user.getSurename());
+            stmt.setString(3, user.getUsername());
+            stmt.setString(4, user.getPassword());
+			stmt.setDate(5, (Date) (user.getBirthdate()));
+            stmt.setString(6, user.getBankAccount());
+			stmt.setString(7, user.getEmail());
+            stmt.setInt(8, user.getPoints());
 			
 			
 			stmt.executeUpdate();

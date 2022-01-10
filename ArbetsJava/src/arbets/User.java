@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class User {
     
-    private int id;
+	private int id;
 	private String firstname;
 	private String surename;
 	private Date birthdate;
@@ -16,11 +16,10 @@ public class User {
 	private String password;
 	private int points;
 	private String bankAccount;
-	private static final AtomicInteger count = new AtomicInteger(3); 
 
-	public User(String firstname, String surename, String username, String password, Date birthdate, String bankAccount, String email,
+	public User(int id, String firstname, String surename, String username, String password, Date birthdate, String bankAccount, String email,
 		 int points) {
-		this.id = count.incrementAndGet();
+		this.id = id;
 		this.firstname = firstname;
 		this.surename = surename;
 		this.birthdate = birthdate;
@@ -30,6 +29,19 @@ public class User {
 		this.points = points;
 		this.bankAccount = bankAccount;
 	}
+	
+	public User(String firstname, String surename, String username, String password, Date birthdate, String bankAccount, String email,
+			 int points) {
+			this.id=-1;
+			this.firstname = firstname;
+			this.surename = surename;
+			this.birthdate = birthdate;
+			this.email = email;
+			this.username = username;
+			this.password = password;
+			this.points = points;
+			this.bankAccount = bankAccount;
+		}
 
 	public int getId() {
 		return id;

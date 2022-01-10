@@ -3,7 +3,6 @@ import java.sql.Date;
 
 import javax.servlet.*;
 	import javax.servlet.http.*;
-	import java.util.*;
 	import arbets.*;
 	import java.text.SimpleDateFormat;
 
@@ -13,20 +12,16 @@ import javax.servlet.*;
 	        response.setContentType("text/html; charset=UTF-8");
 	        PrintWriter out = new PrintWriter(response.getWriter(), true);
 
-	        String id = request.getParameter("user_id");
-	        int userid = Integer.parseInt(id);
+	        int userid = Integer.parseInt(request.getParameter("user_id"));
 	        String oldpassword = request.getParameter("oldpassword");
             
-            String username = request.getParameter("inputUsername");
-	        String email = request.getParameter("inputEmail");
-	        String bank = request.getParameter("bank");
-	        String birthday = request.getParameter("bday");
-            String curpassword = request.getParameter("curpassword");
-	        String newpassword = request.getParameter("newpassword");
+            String username = (String) request.getAttribute("inputUsername");
+	        String email = (String) request.getAttribute("inputEmail");
+	        String bank = (String) request.getAttribute("bank");
+	        String birthday = (String) request.getAttribute("bday");
+            String curpassword = (String) request.getAttribute("curpassword");
+	        String newpassword = (String) request.getAttribute("newpassword");
 	        
-	        
-	        out.print(oldpassword);
-	        out.print(curpassword);
 	        
 	        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -43,7 +38,7 @@ import javax.servlet.*;
 	            s +="&emsp;&emsp;"+ counter+". New password must be at least 6 characters long.<br>";
 	        }
 
-	        if (!curpassword.equals(oldpassword)){
+	        if (curpassword != oldpassword){
 	            counter++;
 	            s+="&emsp;&emsp;"+ counter + ". Old password does not match.<br>";
 	        }
