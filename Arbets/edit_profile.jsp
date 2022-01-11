@@ -63,34 +63,60 @@
 
                                                                     <form action="<%=request.getContextPath()%>/servlet/EditProfileServlet" method="POST">
 
-                                                                        <div class="row g-3 ">
+                                                                        <div class="row ">
                                                                             <div class="col-3" style="text-align: left;">
                                                                                 <label for="inputEmail" class="col-form-label" style="text-align: left;">E-mail</label>
                                                                             </div>
-                                                                            <div class="col-7">
-                                                                                <input type="email" name="inputEmail" class="form-control" aria-describedby="emailHelp">
+
+                                                                            
+                                                                            <div class="col-6 " >
+                                                                                <span id="textjs_email"><%=curUser.getEmail()%></span>
+                                                                                <span id="inputjs_email" style="display: none;" ><input  type="email" name="inputEmail" class="form-control" aria-describedby="emailHelp" ></span>
+                                                                              
                                                                             </div>
+                                                                            <div class="col-1 " >
+                                                                                <button type="button" class="btn" onclick="myFunction('inputjs_email','textjs_email') "><i class="bi bi-pencil"></i></button>
+                                                                            </div>
+                                                                        
+                                                                       
+                                                                                                
+
+
                                                                         </div>
                                                                         <br>
 
-                                                                        <div class="row g-3 ">
+                                                                        <div class="row ">
                                                                             <div class="col-3" style="text-align: left;">
                                                                                 <label for="inputUsername" class="col-form-label">Username</label>
                                                                             </div>
-                                                                            <div class="col-7">
-                                                                                <input type="text" name="inputUsername" class="form-control" aria-describedby="username">
+                                                                            <div class="col-6">
+                                                                                <span id="textjs_username"><%=curUser.getUsername()%></span>
+                                                                                <span id="inputjs_username" style="display: none;" ><input type="text" name="inputUsername" class="form-control" aria-describedby="username"></span>
                                                                             </div>
+
+                                                                            <div class="col-1" >
+                                                                                <button type="button" class="btn" onclick="myFunction('inputjs_username','textjs_username') "><i class="bi bi-pencil"></i></button>
+                                                                            </div>
+
+
                                                                         </div>
 
                                                                         <br>
 
-                                                                        <div class="row g-3 ">
+                                                                        <div class="row ">
                                                                             <div class="col-3" style="text-align: left;">
                                                                                 <label for="bday" class="col-form-label">Date of Birth</label>
                                                                             </div>
-                                                                            <div class="col-7">
-                                                                                <input type="date" name="bday" class="form-control" aria-describedby="Birthday">
+                                                              
+                                                                            <div class="col-6">
+                                                                                <span id="textjs_bday"><%=curUser.getBirthdate()%></span>
+                                                                                <span id="inputjs_bday" style="display: none;" > <input type="date" name="bday" class="form-control" aria-describedby="Birthday"></span>
                                                                             </div>
+                                                                            <div class="col-1" >
+                                                                                <button type="button" class="btn" onclick="myFunction('inputjs_bday','textjs_bday') "><i class="bi bi-pencil"></i></button>
+                                                                            </div>
+
+
                                                                         </div>
                                                                         <br>
 
@@ -98,32 +124,43 @@
                                                                             <div class="col-3" style="text-align: left;">
                                                                                 <label for="bank" class="col-form-label">Bank account</label>
                                                                             </div>
-                                                                            <div class="col-7">
-                                                                                <input type="text" name="bank" class="form-control" aria-describedby="Bank">
+                                                                            <div class="col-6">
+                                                                                <span id="textjs_bank"><%=curUser.getBankAccount()%></span>
+                                                                                <span id="inputjs_bank" style="display: none;" ><input type="text" name="bank" class="form-control" aria-describedby="Bank"></span>
                                                                             </div>
+                                                                            <div class="col-1" >
+                                                                                <button type="button" class="btn" onclick="myFunction('inputjs_bank','textjs_bank') "><i class="bi bi-pencil"></i></button>
+                                                                            </div>
+
+
                                                                         </div>
                                                                         <br>
 
 
-                                                                        <div class="row g-3 ">
+                                                                        <div class="row">
                                                                             <div class="col-3" style="text-align: left;">
                                                                                 <label for="password" class="col-form-label">Current Password</label>
                                                                             </div>
-                                                                            <div class="col-7">
-                                                                                <input type="password" name="curpassword" class="form-control" aria-describedby="Bank">
+                                                                            <div class="col-6">
+                                                                                <span id="textjs_password">************</span>
+                                                                                <span class="inputjs_password" style="display: none;" ><input type="password" name="curpassword" class="form-control" aria-describedby="Bank"></span>
+                                                                            </div>
+                                                                            <div class="col-1" >
+                                                                                <button type="button" class="btn" onclick="myFunction2('inputjs_password','textjs_password') "><i class="bi bi-pencil"></i></button>
                                                                             </div>
                                                                         </div>
 
                                                                         <br>
-
-                                                                        <div class="row g-3 ">
+                                                                        
+                                                                        <div  class="row g-3 ">
                                                                             <div class="col-3" style="text-align: left;">
-                                                                                <label for="confpassword" class="col-form-label">New Password</label>
+                                                                                <label   for="confpassword"  style="display: none;" class="col-form-label inputjs_password">New Password</label>
                                                                             </div>
                                                                             <div class="col-7">
-                                                                                <input type="password" name="newpassword" class="form-control" aria-describedby="Bank">
+                                                                                 <input type="password" name="newpassword"  style="display: none;" class="form-control inputjs_password" aria-describedby="Bank">
                                                                             </div>
                                                                         </div>
+                                                                 
                                                                         <br>
                                                                         <br>
 
@@ -146,6 +183,31 @@
                         <br>
                         <br>
                         <br>
+                        <script>function myFunction(type,text) {
+                            document.getElementById(text).innerHTML = "";
+                            var text = document.getElementById(type);
+                            if (!text.style.display) {
+                text.style.display = "none";
+            }
+            if (text.style.display === "none") {
+                text.style.display = "block";
+            } 
+        }
+        function myFunction2(type,text) {
+                            document.getElementById(text).innerHTML = "";
+                           var elements = document.getElementsByClassName(type);
+
+                            for(var i = 0; i < elements.length; i++) {
+                                
+                                if (!elements[i].style.display) {
+                                    elements[i].style.display = "none";
+                                        }
+                                        if (elements[i].style.display === "none") {
+                                            elements[i].style.display = "block";
+                                        }
+                                     }
+                                    }
+                          </script>
                         <%@ include file="footer.jsp" %>
 
                 </body>
