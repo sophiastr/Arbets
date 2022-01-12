@@ -1,7 +1,7 @@
 import java.io.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
-
+import arbets.*;
 /**
  * A short Description here
  *
@@ -45,6 +45,10 @@ public class CalculatorServlet extends HttpServlet {
     if (am != null) {
       amount = Float.parseFloat(am);
     }
+    Bet bet1 = new Bet(-1, od1, -1, -1, -1);
+    Bet bet2 = new Bet(-1, -1, od2, -1, -1);
+    
+    
     float skata = od1 + od2;
     String me = Float.toString(skata);
     try {
