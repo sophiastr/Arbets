@@ -27,15 +27,15 @@ public class EditProfileServlet extends HttpServlet {
 		String s = "";
 		int counter = 0;
 
-		if (username == null) {
+		if (username == "") {
 			username = curUser.getUsername();
 		} else if (username.length() < 5) {
 			out.print(username.length());
 			counter++;
-			s += "&emsp;&emsp;" + username + ". Username must"+ username + "be at least 5 characters long.<br>";
+			s += "&emsp;&emsp;" + username + ". Username must "+ username + "be at least 5 characters long.<br>";
 		}
 
-		if (curpassword == null || newpassword == null) {
+		if (curpassword == "" || newpassword == "") {
 			newpassword = curUser.getPassword();
 		} else {
 			if (newpassword.length() < 6) {
@@ -48,7 +48,7 @@ public class EditProfileServlet extends HttpServlet {
 			}
 		}
 
-		if (bank == null) {
+		if (bank == "") {
 			bank = curUser.getBankAccount();
 		} else if (bank.length() != 20) {
 			counter++;
@@ -59,7 +59,7 @@ public class EditProfileServlet extends HttpServlet {
 		java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
 		java.util.regex.Matcher m = p.matcher(email);
 
-		if (email == null) {
+		if (email == "") {
 			email = curUser.getEmail();
 		} else if (!m.matches()) {
 			counter++;
