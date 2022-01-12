@@ -1,12 +1,12 @@
 package arbets;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Date;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class User {
-    
+
 	private int id;
 	private String firstname;
 	private String surename;
@@ -17,8 +17,8 @@ public class User {
 	private int points;
 	private String bankAccount;
 
-	public User(int id, String firstname, String surename, String username, String password, Date birthdate, String bankAccount, String email,
-		 int points) {
+	public User(int id, String firstname, String surename, String username, String password, Date birthdate,
+			String bankAccount, String email, int points) {
 		this.id = id;
 		this.firstname = firstname;
 		this.surename = surename;
@@ -29,19 +29,19 @@ public class User {
 		this.points = points;
 		this.bankAccount = bankAccount;
 	}
-	
-	public User(String firstname, String surename, String username, String password, Date birthdate, String bankAccount, String email,
-			 int points) {
-			this.id=-1;
-			this.firstname = firstname;
-			this.surename = surename;
-			this.birthdate = birthdate;
-			this.email = email;
-			this.username = username;
-			this.password = password;
-			this.points = points;
-			this.bankAccount = bankAccount;
-		}
+
+	public User(String firstname, String surename, String username, String password, Date birthdate, String bankAccount,
+			String email, int points) {
+		this.id = -1;
+		this.firstname = firstname;
+		this.surename = surename;
+		this.birthdate = birthdate;
+		this.email = email;
+		this.username = username;
+		this.password = password;
+		this.points = points;
+		this.bankAccount = bankAccount;
+	}
 
 	public int getId() {
 		return id;
@@ -114,9 +114,10 @@ public class User {
 	public void setBankAccount(String bankAccount) {
 		this.bankAccount = bankAccount;
 	}
-	//na bei sthn userservice
+
+	// na bei sthn userservice
 	public static String getNameByUserId(int id) throws Exception {
-		
+
 		DB db = new DB();
 		Connection con = null;
 		PreparedStatement stmt = null;
@@ -126,37 +127,35 @@ public class User {
 		try {
 			con = db.getConnection();
 			stmt = con.prepareStatement(sql);
-			
-			// set parameters 
+
+			// set parameters
 			stmt.setInt(1, id);
-			
 
 			rs = stmt.executeQuery();
 
-			if (!rs.next()){
+			if (!rs.next()) {
 				rs.close();
 				stmt.close();
 				db.close();
 			}
 
-			
 			return rs.getString("username");
-			
+
 		} catch (Exception e) {
 			throw new Exception(e.getMessage());
-		} finally{
+		} finally {
 			try {
 				db.close();
 			} catch (Exception e) {
-				
+
 			}
-        }
+		}
 	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", firstname=" + firstname + ", surename=" + surename + ", email=" + email
 				+ ", username=" + username + ", password=" + password + "]";
 	}
-
 
 }

@@ -21,58 +21,61 @@
                         <!-- ======= profile Section ======= -->
                         <section id="profile" class="profile">
                             <div class="container">
-                                <%
-                                if (request.getAttribute("success_edit") != null) {
-            %>
-                                    <div class="alert alert-danger">
 
-                                        <%=(String)request.getAttribute("success_edit") %>
+                                <div class="row">
+                                    <center>
+                                        <div class="col-md-12 offset-md-1">
+                                            <div class="col-lg-6 col-md-6 d-flex align-items-center" data-aos="zoom-in">
+                                                <div class="member">
+                                                    <%
+                                                        if (request.getAttribute("success_edit") != null) {
+                                    %>
+                                                        <div class="alert alert-success">
 
-                                    </div>
-                                    <%
-                                }
-                                %>
-                                        <div class="row">
-                                            <center>
-                                                <div class="col-lg-6 col-md-6 d-flex align-items-center" data-aos="zoom-in">
-                                                    <div class="member">
-                                                        <img src="assets/img/team/team-2.jpg" alt="">
+                                                            <%=(String)request.getAttribute("success_edit") %>
 
-
-
-                                                        <h4>
-                                                            <%=curUser.getFirstname()%>
-                                                                <%=curUser.getSurename()%>
-                                                        </h4>
-                                                        <span>My account</span>
-                                                        <b>Points: </b>
-                                                        <%=curUser.getPoints()%>
-                                                            <br>
+                                                        </div>
+                                                        <%
+                                                        }
+                                                        %>
+                                                            <img src="assets/img/team/team-2.jpg" alt="">
 
 
 
-                                                            <b>E-mail: </b>
-                                                            <%=curUser.getEmail()%>
+                                                            <h4>
+                                                                <%=curUser.getFirstname()%>
+                                                                    <%=curUser.getSurename()%>
+                                                            </h4>
+                                                            <span>My account</span>
+                                                            <b>Points: </b>
+                                                            <%=curUser.getPoints()%>
                                                                 <br>
-                                                                <b>Username: </b>
-                                                                <%=curUser.getUsername()%>
+
+
+
+                                                                <b>E-mail: </b>
+                                                                <%=curUser.getEmail()%>
                                                                     <br>
-                                                                    <b>Date of Birth: </b>
-                                                                    <%=curUser.getBirthdate()%>
+                                                                    <b>Username: </b>
+                                                                    <%=curUser.getUsername()%>
                                                                         <br>
-
-                                                                        <b>Bank account: </b>
-                                                                        <%=curUser.getBankAccount()%>
-                                                                            <br>
+                                                                        <b>Date of Birth: </b>
+                                                                        <%=curUser.getBirthdate()%>
                                                                             <br>
 
-                                                                            <button type="button" class="btn btn-dark"><a href="edit_profile.jsp">Edit</a></button>
-                                                    </div>
+                                                                            <b>Bank account: </b>
+                                                                            <%=curUser.getBankAccount()%>
+                                                                                <br>
+                                                                                <br>
 
+                                                                                <button type="button" class="btn btn-dark"><a href="edit_profile.jsp">Edit</a></button>
                                                 </div>
-                                            </center>
 
+                                            </div>
                                         </div>
+                                    </center>
+
+                                </div>
                             </div>
                         </section>
                         <!-- End profile Section -->
