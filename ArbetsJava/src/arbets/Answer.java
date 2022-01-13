@@ -79,22 +79,22 @@ public boolean isSolution() {
 }
 public static void setSolution(int answerId) throws Exception {
 	String sql = "UPDATE answer SET is_solution = True WHERE answer_id=?;";
+	String sqlPoints = "UPDATE user SET points = points + 100 WHERE (SELECT answer.user_id FROM answer WHERE answer.answer_id = ?) = user.user_id;";
     DB db = new DB();
 
     try {
         Connection con = db.getConnection();
         PreparedStatement stmt = con.prepareStatement(sql);
-     
-        stmt.setInt(1,answerId);
         
-
+        stmt.setInt(1,answerId);
         stmt.executeUpdate();
 
+        stmt = con.prepareStatement(sqlPoints);
+        stmt.setInt(1,answerId);
+        stmt.executeUpdate();
         
         stmt.close(); //closing PreparedStatement
         db.close(); //closing Connection
-
-        
 
     } catch (Exception e) {
 
@@ -293,6 +293,41 @@ public static List<Answer> getAnswersOfPost(Post post) throws Exception{
         
     }
 	
+}
+
+public static void deleteAns(int answerId) throws Exception {
+	String sql = "DELETE FROM answer WHERE answer_id = ?;";
+    DB db = new DB();
+
+    try {
+        Connection con = db.getConnection();
+        PreparedStatement stmt = con.prepareStatement(sql);
+     
+        stmt.setInt(1,answerId);
+        
+
+        stmt.executeUpdate();
+
+        
+        stmt.close(); //closing PreparedStatement
+        db.close(); //closing Connection
+
+        
+
+    } catch (Exception e) {
+
+        throw new Exception(e.getMessage());
+
+    } finally {
+
+        try {
+            db.close();
+        } catch (Exception e) {
+            
+        }
+
+    }
+
 }
 
 @Override

@@ -213,6 +213,40 @@ public static List<Post> getPosts() throws Exception {
         }
     
 	}
+public static void deletePost(int postId) throws Exception {
+	String sql = "DELETE FROM post WHERE post_id = ?;";
+    DB db = new DB();
+
+    try {
+        Connection con = db.getConnection();
+        PreparedStatement stmt = con.prepareStatement(sql);
+     
+        stmt.setInt(1,postId);
+        
+
+        stmt.executeUpdate();
+
+        
+        stmt.close(); //closing PreparedStatement
+        db.close(); //closing Connection
+
+        
+
+    } catch (Exception e) {
+
+        throw new Exception(e.getMessage());
+
+    } finally {
+
+        try {
+            db.close();
+        } catch (Exception e) {
+            
+        }
+
+    }
+
+}
 	@Override
 	public String toString() {
 		return "Post [postId=" + postId + ", text=" + text + ", userId=" + userId + ", dateTime=" + dateTime

@@ -34,9 +34,13 @@
                                                         <div class="card-header d-flex justify-content-between p-3 " style="align-items: center;">
                                                             <p class="fw-bold mb-0"><%=User.getNameByUserId(post.getUserId())%></p>
                                                             <p class="text-muted small mb-0"><i class="far fa-clock"></i> <%= new SimpleDateFormat("MM/dd/yyyy HH:mm").format(post.getDateTime())%></p>
-                                                            <div><a href="<%=request.getContextPath()%>/servlet/PostCommentController?upvote=true&postId=<%=post.getPostId()%>" >Like       </a><%=post.getUpvote()%></div>
-                                                            <div><a href="<%=request.getContextPath()%>/servlet/PostCommentController?downvote=true&postId=<%=post.getPostId()%>" >Dislike        </a><%=post.getDownvote()%></div>
+                                                            <div><a title="Like Post" href="<%=request.getContextPath()%>/servlet/PostCommentController?upvote=true&postId=<%=post.getPostId()%>" ><i class="bi bi-hand-thumbs-up"></i>       </a><%=post.getUpvote()%></div>
+                                                            <div><a title="Dislike Post" href="<%=request.getContextPath()%>/servlet/PostCommentController?downvote=true&postId=<%=post.getPostId()%>" ><i class="bi bi-hand-thumbs-down"></i>         </a><%=post.getDownvote()%></div>
                                                              <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Answer</button>
+                                                             <%if(regUser.getId()==post.getUserId()){%>
+                                                                <a href="<%=request.getContextPath()%>/servlet/PostCommentController?deletePost=true&postId=<%=post.getPostId()%>"><button type="button" title="Delete Post" class="btn btn-outline-secondary">
+                                                                    <i class="bi bi-x-circle"></i></button></a>
+                                                            <%}%>
                                                             
                                                        
 
@@ -48,7 +52,7 @@
                                                                       <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                                     </div>
                                                                     <div class="modal-body">
-                                                                      <form action="<%=request.getContextPath()%>/servlet/PostCommentController?answer=true&userId=<%=regUser.getId()%>&postId=<%=post.getPostId()%>" method="POST">
+                                                                      <form action="<%=request.getContextPath()%>/servlet/PostCommentController?answer=true&postId=<%=post.getPostId()%>" method="POST">
                                                                         
                                                                         <div class="mb-5">
                                                                           
@@ -79,14 +83,25 @@
                                                                 <div class="card-header d-flex justify-content-between p-3">
                                                                     <p class="fw-bold mb-0"><%=User.getNameByUserId(an.getUserId())%></p>
                                                                     <p class="text-muted small mb-0"><i class="far fa-clock"></i> <%=new SimpleDateFormat("MM/dd/yyyy HH:mm").format(an.getDateTime())%></p>
-                                                                    <div><a href="<%=request.getContextPath()%>/servlet/PostCommentController?upvote=true&answerId=<%=an.getAnswerId()%>">Like       </a><%=an.getUpvote()%></div>
-                                                                    <div><a href="<%=request.getContextPath()%>/servlet/PostCommentController?downvote=true&answerId=<%=an.getAnswerId()%>">Dislike        </a><%=an.getDownvote()%></div>
-                                                                    <%if(!an.isSolution() && regUser.getId()==post.getPostId()){%>
-                                                                        <a href="<%=request.getContextPath()%>/servlet/PostCommentController?solution=true&answerId=<%=an.getAnswerId()%>">Correct Answer!</a>
+                                                                    <div><a title="Like Answer" href="<%=request.getContextPath()%>/servlet/PostCommentController?upvote=true&answerId=<%=an.getAnswerId()%>"><i class="bi bi-hand-thumbs-up"></i>      </a><%=an.getUpvote()%></div>
+                                                                    <div><a title="Dislike Answer" href="<%=request.getContextPath()%>/servlet/PostCommentController?downvote=true&answerId=<%=an.getAnswerId()%>"><i class="bi bi-hand-thumbs-down"></i>         </a><%=an.getDownvote()%></div>
+                                                                    <%if(!an.isSolution() && regUser.getId()==post.getUserId()){%>
+                                                                        <a title="Correct Answer" href="<%=request.getContextPath()%>/servlet/PostCommentController?solution=true&answerId=<%=an.getAnswerId()%>"><i class="bi bi-check2"></i></a>
+                                                                        
                                                                     <%}%>
                                                                     <%if(an.isSolution()){%>
-                                                                       Solution &#9745;  
+                                                                        <button title="Correct Answer" class="btn float-end">
+                                                                            <i  class="bi bi-check2-circle"></i>
+                                                                        </button>
+                                                                         
                                                                     <%}%>
+                                                                    <%if(regUser.getId()==an.getUserId()){%>
+                                                                        
+                                                                            <a href="<%=request.getContextPath()%>/servlet/PostCommentController?deleteAns=true&answerId=<%=an.getAnswerId()%>"><button type="button" title="Delete Answer" class="btn btn-outline-secondary">
+                                                                                <i class="bi bi-x-circle"></i></button></a>
+                                                                          
+                                                                    <%}%>
+                                                                    
 
                                                                 </div>
                                                                 <div class="card-body">
@@ -100,16 +115,15 @@
                                                   <%  }
                                             }
                                                 %>
-                                            #na mhn fenete oi parametroi
-                                            <%=regUser%>
-                                            <form  action="<%=request.getContextPath()%>/servlet/PostCommentController?upload=true&userId=<%=regUser.getId()%>" method="POST" class="form-horizontal">
+                                            
+                                            <form  action="<%=request.getContextPath()%>/servlet/PostCommentController?upload=true" method="POST" class="form-horizontal">
                                             <li class="bg-white mb-3">
                                                 
                                                 <div class="form-outline">
                                                     <textarea class="form-control" name="text" id="textAreaExample2" rows="4" placeholder="Upload a message"></textarea>
                                                 </div>
                                             </li>
-                                            <button type="submit" class="btn btn-outline-dark float-end">Upload</button>
+                                            <button type="submit"  class="btn btn-outline-dark float-end">Upload</button>
                                         </form>
                                         </ul>
 

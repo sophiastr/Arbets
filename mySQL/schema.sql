@@ -16,13 +16,13 @@ DROP TABLE user;
 /*DROP TABLE user;*/
 CREATE TABLE user 
 				(user_id int not null primary key auto_increment,
-                  firstname varchar(20),
-                  lastname  varchar(20),
-                  username varchar(20),
-                  password varchar(20),
+                  firstname varchar(50),
+                  lastname  varchar(50),
+                  username varchar(50),
+                  password varchar(50),
                   birthday date,
-                  bank_account varchar(20),
-                  email varchar(20),
+                  bank_account varchar(30),
+                  email varchar(50),
                   points int check (points>=0)
                   );
                

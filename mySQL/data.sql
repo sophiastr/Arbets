@@ -121,7 +121,7 @@ insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values
 
 
 insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Sophia", "Sotiropoulou", "sophia_str", "sophia123", "2001-07-19", "GR125347902563789222", "sophiastr@gamil.com", 100);
-insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Melenia", "Bempedeli", "melenia_bebedeli", "melenia123", "2001-11-29", "GR347927937025637892", "meleniabe@gamil.com", 150);
+insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Melenia", "Bempedeli", "melenia_bebedeli", "melenia123", "2001-11-29", "GR347927937025637892", "meleniabe@gamil.com", 100);
 insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Anna", "Mastori", "mastori_anna", "mastoriii", "2001-02-04", "GR908567832563789999", "mastori@gamil.com", 200);
 
 insert into guest_user(register_date, status) values("2021-11-09", 1);
