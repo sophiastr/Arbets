@@ -77,10 +77,10 @@ public void setPostId(int postId) {
 public boolean isSolution() {
 	return isSolution;
 }
-public static void setSolution(int answerId) throws Exception {
+public static void setSolution(int answerId, DB db) throws Exception {
 	String sql = "UPDATE answer SET is_solution = True WHERE answer_id=?;";
 	String sqlPoints = "UPDATE user SET points = points + 100 WHERE (SELECT answer.user_id FROM answer WHERE answer.answer_id = ?) = user.user_id;";
-    DB db = new DB();
+    
 
     try {
         Connection con = db.getConnection();
@@ -113,10 +113,10 @@ public static void setSolution(int answerId) throws Exception {
 }
 
 
-public static void createAnswer(String text,int userId,int postId) throws Exception {
+public static void createAnswer(String text,int userId,int postId, DB db) throws Exception {
 	
 	String sql = "insert into answer(text,date_time, user_id, upvote, downvote, is_solution, post_id) values(?,?, ?, ?, ?, ?, ?);";
-    DB db = new DB();
+    
 
     try {
         Connection con = db.getConnection();
@@ -155,12 +155,12 @@ public static void createAnswer(String text,int userId,int postId) throws Except
     }
 
 }
-public static List<Answer> getAnswers() throws Exception {
+public static List<Answer> getAnswers( DB db) throws Exception {
     
     List<Answer> answers = new ArrayList<>();
 
     String sql = "SELECT * FROM answer;";
-    DB db = new DB();
+   
     
     try {
         Connection con = db.getConnection();
@@ -192,9 +192,9 @@ public static List<Answer> getAnswers() throws Exception {
     }
 
 }
-public static void upvote(int answerId) throws Exception {
+public static void upvote(int answerId, DB db) throws Exception {
 	String sql = "UPDATE answer SET upvote = upvote+1 WHERE answer_id=?;";
-    DB db = new DB();
+   
 
     try {
         Connection con = db.getConnection();
@@ -226,9 +226,9 @@ public static void upvote(int answerId) throws Exception {
     }
 
 }
-public static void downvote(int answerId) throws Exception {
+public static void downvote(int answerId, DB db) throws Exception {
 	String sql = "UPDATE answer SET downvote = downvote+1 WHERE answer_id=?;";
-    DB db = new DB();
+    
 
     try {
         Connection con = db.getConnection();
@@ -260,10 +260,10 @@ public static void downvote(int answerId) throws Exception {
     }
 
 }
-public static List<Answer> getAnswersOfPost(Post post) throws Exception{
+public static List<Answer> getAnswersOfPost(Post post, DB db) throws Exception{
 	List<Answer> answers = new ArrayList<Answer>();
 	String sql = "SELECT * FROM answer where post_id= ?;";
-    DB db = new DB();
+  
     try {
         Connection con = db.getConnection();
         PreparedStatement stmt = con.prepareStatement(sql);
@@ -295,9 +295,9 @@ public static List<Answer> getAnswersOfPost(Post post) throws Exception{
 	
 }
 
-public static void deleteAns(int answerId) throws Exception {
+public static void deleteAns(int answerId, DB db) throws Exception {
 	String sql = "DELETE FROM answer WHERE answer_id = ?;";
-    DB db = new DB();
+
 
     try {
         Connection con = db.getConnection();

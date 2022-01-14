@@ -23,6 +23,10 @@ public class LoginController extends HttpServlet {
             //request.setAttribute("user", user);
             HttpSession session=request.getSession(); 
             session.setAttribute("authentication", user);
+            DB db = new DB();
+            session.setAttribute("db", db);
+            
+            
         } catch (Exception e) {
             request.setAttribute("error_message", e.getMessage());
            

@@ -25,7 +25,8 @@
                                     <div class="col-lg-6 col-mg-6 col-xl-12">
                                         <ul class="list-unstyled">                                            
                                             <%
-                                            List<Post> posts= Post.getPosts();
+                                            DB db = (DB) session.getAttribute("db");
+                                            List<Post> posts= Post.getPosts( db);
                                            
                                             for(Post post:posts){%>
                                                 <li class="d-flex justify-content-between mb-4">
@@ -76,7 +77,7 @@
                                                         </div>
                                                     </div>
                                                 </li><%
-                                                List<Answer> ans =Answer.getAnswersOfPost(post) ;
+                                                List<Answer> ans =Answer.getAnswersOfPost(post,db ) ;
                                                     for (Answer an:ans){%>
                                                         <li class="d-flex justify-content-between mb-4">
                                                             <div class="card w-100">

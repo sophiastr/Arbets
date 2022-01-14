@@ -65,9 +65,9 @@ public class Post {
 	public void setDownvote(int downvote) {
 		this.downvote = downvote;
 	}
-	public static void upvote(int postId) throws Exception {
+	public static void upvote(int postId, DB db) throws Exception {
 		String sql = "UPDATE post SET upvote = upvote+1 WHERE post_id=?;";
-	    DB db = new DB();
+	   
 
 	    try {
 	        Connection con = db.getConnection();
@@ -99,9 +99,9 @@ public class Post {
 	    }
 
 	}
-	public static void downvote(int postId) throws Exception {
+	public static void downvote(int postId, DB db) throws Exception {
 		String sql = "UPDATE post SET downvote = downvote+1 WHERE post_id=?;";
-	    DB db = new DB();
+	    
 
 	    try {
 	        Connection con = db.getConnection();
@@ -133,10 +133,10 @@ public class Post {
 	    }
 
 	}
-	public static void createPost(String text,int userId) throws Exception {
+	public static void createPost(String text,int userId,DB db) throws Exception {
 		
 		String sql = "insert into post(text,date_time, user_id, upvote, downvote) values(?,?, ?, ?, ?);";
-	    DB db = new DB();
+	  
 
 	    try {
 	        Connection con = db.getConnection();
@@ -176,12 +176,12 @@ public class Post {
 	}
 	
 	
-public static List<Post> getPosts() throws Exception {
+public static List<Post> getPosts(DB db) throws Exception {
         
         List<Post> posts = new ArrayList<>();
 
         String sql = "SELECT * FROM post;";
-        DB db = new DB();
+       
 
         try {
             Connection con = db.getConnection();
@@ -213,9 +213,9 @@ public static List<Post> getPosts() throws Exception {
         }
     
 	}
-public static void deletePost(int postId) throws Exception {
+public static void deletePost(int postId, DB db) throws Exception {
 	String sql = "DELETE FROM post WHERE post_id = ?;";
-    DB db = new DB();
+    
 
     try {
         Connection con = db.getConnection();

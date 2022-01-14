@@ -3,6 +3,7 @@
 	import arbets.Answer;
 import arbets.Post;
 import arbets.User;
+import arbets.DB;
 
 import java.io.IOException;
 	import java.io.PrintWriter;
@@ -32,6 +33,7 @@ import javax.servlet.http.HttpSession;
 	    String answerId =request.getParameter("answerId");
 	    HttpSession session = request.getSession();
 		User curUser = (User) session.getAttribute("authentication");
+		DB db = (DB) session.getAttribute("db");
 		
 	    try
 	    {
@@ -48,14 +50,14 @@ import javax.servlet.http.HttpSession;
 	        text = new String(text.getBytes("ISO-8859-1"), "UTF-8");
 	        
 	        
-	        Post.createPost(text, userid);
+	        Post.createPost(text, userid,db);
 	      }
 	      if (sol != null)
 	      {
 	      
 	        
 	        int id = Integer.valueOf(answerId).intValue();
-	        Answer.setSolution(id);
+	        Answer.setSolution(id,db);
 	      }
 	      if (answer != null)
 	      {
@@ -65,17 +67,17 @@ import javax.servlet.http.HttpSession;
 	        
 	        
 	        int id = Integer.valueOf(postId).intValue();
-	       Answer.createAnswer(text, userid, id);
+	       Answer.createAnswer(text, userid, id, db);
 	      }
 	      
 	      if (upvote!=null) {
 	    	
 		        if (postId!=null) {
 		        int id = Integer.valueOf(postId).intValue();
-		        Post.upvote(id);
+		        Post.upvote(id, db);
 		        }else {
 		        	 int id = Integer.valueOf(answerId).intValue();
-				     Answer.upvote(id);
+				     Answer.upvote(id, db);
 		        	
 		        }
 	      }
@@ -84,10 +86,10 @@ import javax.servlet.http.HttpSession;
 		    	
 		        if (postId!=null) {
 		        int id = Integer.valueOf(postId).intValue();
-		        Post.downvote(id);
+		        Post.downvote(id, db);
 		        }else {
 		        	 int id = Integer.valueOf(answerId).intValue();
-				     Answer.downvote(id);
+				     Answer.downvote(id, db);
 		        	
 		        }
 	      }
@@ -95,14 +97,14 @@ import javax.servlet.http.HttpSession;
 	      if (deleteAns != null) {
 		    	
 	    	  int id = Integer.valueOf(answerId).intValue();
-	    	  Answer.deleteAns(id);
+	    	  Answer.deleteAns(id, db);
 		        
 	      }
 	      
 	      if (deletePost != null) {
 		    	
 	    	  int id = Integer.valueOf(postId).intValue();
-	    	  Post.deletePost(id);
+	    	  Post.deletePost(id, db);
 		        
 	      }
 	      
