@@ -24,7 +24,7 @@
 
                                 <div class="row">
                                     <center>
-                                        <div class="col-md-12 offset-md-1">
+                                        <div class="col-md-12">
                                             <div class="col-lg-6 col-md-6 d-flex align-items-center" data-aos="zoom-in">
                                                 <div class="member">
                                                     <%
@@ -38,7 +38,7 @@
                                                         <%
                                                         }
                                                         %>
-                                                            <img src="assets/img/team/team-2.jpg" alt="">
+                                                            <img src="assets/img/team/profile_pic.png" alt="prifile_picture">
 
 
 
@@ -60,7 +60,13 @@
                                                                     <%=curUser.getUsername()%>
                                                                         <br>
                                                                         <b>Date of Birth: </b>
-                                                                        <%=curUser.getBirthdate()%>
+                                                                        <%
+                                                                        Calendar cal = Calendar.getInstance();
+cal.setTime(curUser.getBirthdate());
+String formatedDate = cal.get(Calendar.DATE) + "/" + (cal.get(Calendar.MONTH) + 1) + "/" + cal.get(Calendar.YEAR);
+out.print(formatedDate);
+                                                                        %>
+
                                                                             <br>
 
                                                                             <b>Bank account: </b>

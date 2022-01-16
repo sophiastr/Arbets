@@ -1,6 +1,7 @@
 package arbets;
 
 import java.sql.*;
+import java.util.Calendar;
 
 public class UserService {
 
@@ -70,6 +71,9 @@ public class UserService {
 				throw new Exception("Sorry, username or email already registered!");
 			}
 
+			
+		    java.sql.Date sqlDate = new java.sql.Date(user.getBirthdate().getTime());
+		    
 			stmt = con.prepareStatement(sql);
 
 			// set parameters
@@ -78,7 +82,7 @@ public class UserService {
 			stmt.setString(2, user.getSurename());
 			stmt.setString(3, user.getUsername());
 			stmt.setString(4, user.getPassword());
-			stmt.setDate(5, (Date) (user.getBirthdate()));
+			stmt.setDate(5, sqlDate);
 			stmt.setString(6, user.getBankAccount());
 			stmt.setString(7, user.getEmail());
 			stmt.setInt(8, user.getPoints());

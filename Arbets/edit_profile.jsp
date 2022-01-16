@@ -23,7 +23,7 @@
 
                                 <div class="row">
                                     <center>
-                                        <div class="col-md-12 offset-md-1">
+                                        <div class="col-md-12">
                                             <div class="col-lg-6 col-md-6 d-flex align-items-center" data-aos="zoom-in">
 
                                                 <div class="member">
@@ -50,7 +50,7 @@
                                                                 <%
                             }
                             %>
-                                                                    <img src="assets/img/team/team-2.jpg" alt="">
+                                                                    <img src="assets/img/team/profile_pic.png" alt="">
 
                                                                     <h4>
                                                                         <%=curUser.getFirstname()%>

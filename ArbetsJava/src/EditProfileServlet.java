@@ -65,12 +65,14 @@ public class EditProfileServlet extends HttpServlet {
 			counter++;
 			s += "&emsp;&emsp;" + counter + ". Incorrect formation of email.<br>";
 		}
-
+		User user;
 		if (counter == 0) {
 			UserService userService = new UserService();
 			try {
 				userService.editProf(userid, username, bank, email, newpassword);
 				request.setAttribute("success_edit", "Edit completed successfully!");
+				user = userService.authenticate(username, newpassword);
+				session.setAttribute("authentication", user);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/profile.jsp");
 				requestDispatcher.forward(request, response);
 			} catch (Exception e) {
