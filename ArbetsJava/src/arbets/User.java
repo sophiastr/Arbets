@@ -115,42 +115,6 @@ public class User {
 		this.bankAccount = bankAccount;
 	}
 
-	// na bei sthn userservice
-	public static String getNameByUserId(int id) throws Exception {
-
-		DB db = new DB();
-		Connection con = null;
-		PreparedStatement stmt = null;
-		ResultSet rs = null;
-		String sql = "SELECT username FROM user WHERE user_id=?;";
-
-		try {
-			con = db.getConnection();
-			stmt = con.prepareStatement(sql);
-
-			// set parameters
-			stmt.setInt(1, id);
-
-			rs = stmt.executeQuery();
-
-			if (!rs.next()) {
-				rs.close();
-				stmt.close();
-				db.close();
-			}
-
-			return rs.getString("username");
-
-		} catch (Exception e) {
-			throw new Exception(e.getMessage());
-		} finally {
-			try {
-				db.close();
-			} catch (Exception e) {
-
-			}
-		}
-	}
 
 	@Override
 	public String toString() {

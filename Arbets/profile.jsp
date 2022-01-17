@@ -4,6 +4,8 @@
 
             <%
             User curUser = (User)session.getAttribute("authentication");
+            UserService us= new UserService();
+            DB db = (DB) session.getAttribute("db");
             %>
                 <!DOCTYPE html>
                 <html lang="en">
@@ -38,7 +40,7 @@
                                                         <%
                                                         }
                                                         %>
-                                                            <img src="assets/img/team/profile_pic.png" alt="prifile_picture">
+                                                            <img src="../Arbets/assets/img/team/<%=us.findImage(curUser.getId(),db)%>" alt="prifile_picture">
 
 
 

@@ -27,13 +27,14 @@
                                             <%
                                             DB db = (DB) session.getAttribute("db");
                                             List<Post> posts= Post.getPosts( db);
-                                           
+                                           UserService us= new UserService();
                                             for(Post post:posts){%>
                                                 <li class="d-flex justify-content-between mb-4">
-                                                    <img src="../Arbets/assets/img/team/team-3.jpg" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
+                                                    
+                                                    <img src="../Arbets/assets/img/team/<%=us.findImage(post.getUserId(),db)%>" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                                                     <div class="card w-100">
                                                         <div class="card-header d-flex justify-content-between p-3 " style="align-items: center;">
-                                                            <p class="fw-bold mb-0"><%=User.getNameByUserId(post.getUserId())%></p>
+                                                            <p class="fw-bold mb-0"><%=us.getNameByUserId(post.getUserId(),db)%></p>
                                                             <p class="text-muted small mb-0"><i class="far fa-clock"></i> <%= new SimpleDateFormat("MM/dd/yyyy HH:mm").format(post.getDateTime())%></p>
                                                             <div><a title="Like Post" href="<%=request.getContextPath()%>/servlet/PostCommentController?upvote=true&postId=<%=post.getPostId()%>" ><i class="bi bi-hand-thumbs-up"></i>       </a><%=post.getUpvote()%></div>
                                                             <div><a title="Dislike Post" href="<%=request.getContextPath()%>/servlet/PostCommentController?downvote=true&postId=<%=post.getPostId()%>" ><i class="bi bi-hand-thumbs-down"></i>         </a><%=post.getDownvote()%></div>
@@ -82,7 +83,7 @@
                                                         <li class="d-flex justify-content-between mb-4">
                                                             <div class="card w-100">
                                                                 <div class="card-header d-flex justify-content-between p-3">
-                                                                    <p class="fw-bold mb-0"><%=User.getNameByUserId(an.getUserId())%></p>
+                                                                    <p class="fw-bold mb-0"><%=us.getNameByUserId(an.getUserId(),db)%></p>
                                                                     <p class="text-muted small mb-0"><i class="far fa-clock"></i> <%=new SimpleDateFormat("MM/dd/yyyy HH:mm").format(an.getDateTime())%></p>
                                                                     <div><a title="Like Answer" href="<%=request.getContextPath()%>/servlet/PostCommentController?upvote=true&answerId=<%=an.getAnswerId()%>"><i class="bi bi-hand-thumbs-up"></i>      </a><%=an.getUpvote()%></div>
                                                                     <div><a title="Dislike Answer" href="<%=request.getContextPath()%>/servlet/PostCommentController?downvote=true&answerId=<%=an.getAnswerId()%>"><i class="bi bi-hand-thumbs-down"></i>         </a><%=an.getDownvote()%></div>
@@ -111,7 +112,7 @@
                                                                     </p>
                                                                 </div>
                                                             </div>
-                                                            <img src="../Arbets/assets/img/team/team-2.jpg" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
+                                                            <img src="../Arbets/assets/img/team/<%=us.findImage(an.getUserId(),db)%>" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
                                                         </li>
                                                   <%  }
                                             }

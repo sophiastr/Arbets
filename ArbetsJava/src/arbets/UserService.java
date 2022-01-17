@@ -137,4 +137,94 @@ public class UserService {
 		}
 
 	}
+	public String getNameByUserId(int id,DB db) throws Exception {
+
+	
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT username FROM user WHERE user_id=?;";
+
+		try {
+			con = db.getConnection();
+			stmt = con.prepareStatement(sql);
+
+			// set parameters
+			stmt.setInt(1, id);
+
+			rs = stmt.executeQuery();
+
+			if (!rs.next()) {
+				rs.close();
+				stmt.close();
+				db.close();
+			}
+
+			return rs.getString("username");
+
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		} finally {
+			try {
+				db.close();
+			} catch (Exception e) {
+
+			}
+		}
+	}
+	
+	public int getPointsByUserId(int id,DB db) throws Exception {
+
+		
+		Connection con = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		String sql = "SELECT points FROM user WHERE user_id=?;";
+
+		try {
+			con = db.getConnection();
+			stmt = con.prepareStatement(sql);
+
+			// set parameters
+			stmt.setInt(1, id);
+
+			rs = stmt.executeQuery();
+
+			if (!rs.next()) {
+				rs.close();
+				stmt.close();
+				db.close();
+			}
+
+			return rs.getInt("points");
+
+		} catch (Exception e) {
+			throw new Exception(e.getMessage());
+		} finally {
+			try {
+				db.close();
+			} catch (Exception e) {
+
+			}
+		}
+	}
+	
+	
+	public String findImage(int userId,DB db) throws Exception {
+		int points = getPointsByUserId(userId, db);
+		
+		if (points <= 500) {
+			return "1.png";
+		}else if(points <= 1500) {
+			return "2.jpg";
+		}else if(points <= 2500) {
+			return "3.png";
+		}else if(points <= 3500) {
+			return "4.jpg";
+		}else if(points <= 6000) {
+			return "5.jpg";
+		}else {
+			return "6.png";
+		}
+	}
 }
