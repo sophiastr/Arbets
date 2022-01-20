@@ -23,6 +23,9 @@
                                 <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("Login.jsp ")) ? "active " : " "  %>">
                                     <a href="../Arbets/login.jsp">Login</a>
                                 </li>
+                                <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("info.jsp ")) ? "active " : " "  %>">
+                                    <a href="../Arbets/info.jsp">Info</a>
+                                </li>
 
                                 <% }else { %>
                                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("index.jsp ")) ? "active " : " "  %>">
@@ -39,6 +42,9 @@
                                     </li>
                                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("find_opportunity.jsp ")) ? "active " : " "  %>">
                                         <a href="../Arbets/profile.jsp">Profile</a>
+                                    </li>
+                                    <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("info.jsp ")) ? "active " : " "  %>">
+                                        <a href="../Arbets/info.jsp">Info</a>
                                     </li>
                                     <li class="<%=(request.getRequestURI().replace(request.getContextPath() + " / ", " ").equals("Login.jsp ")) ? "active " : " "  %>">
                                         <a href="../Arbets/logout.jsp">Logout</a>
