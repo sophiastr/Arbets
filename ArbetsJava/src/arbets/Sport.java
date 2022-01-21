@@ -29,12 +29,12 @@ public class Sport {
 		this.name = name;
 	}
 	
-public List<Sport> getSports() throws Exception {
+public List<Sport> getSports(DB db) throws Exception {
         
         List<Sport> sports = new ArrayList<>();
 
         String sql = "SELECT sport_id, name FROM sport;";
-        DB db = new DB();
+   
         try {
             Connection con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);

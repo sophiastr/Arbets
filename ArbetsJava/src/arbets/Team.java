@@ -37,12 +37,12 @@ public class Team {
 	public void setSport_id(int sport_id) {
 		this.sport_id = sport_id;
 	}
-	public List<String> getTeams() throws Exception {
+	public List<String> getTeams(DB db) throws Exception {
         
         List<String> teams = new ArrayList<>();
 
         String sql = "SELECT distinct name FROM team;";
-        DB db = new DB();
+  
 
         try {
             Connection con = db.getConnection();
