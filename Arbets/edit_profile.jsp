@@ -5,7 +5,7 @@
             <%
         User curUser = (User)session.getAttribute("authentication");
         UserService us= new UserService();
-            DB db = (DB) session.getAttribute("db");
+        DB db = (DB) session.getAttribute("db");
         %>
                 <!DOCTYPE html>
                 <html lang="en">

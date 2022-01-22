@@ -5,9 +5,7 @@ import java.util.Calendar;
 
 public class UserService {
 
-	public User authenticate(String username, String password) throws Exception {
-
-		DB db = new DB();
+	public User authenticate(String username, String password,DB db) throws Exception {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -46,8 +44,7 @@ public class UserService {
 		}
 	}
 
-	public void register(User user) throws Exception {
-		DB db = new DB();
+	public void register(User user,DB db) throws Exception {
 		Connection con = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
@@ -103,9 +100,8 @@ public class UserService {
 
 	}
 
-	public void editProf(int id, String newusername, String bankAccount, String email, String password)
+	public void editProf(int id, String newusername, String bankAccount, String email, String password,DB db)
 			throws Exception {
-		DB db = new DB();
 		Connection con = null;
 		PreparedStatement stmt = null;
 		String sql = "UPDATE user SET username = ?, bank_account = ?, email = ?, password = ? WHERE user_id = ?;";

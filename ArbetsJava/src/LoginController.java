@@ -13,18 +13,19 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
        
-        
+  
         UserService userService = new UserService();
 
         User user = null;
         
         try {
-            user = userService.authenticate(username, password);
-            //request.setAttribute("user", user);
-            HttpSession session=request.getSession(); 
-            session.setAttribute("authentication", user);
-            DB db = new DB();
+        	DB db = new DB();
+        	HttpSession session=request.getSession(); 
             session.setAttribute("db", db);
+            user = userService.authenticate(username, password, db);
+            //request.setAttribute("user", user);
+            session.setAttribute("authentication", user);
+            
             
             
         } catch (Exception e) {

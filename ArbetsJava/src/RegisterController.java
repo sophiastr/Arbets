@@ -19,6 +19,9 @@ public class RegisterController extends HttpServlet {
         String email = request.getParameter("exampleInputEmail1");
         String bank = request.getParameter("bank");
         String birthday = request.getParameter("bday");
+   
+		
+        
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         
@@ -82,9 +85,12 @@ public class RegisterController extends HttpServlet {
 
             try{    
                 Date bday = sdf.parse(birthday); 
+        		DB db = new DB();
+            	HttpSession session=request.getSession(); 
+                session.setAttribute("db", db);
                 User user = new User(firstname, lastname, username, password ,bday, bank, email, 0); 
-                userService.register(user);
-                HttpSession session=request.getSession(); 
+                userService.register(user, db);
+                //HttpSession session=request.getSession(); 
                 session.setAttribute("authentication", user);
                 request.setAttribute("success_registration", "Registration completed successfully!");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/find_opportunity.jsp");

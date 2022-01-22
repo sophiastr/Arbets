@@ -14,6 +14,7 @@ public class EditProfileServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		User curUser = (User) session.getAttribute("authentication");
+		DB db = (DB) session.getAttribute("db");
 
 		int userid = curUser.getId();
 		String oldpassword = curUser.getPassword();
@@ -69,9 +70,9 @@ public class EditProfileServlet extends HttpServlet {
 		if (counter == 0) {
 			UserService userService = new UserService();
 			try {
-				userService.editProf(userid, username, bank, email, newpassword);
+				userService.editProf(userid, username, bank, email, newpassword, db);
 				request.setAttribute("success_edit", "Edit completed successfully!");
-				user = userService.authenticate(username, newpassword);
+				user = userService.authenticate(username, newpassword, db);
 				session.setAttribute("authentication", user);
 				RequestDispatcher requestDispatcher = request.getRequestDispatcher("/Arbets/profile.jsp");
 				requestDispatcher.forward(request, response);
