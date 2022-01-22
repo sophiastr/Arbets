@@ -67,10 +67,10 @@ public class Bet {
 		return bookmakerId;
 	}
 	
-	public String getBookmakerName() throws Exception {
+	public String getBookmakerName(DB db) throws Exception {
 		String sql = "SELECT name_of_bookmaker FROM bookmaker WHERE bookmaker_id=?;";
 		 
-	        DB db = new DB();
+	        
 	        
 	        try {
 	            Connection con = db.getConnection();

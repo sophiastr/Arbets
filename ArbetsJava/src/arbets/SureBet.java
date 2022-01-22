@@ -59,12 +59,12 @@ public class SureBet {
 	public void setId(int id) {
 		this.id = id;
 	}
-	 public Date getDateTime() throws Exception {
+	 public Date getDateTime(DB db) throws Exception {
 		 
 		 Timestamp dateTime;
 		  
 	        String sql = "SELECT date_time  FROM game WHERE game.game_id=?;";
-	        DB db = new DB();
+	      
 	        try {
 	            Connection con = db.getConnection();
 	            PreparedStatement stmt = con.prepareStatement(sql);
@@ -96,13 +96,13 @@ public class SureBet {
 	 }
 	 
 
-	public ArrayList<String> findTeams() throws Exception {
+	public ArrayList<String> findTeams(DB db) throws Exception {
 		ArrayList<String> teams = new ArrayList<String>();
 	  
         String sql = "SELECT team.name\r\n"
         		+ "FROM  (SELECT team_game.team_id  FROM team_game WHERE team_game.game_id=?) as team_ids \r\n"
         		+ "INNER JOIN team ON team.team_id=team_ids.team_id;";
-        DB db = new DB();
+       
         try {
             Connection con = db.getConnection();
             PreparedStatement stmt = con.prepareStatement(sql);
@@ -132,15 +132,14 @@ public class SureBet {
 		
 	}
 
-	public String findSport() throws Exception  {
+	public String findSport(DB db) throws Exception  {
 		
 		 String sql = "select s.name\r\n"
 		 		+ "FROM sport as s\r\n"
 		 		+ "where s.sport_id = (SELECT distinct team.sport_id\r\n"
 		 		+ "FROM  (SELECT team_game.team_id  FROM team_game WHERE team_game.game_id=?) as team_ids\r\n"
 		 		+ "INNER JOIN team ON team.team_id=team_ids.team_id);";
-		 
-	        DB db = new DB();
+
 	        
 	        try {
 	            Connection con = db.getConnection();
@@ -176,12 +175,12 @@ public class SureBet {
 			
 	}
 
-	public String getHomeTeamBet1Name() throws Exception {
+	public String getHomeTeamBet1Name(DB db) throws Exception {
 		String sql = "select team.name\r\n"
 				+ "from (select distinct home_team_id  from team_game as tg where tg.game_id=?) as t\r\n"
 				+ "inner join team on team.team_id=t.home_team_id";
 		 
-	        DB db = new DB();
+	     
 	        
 	        try {
 	            Connection con = db.getConnection();
@@ -217,12 +216,12 @@ public class SureBet {
 			
 	}
 
-	public String getVisitingTeamBet2Name() throws Exception {
+	public String getVisitingTeamBet2Name(DB db) throws Exception {
 		String sql = "select team.name\r\n"
 				+ "from (select  team_id  from team_game as tg where tg.game_id=? and tg.team_id<> tg.home_team_id) as t\r\n"
 				+ "inner join team on team.team_id=t.team_id";
 		 
-	        DB db = new DB();
+	       
 	        
 	        try {
 	            Connection con = db.getConnection();

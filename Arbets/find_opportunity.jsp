@@ -116,10 +116,10 @@
                                        
                                                  <div class="icon-box col-lg-4 col-md-6 " >
                                             
-                                                <h4><%=sb.getPercentage()%>% <%= sb.findSport() %></h4>
-                                                <h6> <%= sb.getBet1().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getHomeTeamBet1Name() %></b> score: Win
+                                                <h4><%=sb.getPercentage()%>% <%= sb.findSport(db) %></h4>
+                                                <h6> <%= sb.getBet1().getBookmakerName(db) %>: <%= sb.getDateTime(db) %> <b><%= sb.getHomeTeamBet1Name(db) %></b> score: Win
                                                     <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
-                                                    <%= sb.getBet2().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getVisitingTeamBet2Name() %></b> score: Lose
+                                                    <%= sb.getBet2().getBookmakerName(db) %>: <%= sb.getDateTime(db) %> <b><%= sb.getVisitingTeamBet2Name(db) %></b> score: Lose
                                                     <p><b class="text-success"> rate: <%= sb.getBet2().getVisitingTeamRate() %></b></p>
                                                 </h6>
                                             
@@ -137,10 +137,10 @@
                                               
                                                 
                                             <div class="icon-box">
-                                                <h4><%=sb.getPercentage()%> % <%= sb.findSport() %></h4>
-                                                <h6> <%= sb.getBet1().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getHomeTeamBet1Name() %></b> score: Win
+                                                <h4><%=sb.getPercentage()%> % <%= sb.findSport(db) %></h4>
+                                                <h6> <%= sb.getBet1().getBookmakerName(db) %>: <%= sb.getDateTime(db) %> <b><%= sb.getHomeTeamBet1Name(db) %></b> score: Win
                                                     <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
-                                                    <%= sb.getBet2().getBookmakerName() %>: <%= sb.getDateTime() %> <b><%= sb.getVisitingTeamBet2Name() %></b> score: Lose
+                                                    <%= sb.getBet2().getBookmakerName(db) %>: <%= sb.getDateTime(db) %> <b><%= sb.getVisitingTeamBet2Name(db) %></b> score: Lose
                                                     <p><b class="text-success"> rate: <%= sb.getBet2().getVisitingTeamRate() %></b></p>
                                                 </h6>
                                             </div>
