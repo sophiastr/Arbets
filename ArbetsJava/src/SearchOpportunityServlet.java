@@ -15,6 +15,10 @@ public class SearchOpportunityServlet extends HttpServlet {
 		ArrayList<SureBet> newBets= new ArrayList<SureBet>();
 
 		ArrayList<SureBet> bets= new ArrayList<SureBet>();
+		HttpSession session = request.getSession();
+		
+		DB db = (DB) session.getAttribute("db");
+		
 		try {
 		bets = SureBetCalculator.createSureBets();
 		//out.println(bets);
@@ -34,7 +38,7 @@ public class SearchOpportunityServlet extends HttpServlet {
 		
 		if (flagFilterSport == 1){
 			for (SureBet sb : bets){
-				if (sb.findSport().equals(searchFilter)){
+				if (sb.findSport(db).equals(searchFilter)){
 					newBets.add(sb);
 				}
 			}
@@ -43,7 +47,7 @@ public class SearchOpportunityServlet extends HttpServlet {
 		if (flagFilterTeam == 1){
 			for (SureBet sb : bets){
 				//out.println(searchFilter);
-				if (sb.findTeams().get(0).equals(searchFilter) || sb.findTeams().get(1).equals(searchFilter)){
+				if (sb.findTeams(db).get(0).equals(searchFilter) || sb.findTeams(db).get(1).equals(searchFilter)){
 					newBets.add(sb);
 				}
 			}

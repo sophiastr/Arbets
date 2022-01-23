@@ -155,6 +155,7 @@ public class UserService {
 				rs.close();
 				stmt.close();
 				db.close();
+				throw new Exception("no user found!");
 			}
 
 			return rs.getString("username");

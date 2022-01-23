@@ -90,6 +90,8 @@ public class RegisterController extends HttpServlet {
                 session.setAttribute("db", db);
                 User user = new User(firstname, lastname, username, password ,bday, bank, email, 0); 
                 userService.register(user, db);
+                user = userService.authenticate(username, password, db);
+				
                 //HttpSession session=request.getSession(); 
                 session.setAttribute("authentication", user);
                 request.setAttribute("success_registration", "Registration completed successfully!");
