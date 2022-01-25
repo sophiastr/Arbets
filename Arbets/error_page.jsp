@@ -15,6 +15,7 @@
 
                 <div class="container">
                     <div class="page-header">
+                        <br>
                         <h1>Ooops something went wrong</h1>
                     </div>
 
@@ -22,10 +23,11 @@
 
                         <div class="col-xs-12">
 
-                            <h2>Description</h2>
+                            <br>
+                           
 
                             <% if(exception != null) { %>
-                                <p><code><%=exception %></code></p>
+                                <p> <b><%=exception.getMessage() %></b></p>
                                 <% } %>
 
                         </div>

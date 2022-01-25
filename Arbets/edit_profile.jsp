@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ include file="check_authentication.jsp" %>
         <%@ page import="arbets.*, java.util.*"%>
+        <%@ page errorPage="error_page.jsp"%>
 
             <%
         User curUser = (User)session.getAttribute("authentication");

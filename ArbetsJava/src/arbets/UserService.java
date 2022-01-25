@@ -155,7 +155,7 @@ public class UserService {
 				rs.close();
 				stmt.close();
 				db.close();
-				throw new Exception("no user found!");
+				throw new Exception("No user found!");
 			}
 
 			return rs.getString("username");
@@ -192,7 +192,7 @@ public class UserService {
 				rs.close();
 				stmt.close();
 				db.close();
-				throw new Exception("no user found!");
+				throw new Exception("No user found!");
 
 			}
 

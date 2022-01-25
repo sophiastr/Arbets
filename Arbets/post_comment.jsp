@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     <%@ include file="check_authentication.jsp" %>
     <%@ page import="java.text.SimpleDateFormat"%>
+    <%@ page errorPage="error_page.jsp"%>
         <!DOCTYPE html>
         <html lang="en">
 
@@ -144,7 +145,7 @@
                 <br>
                
                 <%@ include file="footer.jsp" %>
-                <scrip src="post_comment.js">
+                <scrip src="../Arbets/assets/js/post_comment.js">
                     
                 </scrip>
 
