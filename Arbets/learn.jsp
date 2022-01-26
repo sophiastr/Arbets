@@ -153,30 +153,15 @@
 
                                 </form>
 
-                                <% if (request.getAttribute("apotelesma") == null) {
+                                <% if (request.getAttribute("apotelesma") != null) {
 
                                         %>
 
-                                    <div class="alert alert-warning" role="alert">
-
-                                        Fill the form
-
-                                    </div>
+                                        <div class="alert alert-light" role="alert">
+                                            <%=request.getAttribute("apotelesma") %>
+                                          </div>
 
                                     <%
-
-                                    } else {
-
-                                        %>
-
-                                        <div class="alert alert-warning" role="alert">
-
-                                            <%=request.getAttribute("apotelesma") %>
-
-                                        </div>
-
-                                        <%
-
                                     } %>
 
 

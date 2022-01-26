@@ -5,6 +5,7 @@ import javax.servlet.*;
 import javax.servlet.http.*;
 
 import arbets.*;
+import java.lang.Math;
 
 /**
 
@@ -122,15 +123,15 @@ public class CalculatorServlet extends HttpServlet {
 
         if (sb == null) {
 
-          message = "It is not a surebet";
+          message = "It is not a surebet.";
 
         } else {
 
-          double V1 = amount/((sb.getPercentage()/100)* od1);
+          double V1 = Math.round(amount/((sb.getPercentage()/100)* od1));
 
-          double V2 = amount/((sb.getPercentage()/100) * od2);
+          double V2 = Math.round(amount/((sb.getPercentage()/100) * od2));
 
-          message = "Put " + V1 + " in first bet and " + V2 + " to the second";
+          message = "Put " + V1 + " in first bet and " + V2 + " to the second bet.";
 
     }
 
