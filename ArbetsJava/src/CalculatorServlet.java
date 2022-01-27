@@ -63,9 +63,9 @@ public class CalculatorServlet extends HttpServlet {
 
  
 
-    String odd1 = request.getParameter("odd1");
+    String odd1 = request.getParameter("rate1");
 
-    String odd2 = request.getParameter("odd2");
+    String odd2 = request.getParameter("rate2");
 
     String am = request.getParameter("amount");
 
@@ -82,6 +82,8 @@ public class CalculatorServlet extends HttpServlet {
     if (odd1 != null) {
 
       od1 = Double.parseDouble(odd1);
+   
+       
 
     } else {
 
@@ -111,7 +113,7 @@ public class CalculatorServlet extends HttpServlet {
 
     if (flag == true) {
 
-      message = "Fill the form";
+      message = "";
 
     } else {
 
@@ -131,7 +133,7 @@ public class CalculatorServlet extends HttpServlet {
 
           double V2 = Math.round(amount/((sb.getPercentage()/100) * od2));
 
-          message = "Put " + V1 + " in first bet and " + V2 + " to the second bet.";
+          message = "You found a sure bet. Put " + V1 + " in first bet and " + V2 + " to the second bet.";
 
     }
 

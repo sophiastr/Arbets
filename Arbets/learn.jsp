@@ -33,7 +33,7 @@
 
                         <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" style="text-align: center; vertical-align: middle;">
 
-                            <img src="assets/img/arb_pic.jpg" class="img-fluid" alt="pic arbitrage">
+                            <img src="../Arbets/assets/img/arb_pic.jpg" class="img-fluid" alt="pic arbitrage">
 
                         </div>
 
@@ -121,17 +121,16 @@
 
                                     <div class="col-12">
 
-                                        <label>First Odd</label>
+                                        <label>Rate Of First Bet </label>
 
-                                        <input type="number" step="any" name="odd1" required class="form-control" placeholder="odd1">
-
+                                        <input type="number" step="any" name="rate1" required class="form-control" placeholder="rate1">
                                     </div>
 
                                     <div class="col-12">
 
-                                        <label>Second Odd</label>
+                                        <label>Rate Of Second Bet </label>
 
-                                        <input type="number" step="any" name="odd2" required class="form-control" placeholder="odd2">
+                                        <input type="number" step="any" name="rate2" required class="form-control" max="500" placeholder="rate2">
 
                                     </div>
 
@@ -139,7 +138,7 @@
 
                                         <label>Amount</label>
 
-                                        <input type="number" step="any" name="amount" required class="form-control" placeholder="amount">
+                                        <input type="number" step="any" name="amount" required class="form-control" max="500" placeholder="amount">
 
                                     </div>
 
