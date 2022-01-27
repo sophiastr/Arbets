@@ -93,7 +93,9 @@
 
                         <h3>Surbet Calculator</h3>
 
-                        <p>Save your time and efforts by using our free sure bet calculator! A calculator that helps you to calculate the amount of money to bet and profit for a 2 way mutually exclusive outcome arbitrage </p>
+                        <p>Save your time and efforts by using our free sure bet calculator! A calculator that helps you to calculate the amount of money to bet and profit for a 2 way mutually exclusive outcome arbitrage.
+                        In more detail, you type the odds of a particular betting company to win one team, then you type the odds of a particular betting company for the defeat of the same team and finally you type the money you have for betting. 
+                        The calculator shows how much money you have to bet on each result, in order to win in each case. </p>
 
 
 
