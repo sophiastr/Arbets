@@ -114,15 +114,19 @@
                                     ArrayList<SureBet> newBets= (ArrayList<SureBet>) request.getAttribute("showSureBets");
                                         for (SureBet sb : newBets){
                                         %>
-                                       
-                                                 <div class="icon-box col-lg-4 col-md-6 " >
-                                            
+                                        
+            
+                                        
+                                            <div class="icon-box col-lg-4 col-md-6 " >
+                                        <div  data-aos="fade-right" >
                                                 <h4><%=sb.getPercentage()%>% <%= sb.findSport(db) %></h4>
                                                 <h6> <%= sb.getBet1().getBookmakerName(db) %>: <%= sb.getDateTime(db) %> <b><%= sb.getHomeTeamBet1Name(db) %></b> score: Win
                                                     <p><b class="text-success"> rate: <%= sb.getBet1().getHomeTeamRate() %></b></p>
                                                     <%= sb.getBet2().getBookmakerName(db) %>: <%= sb.getDateTime(db) %> <b><%= sb.getVisitingTeamBet2Name(db) %></b> score: Lose
                                                     <p><b class="text-success"> rate: <%= sb.getBet2().getVisitingTeamRate() %></b></p>
                                                 </h6>
+                                            
+                                            </div>
                                             
                                         </div>
                                         
@@ -134,9 +138,11 @@
                                         for (SureBet sb : newBets){
                                            %>
                                            
+                                    
+
                                             <div class="col-lg-4 col-md-6 blogBox moreBox ">
                                               
-                                                
+                                        <div  data-aos="fade-left" >
                                             <div class="icon-box">
                                                 <h4><%=sb.getPercentage()%> % <%= sb.findSport(db) %></h4>
                                                 <h6> <%= sb.getBet1().getBookmakerName(db) %>: <%= sb.getDateTime(db) %> <b><%= sb.getHomeTeamBet1Name(db) %></b> score: Win
@@ -146,6 +152,7 @@
                                                 </h6>
                                             </div>
                                         </div>
+                                    </div>
                                         
                                         <%
                                         } 

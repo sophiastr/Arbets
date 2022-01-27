@@ -30,10 +30,12 @@
                                             List<Post> posts= Post.getPosts( db);
                                            UserService us= new UserService();
                                             for(Post post:posts){%>
+                                                
                                                 <li class="d-flex justify-content-between mb-4">
-                                                    
+                                                   
                                                     <img src="../Arbets/assets/img/team/<%=us.findImage(post.getUserId(),db)%>" alt="avatar" class="rounded-circle d-flex align-self-start me-3 shadow-1-strong" width="60">
                                                     <div class="card w-100">
+                                                        
                                                         <div class="card-header d-flex justify-content-between p-3 " style="align-items: center;">
                                                             <p class="fw-bold mb-0"><%=us.getNameByUserId(post.getUserId(),db)%></p>
                                                             <p class="text-muted small mb-0"><i class="far fa-clock"></i> <%= new SimpleDateFormat("MM/dd/yyyy HH:mm").format(post.getDateTime())%></p>
@@ -44,10 +46,10 @@
                                                                 <a href="<%=request.getContextPath()%>/servlet/PostCommentController?deletePost=true&postId=<%=post.getPostId()%>"><button type="button" title="Delete Post" class="btn btn-outline-secondary">
                                                                     <i class="bi bi-x-circle"></i></button></a>
                                                             <%}%>
-                                                            
+                                                        
                                                        
-
-                                                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    
+                                                            <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog">
                                                                   <div class="modal-content">
                                                                     <div class="modal-header">
@@ -78,9 +80,11 @@
                                                             </p>
                                                         </div>
                                                     </div>
+                                                
                                                 </li><%
                                                 List<Answer> ans =Answer.getAnswersOfPost(post,db ) ;
                                                     for (Answer an:ans){%>
+                                                    <div  data-aos="fade-left" >
                                                         <li class="d-flex justify-content-between mb-4">
                                                             <div class="card w-100">
                                                                 <div class="card-header d-flex justify-content-between p-3">
@@ -115,6 +119,7 @@
                                                             </div>
                                                             <img src="../Arbets/assets/img/team/<%=us.findImage(an.getUserId(),db)%>" alt="avatar" class="rounded-circle d-flex align-self-start ms-3 shadow-1-strong" width="60">
                                                         </li>
+                                                    </div>
                                                   <%  }
                                             }
                                                 %>
