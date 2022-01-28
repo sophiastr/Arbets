@@ -76,7 +76,7 @@ out.print(formatedDate);
                                                                                 <br>
                                                                                 <br>
 
-                                                                                <button type="button" class="btn btn-dark"><a href="edit_profile.jsp">Edit</a></button>
+                                                                                <button type="button" class="btn btn-dark"><a href="../Arbets/edit_profile.jsp">Edit</a></button>
                                                 </div>
 
                                             </div>
