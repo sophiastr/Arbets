@@ -41,7 +41,7 @@
                                                             <p class="text-muted small mb-0"><i class="far fa-clock"></i> <%= new SimpleDateFormat("MM/dd/yyyy HH:mm").format(post.getDateTime())%></p>
                                                             <div><a title="Like Post" href="<%=request.getContextPath()%>/servlet/PostCommentController?upvote=true&postId=<%=post.getPostId()%>" ><i class="bi bi-hand-thumbs-up"></i>       </a><%=post.getUpvote()%></div>
                                                             <div><a title="Dislike Post" href="<%=request.getContextPath()%>/servlet/PostCommentController?downvote=true&postId=<%=post.getPostId()%>" ><i class="bi bi-hand-thumbs-down"></i>         </a><%=post.getDownvote()%></div>
-                                                             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Answer</button>
+                                                             <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal<%=post.getPostId()%>" data-bs-whatever="@getbootstrap">Answer</button>
                                                              <%if(regUser.getId()==post.getUserId()){%>
                                                                 <a href="<%=request.getContextPath()%>/servlet/PostCommentController?deletePost=true&postId=<%=post.getPostId()%>"><button type="button" title="Delete Post" class="btn btn-outline-secondary">
                                                                     <i class="bi bi-x-circle"></i></button></a>
@@ -49,7 +49,7 @@
                                                         
                                                        
                                                     
-                                                            <div class="modal" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                            <div class="modal" id="exampleModal<%=post.getPostId()%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                                 <div class="modal-dialog">
                                                                   <div class="modal-content">
                                                                     <div class="modal-header">
