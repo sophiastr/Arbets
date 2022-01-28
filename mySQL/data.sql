@@ -120,11 +120,11 @@ insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values
 insert into bet(home_team_rate, visiting_team_rate, game_id,bookmaker_id) values(2.8, 5.55, 20, 2);
 
 
-insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Sophia", "Sotiropoulou", "sophia_str", "sophia123", "2001-07-19", "GR125347902563789222", "sophiastr@gamil.com", 100);
-insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Melenia", "Bempedeli", "melenia_bebedeli", "melenia123", "2001-11-29", "GR347927937025637892", "meleniabe@gamil.com", 100);
-insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Anna", "Mastori", "mastori_anna", "mastoriii", "2001-02-04", "GR908567832563789999", "mastori@gamil.com", 200);
+insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Sophia", "Sotiropoulou", "sophia_str", "sophia123", "2001-07-19", "GR125347902563789222", "sophiastr@gamil.com", 3700);
+insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Melenia", "Bempedeli", "melenia_bebedeli", "melenia123", "2001-11-29", "GR347927937025637892", "meleniabe@gamil.com", 2600);
+insert into user(firstname, lastname, username, password, birthday, bank_account, email, points) values("Anna", "Mastori", "mastori_anna", "mastoriii", "2001-02-04", "GR908567832563789999", "mastori@gamil.com", 7000);
 
-insert into guest_user(register_date, status) values("2021-11-09", 1);
+
 
 insert into post(text, user_id, date_time, upvote, downvote) values("Γνωρίζει κάποιος ποιό είναι το αποδεκτό όριο ποναταρίσματος στη stoiximan;", 1,  "2022-02-04 20:59:54", 1, 0);
 insert into post(text, user_id, date_time, upvote, downvote) values("Στο μάτς της Πέμπτης Ολυμπιακός-Πάοκ έχει βρεθεί σίγουρο στοίχημα με πολύ μεγάλο κέρδος.Μπείτε τώρα και δείτε το!", 2,  "2022-02-15 16:05:44", 18, 0);

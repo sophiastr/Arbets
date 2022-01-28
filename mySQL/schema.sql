@@ -8,7 +8,6 @@ DROP TABLE team;
 DROP TABLE sport;
 DROP TABLE answer;
 DROP TABLE post;
-DROP TABLE guest_user;
 DROP TABLE user;
 */
 
@@ -26,20 +25,7 @@ CREATE TABLE user
                   points int check (points>=0)
                   );
                
-               
-/*DROP TABLE guest_user;*/
-Create Table guest_user 
-						(user_id int not null auto_increment,
-                        register_date date,
-                        status boolean,
-                        CONSTRAINT PKGuestUser PRIMARY KEY (user_id),
-                        CONSTRAINT FKGuestUserS1 FOREIGN KEY (user_id) REFERENCES user(user_id)
-					on delete cascade
-                        );
-
-
-
-
+			
 
 /*DROP TABLE post;*/                     
 Create Table post (post_id int not null primary key auto_increment,
